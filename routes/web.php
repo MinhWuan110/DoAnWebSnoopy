@@ -46,3 +46,4 @@ Route::get('/trangcanhan', function () {
 Route::get('/sanpham', function () {
     return view('sanpham');
 });
+
