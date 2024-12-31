@@ -1,0 +1,133 @@
+/* Reset một số thuộc tính mặc định */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 15px 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    max-height: 50px; /* Điều chỉnh kích thước logo */
+    margin-right: 10px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0 20px;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #000;
+    font-weight: normal;
+}
+
+.search-cart {
+    display: flex;
+    align-items: center;
+}
+
+.search-cart input {
+    padding: 5px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+}
+
+.cart-icon, .account-icon {
+    margin-left: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.contact-info {
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.categories-text {
+    margin-left: 20px;
+    font-weight: bold;
+    color: red; /* Màu cho "All Categories" */
+}
+
+/* Main Content */
+.main-content {
+    padding: 20px;
+}
+
+/* Footer */
+footer {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-top: 1px solid #ccc;
+    margin-top: 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.left-section {
+    flex: 1;
+    text-align: center;
+}
+
+.right-section {
+    text-align: center; /* Đưa nội dung sang bên phải */
+    flex: 1;
+}
+
+.contact-info, .hotline-numbers {
+    display: flex;
+    margin-bottom: 15px;
+   flex-direction: column;
+   align-items: flex-start;
+   margin-left: 210px;
+    
+}
+
+.social-media a {
+    margin-right: 15px;
+    text-decoration: none;
+    color: #000;
+    
+}
+
+.social-media a:hover {
+    text-decoration: underline;
+}
+
+footer p {
+    color: #666;
+}
