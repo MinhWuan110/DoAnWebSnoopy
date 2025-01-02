@@ -23,10 +23,14 @@ Route::get('/admin/quanlidashboard', function () {
     return view('quanlidashboard');
 });
 
-Route::get('/admin/quanlisanpham', [SanPhamController::class, 'index']);
-
+Route::get('/admin/quanlisanpham', [SanPhamController::class, 'index'])->name('quanlisanpham');
+Route::post('/admin/quanlisanpham', [SanPhamController::class, 'store'])->name('store.sanpham');
+Route::get('/admin/quanlisanpham/edit/{id}', [SanPhamController::class, 'edit'])->name('edit.sanpham');
+Route::put('/admin/quanlisanpham/{id}', [SanPhamController::class, 'update'])->name('update.sanpham');
+Route::delete('/admin/quanlisanpham/{id}', [SanPhamController::class, 'destroy'])->name('destroy.sanpham');
 
 Route::get('/admin/quanlibinhluan', function () {
+
     return view('quanlibinhluan');
 });
 Route::get('/admin/quanlilienhe', function () {
