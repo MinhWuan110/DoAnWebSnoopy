@@ -3,6 +3,7 @@
 @section('title', 'DashBoard')
 
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/DashBoard.css') }}">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">

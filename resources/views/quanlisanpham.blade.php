@@ -1,6 +1,7 @@
 @extends('layouts.admin')
 @section('title', 'Quản Lý Sản Phẩm')
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/QLSanPham.css') }}">
 <div class="container">
     <div class="form-section">
         <h2>Quản Lý Sản Phẩm</h2>
@@ -45,26 +46,32 @@
                     <th>Mã Sản Phẩm</th>
                     <th>Tên Sản Phẩm</th>
                     <th>Giá Sản Phẩm</th>
+                    <th>Mã Loại Sản Phẩm</th>
                     <th>Số Lượng</th>
+                    <th>Mã Nhà Cung cấp</th>
                     <th>Trạng Thái</th>
+                    <th>Hành Động </th>
+                    <th>chi Tiết </th>
+
                 </tr>
             </thead>
             <tbody>
+                @foreach($sanPhams as $sanPham)
                 <tr>
-                    <td>SP001</td>
-                    <td>Điện Thoại XYZ</td>
-                    <td>10.000.000</td>
-                    <td>100</td>
-                    <td><span class="status active">Còn Hàng</span></td>
+                    <td>{{ $sanPham->MaSanPham }}</td>
+                    <td>{{ $sanPham->TenSanPham }}</td>
+                    <td>{{ $sanPham->Gia }}</td>
+                    <td>{{ $sanPham->MaLoaiSP}}</td>
+                    <td>{{ $sanPham->SoLuong }}</td>
+                    <td>{{ $sanPham->MaNhaCungCap }}</td>
+                    <td>{{ $sanPham->TrangThai}}</td>
+                    <td>
+                        <a href="#">Sửa</a>
+                        <a href="#">Xóa</a>
+                    </td>
+                    <td><a href="">Xem chi tiết </a></td>
                 </tr>
-                <tr>
-                    <td>SP002</td>
-                    <td>Máy Tính ABC</td>
-                    <td>20.000.000</td>
-                    <td>0</td>
-                    <td><span class="status inactive">Hết Hàng</span></td>
-                </tr>
-                <!-- Thêm các sản phẩm khác ở đây -->
+                @endforeach
             </tbody>
         </table>
     </div>

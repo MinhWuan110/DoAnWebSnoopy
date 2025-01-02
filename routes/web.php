@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\TestController;
+use App\Http\Controllers\SanPhamController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,9 +19,13 @@ Route::get('/', function () {
 });
 
 //admin 
-Route::get('/admin/quanlisanpham', function () {
-    return view('quanlisanpham');
+Route::get('/admin/quanlidashboard', function () {
+    return view('quanlidashboard');
 });
+
+Route::get('/admin/quanlisanpham', [SanPhamController::class, 'index']);
+
+
 Route::get('/admin/quanlibinhluan', function () {
     return view('quanlibinhluan');
 });
@@ -46,3 +51,5 @@ Route::get('/trangcanhan', function () {
 Route::get('/sanpham', function () {
     return view('sanpham');
 });
+
+Route::get('/test-connection', [TestController::class, 'index']);
