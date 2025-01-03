@@ -46,3 +46,12 @@ Route::get('/trangcanhan', function () {
 Route::get('/sanpham', function () {
     return view('sanpham');
 });
+Route::get('/admin/quanliDMsanpham', function () {
+    return view('quanliDMsanpham');
+});
+Route::get('/admin/quanlidonhang', function () {
+    return view('quanlidonhang');
+});
+Route::get('/timkiemsanpham', function () {
+    return view('timkiemsanpham');
+});
