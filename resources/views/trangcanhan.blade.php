@@ -62,33 +62,33 @@
         </tbody>
     </table>
 
-    <h2>Danh sách đơn hàng đã mua</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Mã đơn hàng</th>
-                <th>Trạng thái</th>
-                <th>Ngày đặt</th>
-                <th>Tổng tiền</th>
-                <th>Tình trạng</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>#003</td>
-                <td>Hoàn thành</td>
-                <td>12/11/2024</td>
-                <td>150.000 VNĐ</td>
-                <td>Đã nhận hàng</td>
-            </tr>
-            <tr>
-                <td>#004</td>
-                <td>Hoàn thành</td>
-                <td>13/11/2024</td>
-                <td>300.000 VNĐ</td>
-                <td>Đã nhận hàng</td>
-            </tr>
-        </tbody>
-    </table>
+    <h2>Danh sách sản phẩm yêu thích</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Tên sản phẩm</th>
+            <th>Đánh giá</th>
+            <th>Ngày đánh giá</th>
+            <th>Giá</th>
+            <th>Tình trạng</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Sản phẩm A</td>
+            <td>5/5</td> <!-- Xuất sắc -->
+            <td>12/11/2024</td>
+            <td>150.000 VNĐ</td>
+            <td>Còn hàng</td>
+        </tr>
+        <tr>
+            <td>Sản phẩm B</td>
+            <td>4/5</td> <!-- Tốt -->
+            <td>13/11/2024</td>
+            <td>300.000 VNĐ</td>
+            <td>Hết hàng</td>
+        </tr>
+    </tbody>
+</table>
 </div>
 @endsection
