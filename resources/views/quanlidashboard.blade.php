@@ -17,57 +17,38 @@
                 <div class="card">
                     <div class="card-header">Total Sales</div>
                     <div class="card-body">
-                        <!-- Display Total Sales Data here -->
+                        <p>{{ number_format($totalSales, 0, ',', '.') }} VNĐ</p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-header">Total Payments</div>
                     <div class="card-body">
-                        <!-- Display Total Payments Data here -->
+                        <p>{{ $totalPayments }}</p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-header">Total Returns</div>
                     <div class="card-body">
-                        <!-- Display Total Returns Data here -->
+                        <p>{{ $totalReturns }}</p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-header">Total Users</div>
                     <div class="card-body">
-                        <!-- Display Total Users Data here -->
+                        <p>{{ $totalUsers }}</p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-header">Total Products</div>
                     <div class="card-body">
-                        <!-- Display Total Products Data here -->
+                        <p>{{ $totalProducts }}</p>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-header">Total Orders</div>
                     <div class="card-body">
-                        <!-- Display Total Orders Data here -->
+                        <p>{{ $totalOrders }}</p>
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row mt-4">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">Payments</div>
-                <div class="card-body">
-                    <!-- Display Payments Data here -->
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="card">
-                <div class="card-header">Recent Activity</div>
-                <div class="card-body">
-                    <!-- Display Recent Activity Data here -->
                 </div>
             </div>
         </div>

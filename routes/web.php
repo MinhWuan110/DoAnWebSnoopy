@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,11 +28,11 @@ Route::get('/admin/quanlibinhluan', function () {
 Route::get('/admin/quanlilienhe', function () {
     return view('quanlilienhe');
 });
-Route::get('/admin/dashboard', function () {
-    return view('quanlidashboard');
-});
+// Route::get('/admin/dashboard', function () {
+//     return view('quanlidashboard');
+// });
 
-
+Route::get('/admin/dashboard', [DashboardController::class, 'index']);
 // user 
 
 Route::get('/giohang', function () {
