@@ -85,7 +85,10 @@ body {
 
 .search-bar {
     display: flex;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .search-bar input {
@@ -94,6 +97,7 @@ body {
     border: 2px solid #ccc;
     border-radius: 5px;
     transition: border-color 0.3s;
+    margin-right: 10px;
 }
 
 .search-bar input:focus {

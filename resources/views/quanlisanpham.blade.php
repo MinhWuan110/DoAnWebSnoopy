@@ -1,12 +1,12 @@
 @extends('layouts.admin')
 @section('title', 'Quản Lý Sản Phẩm')
+@section('content')
 <!-- @if(session('success'))
 <div class="alert alert-success">{{ session('success') }}</div>
 @endif
 @if(session('error'))
 <div class="alert alert-danger">{{ session('error') }}</div>
 @endif -->
-@section('content')
 <link rel="stylesheet" href="{{ asset('css/QLSanPham.css') }}">
 <div class="container">
     <div class="form-section">
@@ -48,9 +48,14 @@
     <div class="search-section">
         <h2>Danh Sách Sản Phẩm</h2>
         <div class="search-bar">
-            <input type="text" placeholder="Tìm Kiếm Sản Phẩm" />
-            <button><i class="fas fa-search"></i></button>
+            <form action="{{ route('search.sanpham') }}" method="GET">
+                <input type="text" name="query" placeholder="Tìm Kiếm Sản Phẩm" />
+                <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
         </div>
+        @if($sanPhams->isEmpty())
+        <p>Không tìm thấy sản phẩm nào.</p>
+        @else
         <table class="table">
             <thead>
                 <tr>
@@ -99,6 +104,7 @@
                 @endforeach
             </tbody>
         </table>
+        @endif
     </div>
 
     <!-- Modal -->

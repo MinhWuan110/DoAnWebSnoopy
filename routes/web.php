@@ -28,6 +28,8 @@ Route::post('/admin/quanlisanpham', [SanPhamController::class, 'store'])->name('
 Route::get('/admin/quanlisanpham/edit/{id}', [SanPhamController::class, 'edit'])->name('edit.sanpham');
 Route::put('/admin/quanlisanpham/{id}', [SanPhamController::class, 'update'])->name('update.sanpham');
 Route::delete('/admin/quanlisanpham/{id}', [SanPhamController::class, 'destroy'])->name('destroy.sanpham');
+Route::get('/admin/quanlisanpham/search', [SanPhamController::class, 'search'])->name('search.sanpham');
+
 
 Route::get('/admin/quanlibinhluan', function () {
 

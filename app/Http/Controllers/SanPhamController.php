@@ -93,4 +93,15 @@ class SanPhamController extends Controller
         }
         return redirect()->back()->with('error', 'Sản phẩm không tìm thấy.');
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query'); // Lấy giá trị tìm kiếm từ input
+        $sanPhams = DB::table('sanpham')->where('TenSanPham', 'LIKE', "%{$query}%")->get();
+        $nhaCungCaps = DB::table('NhaCungCap')->get(); // Lấy danh sách nhà cung cấp
+        $loaiSanPhams = DB::table('LoaiSanPham')->get(); // Lấy danh sách loại sản phẩm
+
+        // Sửa lại phần compact
+        return view('quanlisanpham', compact('sanPhams', 'loaiSanPhams', 'nhaCungCaps')); // Trả về view với danh sách sản phẩm tìm được
+    }
 }
