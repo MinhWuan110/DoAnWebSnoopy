@@ -46,3 +46,23 @@ Route::get('/trangcanhan', function () {
 Route::get('/sanpham', function () {
     return view('sanpham');
 });
+
+
+
+
+
+Route::get('/trangchu', function () {
+    return view('trangchu');
+});
+
+
+Route::get('/info', function () {
+    return view('ThongTinCongTy');
+});
+
+Route::get('/thongke', function () {
+    return view('thongkedoanhthu');
+});
+use App\Http\Controllers\BlogController;
+
+Route::get('/blog', [BlogController::class, 'index']);
