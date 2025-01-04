@@ -1,0 +1,31 @@
+/* Ví dụ CSS cho các bài viết blog */
+.blog-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.blog-post {
+    background-color: #f4f4f4;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.post-title h2 {
+    font-size: 14px;
+        font-size: 30px;
+        font-weight: bold;
+        margin-bottom: 5px;
+}
+
+.post-meta p {
+    font-size: 14px;
+    color: #555;
+}
+
+.post-content p {
+    padding: 20px;
+    
+        width: 100%;
+        background-color: #e0e0e0;
+}

@@ -22,7 +22,6 @@ Route::get('/', function () {
 Route::get('/admin/quanlidashboard', function () {
     return view('quanlidashboard');
 });
-
 Route::get('/admin/quanlisanpham', [SanPhamController::class, 'index'])->name('quanlisanpham');
 Route::post('/admin/quanlisanpham', [SanPhamController::class, 'store'])->name('store.sanpham');
 Route::get('/admin/quanlisanpham/edit/{id}', [SanPhamController::class, 'edit'])->name('edit.sanpham');
@@ -44,7 +43,6 @@ Route::get('/admin/dashboard', function () {
 
 
 // user 
-
 Route::get('/giohang', function () {
     return view('giohang');
 });
@@ -57,5 +55,24 @@ Route::get('/trangcanhan', function () {
 Route::get('/sanpham', function () {
     return view('sanpham');
 });
+
+
+
+
+Route::get('/trangchu', function () {
+    return view('trangchu');
+});
+
+
+Route::get('/info', function () {
+    return view('ThongTinCongTy');
+});
+
+Route::get('/thongke', function () {
+    return view('thongkedoanhthu');
+});
+use App\Http\Controllers\BlogController;
+
+Route::get('/blog', [BlogController::class, 'index']);
 
 Route::get('/test-connection', [TestController::class, 'index']);
