@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\TestController;
+use App\Http\Controllers\SanPhamController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,10 +19,19 @@ Route::get('/', function () {
 });
 
 //admin 
-Route::get('/admin/quanlisanpham', function () {
-    return view('quanlisanpham');
+Route::get('/admin/quanlidashboard', function () {
+    return view('quanlidashboard');
 });
+Route::get('/admin/quanlisanpham', [SanPhamController::class, 'index'])->name('quanlisanpham');
+Route::post('/admin/quanlisanpham', [SanPhamController::class, 'store'])->name('store.sanpham');
+Route::get('/admin/quanlisanpham/edit/{id}', [SanPhamController::class, 'edit'])->name('edit.sanpham');
+Route::put('/admin/quanlisanpham/{id}', [SanPhamController::class, 'update'])->name('update.sanpham');
+Route::delete('/admin/quanlisanpham/{id}', [SanPhamController::class, 'destroy'])->name('destroy.sanpham');
+Route::get('/admin/quanlisanpham/search', [SanPhamController::class, 'search'])->name('search.sanpham');
+
+
 Route::get('/admin/quanlibinhluan', function () {
+
     return view('quanlibinhluan');
 });
 Route::get('/admin/quanlilienhe', function () {
@@ -33,7 +43,6 @@ Route::get('/admin/dashboard', function () {
 
 
 // user 
-
 Route::get('/giohang', function () {
     return view('giohang');
 });
@@ -46,7 +55,6 @@ Route::get('/trangcanhan', function () {
 Route::get('/sanpham', function () {
     return view('sanpham');
 });
-
 
 
 
@@ -66,3 +74,5 @@ Route::get('/thongke', function () {
 use App\Http\Controllers\BlogController;
 
 Route::get('/blog', [BlogController::class, 'index']);
+
+Route::get('/test-connection', [TestController::class, 'index']);

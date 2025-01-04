@@ -5,14 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/Admin.css') }}">
-     <link rel="stylesheet" href="{{ asset('css/QLSanPham.css') }}"> 
-     <link rel="stylesheet" href="{{ asset('css/QLBinhLuan.css') }}"> 
-     <link rel="stylesheet" href="{{ asset('css/QLLienHe.css') }}"> 
-     <link rel="stylesheet" href="{{ asset('css/DashBoard.css') }}">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-     <title>@yield('title', 'Admin')</title>
+    <title>@yield('title', 'Admin')</title>
 </head>
 
 <body>
@@ -25,11 +29,12 @@
                 <span>Admin@gmail.com</span>
             </div>
         </div>
-         <div class="search-bar">
+        <div class="search-bar">
             <input placeholder="Search..." type="text" />
-            <button ><i class="fas fa-search"></i></button>
+            <button><i class="fas fa-search"></i></button>
         </div>
         <nav>
+            <a href="/admin/quanlidashboard" class="active">Quản Lí Dashboard </a>
             <a href="#">Quản Lí Nhân Viên </a>
             <a href="#">Quản lí Danh Mục Sản Phẩm </a>
             <a href="/admin/quanlisanpham">Quản lí Sản Phẩm </a>
@@ -64,8 +69,20 @@
             sidebar.classList.toggle('active');
         }
 
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentLocation = window.location.pathname;
+            const navLinks = document.querySelectorAll('nav a');
+
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentLocation) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        });
     </script>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
