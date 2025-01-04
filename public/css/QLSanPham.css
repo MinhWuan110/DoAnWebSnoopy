@@ -17,6 +17,8 @@ body {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     padding: 30px; /* Thêm khoảng cách bên trong */
     margin-bottom: 20px;
+    margin-top: 80px;
+
     width: 100%; /* Chiều rộng 100% */
     max-width: 600px; /* Chiều rộng tối đa */
 }
@@ -72,7 +74,7 @@ body {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     padding: 30px;
     width: 100%;
-    max-width: 600px;
+    max-width: 1000px;
 }
 
 .search-section h2 {
@@ -83,7 +85,10 @@ body {
 
 .search-bar {
     display: flex;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .search-bar input {
@@ -92,6 +97,7 @@ body {
     border: 2px solid #ccc;
     border-radius: 5px;
     transition: border-color 0.3s;
+    margin-right: 10px;
 }
 
 .search-bar input:focus {
