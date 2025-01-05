@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
-
+use App\Http\Controllers\ProfileController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,11 +39,11 @@ Route::get('/giohang', function () {
     return view('giohang');
 });
 
-Route::get('/trangcanhan', function () {
-    return view('trangcanhan');
-});
-
-
+// Route::get('/trangcanhan', function () {
+//     return view('trangcanhan');
+// });
+// Route::get('/trangcanhan', [ProfileController::class, 'index']);
+Route::get('/trangcanhan/{MaTaiKhoan}', [ProfileController::class, 'show']);
 Route::get('/sanpham', function () {
     return view('sanpham');
 });
