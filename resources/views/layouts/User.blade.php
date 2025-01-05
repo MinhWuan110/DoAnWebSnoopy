@@ -11,7 +11,7 @@
 <body>
     <header>
         <div class="logo">
-            <img src="logo.png" alt="SMARTPHONE Logo">
+            <img src="https://storage.googleapis.com/a1aa/image/HfOxfaOQ1JtpBEapcv8mD3fhoWAjUL4rPtC0zGEcZ6zfWZWPB.jpg" alt="SMARTPHONE Logo">
             <span>SMARTPHONE</span>
         </div>
         <nav>
@@ -39,7 +39,9 @@
 
     <main>
         <div class="main-content">
+
             @yield('content')
+            
         </div>
     </main>
 
