@@ -1,0 +1,23 @@
+body {
+      font-family: Arial, sans-serif;
+  }
+
+  .section {
+      margin-bottom: 20px;
+  }
+
+  .section-title {
+      font-size: 14px;
+    font-size: 30px;
+      font-weight: bold;
+      margin-bottom: 5px;
+  }
+
+  .section-content {
+    padding: 20px ;
+    
+      width: 100%;
+      background-color: #e0e0e0;
+  }
+
+ 

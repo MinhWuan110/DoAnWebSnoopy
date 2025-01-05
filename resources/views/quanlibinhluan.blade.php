@@ -3,6 +3,7 @@
 @section('title', 'Quản Lý Bình Luận')
 
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/QLBinhLuan.css') }}"> 
 <div class="container">
     <div class="search-section">
         <h2>Tìm Kiếm Bình Luận</h2>

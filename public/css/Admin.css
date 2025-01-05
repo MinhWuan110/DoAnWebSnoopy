@@ -11,6 +11,10 @@ body {
     background-color: #f8f8f8;
     padding: 10px 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed; /* Đặt vị trí cố định */
+    top: 0; /* Cố định ở phía trên cùng */
+    width: 100%; /* Chiếm toàn bộ chiều rộng */
+    z-index: 1000; /* Đảm bảo nav nằm trên các phần tử khác */
 }
 
 .logo {
@@ -32,7 +36,7 @@ body {
 .nav {
     display: flex;
     align-items: center;
- 
+    
 }
 
 .nav a {
@@ -95,11 +99,12 @@ body {
     background-color: #fff;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
     transition: left 0.3s ease;
-    z-index: 1000; /* Đảm bảo sidebar nằm trên các phần tử khác */
+    z-index: 1001; /* Đảm bảo sidebar nằm trên các phần tử khác */
 }
 
 .sidebar.active {
     left: 0; /* Hiện sidebar khi active */
+    
 }
 
 .sidebar nav {
@@ -113,6 +118,12 @@ body {
     color: black;
     padding: 30px 0;
     border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+.sidebar nav a.active {
+    font-weight: bold; /* Làm cho thẻ a in đậm khi được chọn */
+    background-color: #007BFF; /* Màu nền cho thẻ đang hoạt động */
+    color: white; /* Màu chữ cho thẻ đang hoạt động */
 }
 
 .close-btn {
