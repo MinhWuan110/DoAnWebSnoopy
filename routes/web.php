@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\SanPhamController;
 /*
@@ -37,21 +39,21 @@ Route::get('/admin/quanlibinhluan', function () {
 Route::get('/admin/quanlilienhe', function () {
     return view('quanlilienhe');
 });
-Route::get('/admin/dashboard', function () {
-    return view('quanlidashboard');
-});
+// Route::get('/admin/dashboard', function () {
+//     return view('quanlidashboard');
+// });
 
-
+Route::get('/admin/dashboard', [DashboardController::class, 'index']);
 // user 
 Route::get('/giohang', function () {
     return view('giohang');
 });
 
-Route::get('/trangcanhan', function () {
-    return view('trangcanhan');
-});
-
-
+// Route::get('/trangcanhan', function () {
+//     return view('trangcanhan');
+// });
+// Route::get('/trangcanhan', [ProfileController::class, 'index']);
+Route::get('/trangcanhan/{MaTaiKhoan}', [ProfileController::class, 'show']);
 Route::get('/sanpham', function () {
     return view('sanpham');
 });
