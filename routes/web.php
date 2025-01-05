@@ -53,7 +53,12 @@ Route::get('/giohang', function () {
 //     return view('trangcanhan');
 // });
 // Route::get('/trangcanhan', [ProfileController::class, 'index']);
-Route::get('/trangcanhan/{MaTaiKhoan}', [ProfileController::class, 'show']);
+// Route để hiển thị thông tin cá nhân
+Route::get('/trangcanhan/{MaTaiKhoan}', [ProfileController::class, 'show'])->name('profile.show');
+
+// Route để cập nhật thông tin cá nhân
+Route::put('/trangcanhan/update/{id}', [ProfileController::class, 'update'])->name('updateProfile');
+
 Route::get('/sanpham', function () {
     return view('sanpham');
 });
