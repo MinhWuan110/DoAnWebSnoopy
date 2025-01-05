@@ -78,6 +78,8 @@
                     <td>{{ $sanPham->Gia }}</td>
                     <td>{{ $sanPham->MaLoaiSP }}</td>
                     <td>{{ $sanPham->SoLuong }}</td>
+
+                    
                     <td>{{ $sanPham->MaNhaCungCap }}</td>
                     <td>{{ $sanPham->TrangThai == 1 ? 'Còn Hàng' : 'Hết Hàng' }}</td>
                     <td>
