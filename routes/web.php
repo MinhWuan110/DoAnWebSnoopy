@@ -64,9 +64,9 @@ Route::get('/trangchu', function () {
 });
 
 
-Route::get('/info', function () {
-    return view('ThongTinCongTy');
-});
+// Route::get('/thongtincongty', function () {
+//     return view('ThongTinCongTy');
+// });
 
 Route::get('/thongke', function () {
     return view('thongkedoanhthu');
@@ -76,3 +76,20 @@ use App\Http\Controllers\BlogController;
 Route::get('/blog', [BlogController::class, 'index']);
 
 Route::get('/test-connection', [TestController::class, 'index']);
+
+// Route::get('/trangchu', [SanPhamController::class, 'topSanPham'])->name('trangchu');
+Route::get('/trangchu', [SanPhamController::class, 'TrangChu'])->name('trangchu');
+
+
+use App\Http\Controllers\ThongTinCongTyController;
+
+Route::get('/thongtincongty', [ThongTinCongTyController::class, 'index'])->name('thongtincongty.index');
+
+
+// use App\Http\Controllers\BlogController;
+
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/{id}', [BlogController::class, 'show'])->name('blog.show');
+
+
+Route::get('/bai-viet/{id}', [BlogController::class, 'show'])->name('blog.show');

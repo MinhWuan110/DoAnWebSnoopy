@@ -8,12 +8,14 @@ use Illuminate\Support\Facades\DB;
 
 class SanPhamController extends Controller
 {
+    
     public function index()
     {
         $sanPhams = DB::table('sanpham')->get(); // Lấy danh sách sản phẩm
         $nhaCungCaps = DB::table('NhaCungCap')->get(); // Lấy danh sách nhà cung cấp
         $loaiSanPhams = DB::table('LoaiSanPham')->get(); // Lấy danh sách loại sản phẩm
-        return view('quanlisanpham', compact('sanPhams', 'nhaCungCaps', 'loaiSanPhams')); // Truyền dữ liệu đến view
+        $sanPhams = DB::table('sanpham')->select('MaSanPham', 'TenSanPham', 'Gia', 'SoLuong', 'TrangThai')->get();
+
     }
 
 
@@ -27,19 +29,25 @@ class SanPhamController extends Controller
             'MaLoaiSP' => 'required|string|max:10|exists:LoaiSanPham,MaLoaiSP',
             'SoLuong' => 'required|integer|min:0',
             'MaNhaCungCap' => 'required|string|max:10|exists:NhaCungCap,MaNhaCungCap',
-            // Thêm các quy tắc xác thực khác nếu cần
+         
+            'SPdaban' => 'nullable|integer|min:0', // Không bắt buộc, giá trị phải là số nguyên >= 0
+
+
+      
         ]);
 
         // Lưu sản phẩm mới vào cơ sở dữ liệu
         DB::table('SanPham')->insert([
-            'MaSanPham' => $request->MaSanPham,
-            'TenSanPham' => $request->TenSanPham,
-            'Gia' => $request->Gia,
-            'MaLoaiSP' => $request->MaLoaiSP,
-            'SoLuong' => $request->SoLuong,
-            'MaNhaCungCap' => $request->MaNhaCungCap,
-            'TrangThai' => 1, // Mặc định là 1
-        ]);
+    'MaSanPham' => $request->MaSanPham,
+    'TenSanPham' => $request->TenSanPham,
+    'Gia' => $request->Gia,
+    'MaLoaiSP' => $request->MaLoaiSP,
+    'SoLuong' => $request->SoLuong,
+    'MaNhaCungCap' => $request->MaNhaCungCap,
+    'TrangThai' => 1, // Mặc định là 1
+    'SPdaban' => 0, // Mặc định giá trị ban đầu là 0
+]);
+
 
 
 
@@ -54,8 +62,11 @@ class SanPhamController extends Controller
 
     public function edit($id)
     {
-        $sanPham = DB::table('sanpham')->where('MaSanPham', $id)->first(); // Lấy sản phẩm theo ID
-        return view('quanlisanpham', compact('sanPham'));
+       $sanPham = DB::table('sanpham')
+    ->where('MaSanPham', $id)
+    ->select('MaSanPham', 'TenSanPham', 'Gia', 'SoLuong', 'SPdaban', 'TrangThai')
+    ->first();
+
     }
 
     public function update(Request $request, $maSanPham)
@@ -68,17 +79,21 @@ class SanPhamController extends Controller
             'SoLuong' => 'required|integer|min:0',
             'MaNhaCungCap' => 'required|string|max:10',
             'TrangThai' => 'nullable|integer|in:0,1', // 0 hoặc 1
+           'SPdaban' => 'nullable|integer|min:0',
         ]);
 
         // Cập nhật sản phẩm trong cơ sở dữ liệu
         DB::table('SanPham')->where('MaSanPham', $maSanPham)->update([
-            'TenSanPham' => $request->input('TenSanPham'),
-            'Gia' => $request->input('Gia'),
-            'MaLoaiSP' => $request->input('MaLoaiSP'),
-            'SoLuong' => $request->input('SoLuong'),
-            'MaNhaCungCap' => $request->input('MaNhaCungCap'),
-            'TrangThai' => $request->input('TrangThai', 1), // Mặc định là 1 nếu không có giá trị
+    'TenSanPham' => $request->input('TenSanPham'),
+    'Gia' => $request->input('Gia'),
+    'MaLoaiSP' => $request->input('MaLoaiSP'),
+    'SoLuong' => $request->input('SoLuong'),
+    'MaNhaCungCap' => $request->input('MaNhaCungCap'),
+    'TrangThai' => $request->input('TrangThai', 1),
+    'SPdaban' => $request->input('SPdaban', 0), // Giá trị từ input, mặc định là 0 nếu không có
         ]);
+
+     
 
         // Chuyển hướng về trang danh sách sản phẩm với thông báo thành công
         return redirect()->route('quanlisanpham')->with('success', 'Sản phẩm đã được cập nhật thành công.');
@@ -100,8 +115,46 @@ class SanPhamController extends Controller
         $sanPhams = DB::table('sanpham')->where('TenSanPham', 'LIKE', "%{$query}%")->get();
         $nhaCungCaps = DB::table('NhaCungCap')->get(); // Lấy danh sách nhà cung cấp
         $loaiSanPhams = DB::table('LoaiSanPham')->get(); // Lấy danh sách loại sản phẩm
-
-        // Sửa lại phần compact
+  
         return view('quanlisanpham', compact('sanPhams', 'loaiSanPhams', 'nhaCungCaps')); // Trả về view với danh sách sản phẩm tìm được
     }
+
+
+
+
+
+
+    //zykhuong
+public function TrangChu()
+{
+    // Lấy 4 sản phẩm có lượt bán cao nhất
+    $topSanPhams = DB::table('sanpham')
+        ->orderByDesc('SPdaban') // Sắp xếp theo lượt bán giảm dần
+        ->limit(4)               // Giới hạn 4 sản phẩm
+        ->get();
+
+    // Truy vấn lấy 4 sản phẩm có ThoiDiemRaMat mới nhất
+   $newsanPhams = DB::table('ChiTietSanPham')
+        ->join('sanpham', 'ChiTietSanPham.MaSanPham', '=', 'sanpham.MaSanPham')  // Kết hợp với bảng sanpham để lấy thêm các trường cần thiết
+        ->select('sanpham.MaSanPham', 'sanpham.TenSanPham', 'sanpham.Gia', 'sanpham.SoLuong', 'ChiTietSanPham.ThoiDiemRaMat')  // Lấy các trường cần thiết
+        ->orderByDesc('ChiTietSanPham.ThoiDiemRaMat') // Sắp xếp theo ThoiDiemRaMat giảm dần
+        ->limit(4) // Giới hạn kết quả 4 sản phẩm
+        ->get(); // Lấy kết quả
+
+
+ $SanPhamKhuyenMais = DB::table('SanPham as sp')
+            ->join('sanphamkhuyenmai as spkm', 'sp.MaSanPham', '=', 'spkm.MaSanPham')
+            ->join('khuyenmai as km', 'spkm.MaKhuyenMai', '=', 'km.MaKhuyenMai')
+            ->select('sp.MaSanPham', 'sp.TenSanPham', 'sp.Gia', 'sp.SoLuong', 
+                     'km.MaKhuyenMai', 'km.TenKhuyenMai', 'km.NgayBatDau', 'km.NgayKetThuc')
+            ->where('km.NgayKetThuc', '>', now())
+            ->limit(4)
+            ->get();
+    // Truyền dữ liệu sang view
+    return view('trangchu', compact('newsanPhams','topSanPhams','SanPhamKhuyenMais')); // Đảm bảo view là nơi bạn muốn hiển thị kết quả
+}
+
+
+
+
 }
