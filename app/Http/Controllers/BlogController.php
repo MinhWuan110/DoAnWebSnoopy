@@ -3,35 +3,40 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\BlogPost; // Đảm bảo thêm dòng này để import model BlogPost
 
 class BlogController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $blogPosts = [
-            [
-                'id' => 1,
-                'tieu_de' => 'Sự phát triển của trí tuệ nhân tạo',
-                'noi_dung' => 'Trí tuệ nhân tạo đang thay đổi cách chúng ta sống và làm việc...',
-                'tac_gia' => 'Nguyễn Văn A',
-                'ngay_dang' => '2024-11-29'
-            ],
-            [
-                'id' => 2,
-                'tieu_de' => 'Các xu hướng công nghệ năm 2025',
-                'noi_dung' => 'Năm 2025 sẽ chứng kiến sự bùng nổ của các công nghệ...',
-                'tac_gia' => 'Trần Thị B',
-                'ngay_dang' => '2024-11-28'
-            ],
-            [
-                'id' => 3,
-                'tieu_de' => 'Tác động của ChatGPT trong lĩnh vực giáo dục',
-                'noi_dung' => 'Công nghệ GPT đang hỗ trợ học sinh và giáo viên...',
-                'tac_gia' => 'Lê Văn C',
-                'ngay_dang' => '2024-11-27'
-            ]
-        ];
+        $keyword = $request->input('keyword', '');
 
-        return view('blog', ['blogPosts' => $blogPosts]);
+        // Lọc bài viết theo từ khóa nếu có
+        $query = BlogPost::query();
+
+        if ($keyword) {
+            $query->where('tieu_de', 'like', '%' . $keyword . '%')
+                  ->orWhere('noi_dung', 'like', '%' . $keyword . '%');
+        }
+
+        // Phân trang dữ liệu
+        $perPage = 5; // Số bài viết trên mỗi trang
+        $blogPosts = $query->paginate($perPage);
+
+        // Trả về view với bài viết và từ khóa tìm kiếm
+        return view('blog', ['blogPosts' => $blogPosts, 'keyword' => $keyword]);
+    }
+
+    public function show($id)
+    {
+        // Lấy bài viết theo ID từ cơ sở dữ liệu
+        $blogPost = BlogPost::find($id);
+
+        if (!$blogPost) {
+            return redirect()->route('blog.index')->with('error', 'Bài viết không tồn tại!');
+        }
+
+        // Trả về view với bài viết chi tiết
+        return view('hienthiblog', compact('blogPost'));
     }
 }
