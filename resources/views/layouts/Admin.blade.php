@@ -41,6 +41,7 @@
             <a href="#">Quản Lí Đơn Hàng </a>
             <a href="/admin/quanlibinhluan">Quản Lí Bình Luận </a>
             <a href="/admin/quanlilienhe">Quản Lí Liên Hệ </a>
+            <a href="#">Tìm Kiếm Sản phẩm </a>
         </nav>
     </div>
     <div class="header">
