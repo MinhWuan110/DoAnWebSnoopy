@@ -15,7 +15,7 @@
         // Kết nối tới cơ sở dữ liệu MySQL
         $servername = 'localhost';
         $username = 'root';
-        $password = '';
+        $password = '123456';
         $dbname = 'test_db';
         
         // Tạo kết nối

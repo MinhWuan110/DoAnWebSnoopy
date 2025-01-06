@@ -36,7 +36,7 @@
             // Kết nối tới cơ sở dữ liệu MySQL
             $servername = "localhost";  // Thay đổi nếu cần
             $username = "root";         // Thay đổi nếu cần
-            $password = "";             // Thay đổi nếu cần
+            $password = "123456";             // Thay đổi nếu cần
             $dbname = "test_db";        // Thay đổi tên cơ sở dữ liệu nếu cần
 
             // Tạo kết nối
