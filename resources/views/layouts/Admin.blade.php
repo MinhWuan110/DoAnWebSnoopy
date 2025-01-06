@@ -34,7 +34,7 @@
             <button><i class="fas fa-search"></i></button>
         </div>
         <nav>
-            <a href="/admin/quanlidashboard" class="active">Quản Lí Dashboard </a>
+            <a href="/admin/dashboard">Quản Lí Dash Board </a>
             <a href="#">Quản Lí Nhân Viên </a>
             <a href="#">Quản lí Danh Mục Sản Phẩm </a>
             <a href="/admin/quanlisanpham">Quản lí Sản Phẩm </a>

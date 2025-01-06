@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\SanPhamController;
 use App\Http\Controllers\BlogController;
@@ -60,22 +62,22 @@ Route::get('/admin/dashboard', function () {
     return view('quanlidashboard');
 })->middleware('check.auth');
 
-
+Route::get('/admin/dashboard', [DashboardController::class, 'index']);
 // user 
 Route::get('/giohang', function () {
     return view('giohang');
 })->middleware('check.auth');
 
-Route::get('/trangcanhan', function () {
-    return view('trangcanhan');
-})->middleware('check.auth');
+// Route::get('/trangcanhan', function () {
+//     return view('trangcanhan');
+// });
+// Route::get('/trangcanhan', [ProfileController::class, 'index']);
+Route::get('/trangcanhan/{MaTaiKhoan}', [ProfileController::class, 'show'])->middleware('check.auth');;
 
 
 
 
-Route::get('/sanpham', function () {
-    return view('sanpham');
-})->middleware('check.auth');
+
 
 
 
