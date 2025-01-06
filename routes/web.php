@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChiTietSanPham;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -43,7 +44,7 @@ Route::get('/trangcanhan', function () {
 });
 
 
-Route::get('/sanpham', function () {
-    return view('sanpham');
+Route::controller(ChiTietSanPham::class)->group(function(){
+    Route::get('/chitietsanpham/{masp}', 'index')->name('index.chitietsanpham');
 });
 

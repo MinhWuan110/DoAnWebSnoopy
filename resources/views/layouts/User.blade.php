@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="{{ asset('css/HomePage.css') }}">
     <link rel="stylesheet" href="{{ asset('css/GioHang.css') }}">
     <link rel="stylesheet" href="{{ asset('css/TrangCaNhan.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('css/CTSP/chitietsanpham.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/CTSP/slider.css') }}">
     <title>@yield('title', 'SMARTPHONE')</title>
 </head>
 <body>
@@ -68,5 +71,6 @@
         </div>
     </div>
 </footer>
+    <script src="{{asset('js/CTSP/slider_ctsp.js')}}"></script>
 </body>
 </html>
