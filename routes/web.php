@@ -72,7 +72,14 @@ Route::get('/giohang', function () {
 //     return view('trangcanhan');
 // });
 // Route::get('/trangcanhan', [ProfileController::class, 'index']);
-Route::get('/trangcanhan/{MaTaiKhoan}', [ProfileController::class, 'show'])->middleware('check.auth');;
+// Route để hiển thị thông tin cá nhân
+
+
+// Route để cập nhật thông tin cá nhân
+Route::put('/trangcanhan/update/{id}', [ProfileController::class, 'update'])->name('updateProfile')->middleware('check.auth');
+
+
+Route::get('/trangcanhan/{MaTaiKhoan}', [ProfileController::class, 'show'])->name('profile.show')->middleware('check.auth');
 
 
 
