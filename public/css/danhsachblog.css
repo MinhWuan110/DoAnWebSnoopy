@@ -1,0 +1,33 @@
+.container{
+    margin-top: 200px;
+}
+
+/* Kiểu cho liên kết thành nút */
+a.btn-create-blog {
+    display: inline-block;
+    /* Để liên kết hiển thị giống như nút */
+    background-color: #4CAF50;
+    /* Màu nền xanh */
+    color: white;
+    /* Màu chữ trắng */
+    padding: 10px 20px;
+    /* Khoảng cách trong nút */
+    text-align: center;
+    /* Căn giữa chữ */
+    text-decoration: none;
+    /* Xóa gạch chân mặc định */
+    font-size: 16px;
+    /* Cỡ chữ */
+    border-radius: 5px;
+    /* Bo góc */
+    cursor: pointer;
+    /* Hiển thị con trỏ chuột dạng bàn tay khi hover */
+    transition: background-color 0.3s ease;
+    /* Hiệu ứng chuyển màu nền */
+}
+
+/* Khi hover vào liên kết */
+a.btn-create-blog:hover {
+    background-color: #45a049;
+    /* Màu nền thay đổi khi hover */
+}

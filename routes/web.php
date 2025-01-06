@@ -115,4 +115,51 @@ Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{id}', [BlogController::class, 'show'])->name('blog.show');
 
 
-// Route::get('/bai-viet/{id}', [BlogController::class, 'show'])->name('blog.show');
+
+
+
+// Route::get('/suablog/{id}', [BlogController::class, 'edit'])->name('suablog');
+// Route::post('/suablog/{id}/update', [BlogController::class, 'update'])->name('suablog.update');
+Route::get('/suablog/{id}', [BlogController::class, 'edit'])->name('suablog.edit');
+Route::put('/suablog/{id}/update', [BlogController::class, 'update'])->name('suablog.update');
+
+
+
+// Định nghĩa route để chỉnh sửa blog
+Route::get('/blog/{id}/edit', [BlogController::class, 'edit'])->name('blog.edit');
+
+// Định nghĩa route để cập nhật blog
+Route::put('/blog/{id}', [BlogController::class, 'update'])->name('blog.update');
+
+
+// Route::get('/admin/quanliblog', [BlogController::class, 'quanliblog'])->name('blog.quanliblog');
+// Route::get('/blog/create', [BlogController::class, 'create'])->name('blog.create');
+// // routes/web.php
+
+// // Route xóa blog với URL chứa '/destroy'
+// Route::delete('/blog/{id}/destroy', [BlogController::class, 'destroy'])->name('blog.destroy');
+
+
+// // routes/web.php
+
+// Route để hiển thị danh sách blog
+Route::get('/admin/quanliblog', [BlogController::class, 'quanliblog'])->name('blogs.quanliblog');
+
+// Route để tạo blog mới
+Route::get('/admin/blog/create', [BlogController::class, 'create'])->name('blog.create');
+// Route::post('/blog/create', [BlogController::class, 'create'])->name('blog.create');
+
+// Route để chỉnh sửa blog
+Route::get('/blog/{id}/edit', [BlogController::class, 'edit'])->name('blog.edit');
+
+// Route để lưu thay đổi khi chỉnh sửa blog
+Route::put('/blog/{id}', [BlogController::class, 'update'])->name('blog.update');
+
+// Route để xóa blog
+Route::delete('/blog/{id}/destroy', [BlogController::class, 'destroy'])->name('blog.destroy');
+
+// Route GET để hiển thị form tạo blog
+Route::get('/admin/blog/create', [BlogController::class, 'create'])->name('blog.create');
+
+// Route POST để xử lý lưu blog mới vào cơ sở dữ liệu
+Route::post('/admin/blog', [BlogController::class, 'store'])->name('blog.store');

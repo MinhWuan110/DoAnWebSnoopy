@@ -41,13 +41,16 @@
             <a href="#">Quản Lí Đơn Hàng </a>
             <a href="/admin/quanlibinhluan">Quản Lí Bình Luận </a>
             <a href="/admin/quanlilienhe">Quản Lí Liên Hệ </a>
+            <a href="/admin/quanliblog">Quản Lí Blog </a>
             <a href="#">Tìm Kiếm Sản phẩm </a>
         </nav>
     </div>
     <div class="header">
         <button class="menu-btn" onclick="toggleSidebar()">☰</button>
         <div class="logo">
-            <img alt="Logo of a smartphone with a red background" height="50" src="https://storage.googleapis.com/a1aa/image/HfOxfaOQ1JtpBEapcv8mD3fhoWAjUL4rPtC0zGEcZ6zfWZWPB.jpg" width="50" />
+            <img alt="Logo of a smartphone with a red background" height="50"
+                src="https://storage.googleapis.com/a1aa/image/HfOxfaOQ1JtpBEapcv8mD3fhoWAjUL4rPtC0zGEcZ6zfWZWPB.jpg"
+                width="50" />
             <span>SMARTPHONE</span>
         </div>
         <div class="nav">
