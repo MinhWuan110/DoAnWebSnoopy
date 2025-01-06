@@ -33,66 +33,66 @@ Route::get('/', function () {
 
 
 
-Route::get('/dangnhap', function () {
-    return view('DangNhap');
-});
+
 //admin 
 Route::get('/admin/quanlidashboard', function () {
     return view('quanlidashboard');
 });
 
 Route::get('/admin/quanlisanpham', [SanPhamController::class, 'index'])->name('quanlisanpham')->middleware('check.auth');
-Route::post('/admin/quanlisanpham', [SanPhamController::class, 'store'])->name('store.sanpham');
-Route::get('/admin/quanlisanpham/edit/{id}', [SanPhamController::class, 'edit'])->name('edit.sanpham');
-Route::put('/admin/quanlisanpham/{id}', [SanPhamController::class, 'update'])->name('update.sanpham');
-Route::delete('/admin/quanlisanpham/{id}', [SanPhamController::class, 'destroy'])->name('destroy.sanpham');
-Route::get('/admin/quanlisanpham/search', [SanPhamController::class, 'search'])->name('search.sanpham');
+Route::post('/admin/quanlisanpham', [SanPhamController::class, 'store'])->name('store.sanpham')->middleware('check.auth');
+Route::get('/admin/quanlisanpham/edit/{id}', [SanPhamController::class, 'edit'])->name('edit.sanpham')->middleware('check.auth');
+Route::put('/admin/quanlisanpham/{id}', [SanPhamController::class, 'update'])->name('update.sanpham')->middleware('check.auth');
+Route::delete('/admin/quanlisanpham/{id}', [SanPhamController::class, 'destroy'])->name('destroy.sanpham')->middleware('check.auth');
+Route::get('/admin/quanlisanpham/search', [SanPhamController::class, 'search'])->name('search.sanpham')->middleware('check.auth');
 
 
 Route::get('/admin/quanlibinhluan', function () {
 
     return view('quanlibinhluan');
-});
+})->middleware('check.auth');
+
 Route::get('/admin/quanlilienhe', function () {
     return view('quanlilienhe');
-});
+})->middleware('check.auth');
+
 Route::get('/admin/dashboard', function () {
     return view('quanlidashboard');
-});
+})->middleware('check.auth');
 
 
 // user 
 Route::get('/giohang', function () {
     return view('giohang');
-});
+})->middleware('check.auth');
 
 Route::get('/trangcanhan', function () {
     return view('trangcanhan');
-});
+})->middleware('check.auth');
 
 
 
 
 Route::get('/sanpham', function () {
     return view('sanpham');
-});
+})->middleware('check.auth');
 
 
 
 
 Route::get('/trangchu', function () {
     return view('trangchu');
-});
+})->middleware('check.auth');
 
 
 Route::get('/info', function () {
     return view('ThongTinCongTy');
-});
+})->middleware('check.auth');
 
 Route::get('/thongke', function () {
     return view('thongkedoanhthu');
-});
+})->middleware('check.auth');
 
-Route::get('/blog', [BlogController::class, 'index']);
+Route::get('/blog', [BlogController::class, 'index'])->middleware('check.auth');
 
-Route::get('/test-connection', [TestController::class, 'index']);
+Route::get('/test-connection', [TestController::class, 'index'])->middleware('check.auth');
