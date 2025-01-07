@@ -22,6 +22,15 @@ class CheckAuth
             return redirect()->route('login.form')->with('error', 'Bạn cần đăng nhập để truy cập trang này.');
         }
 
+        // Lấy thông tin người dùng từ session
+        $user = session('user');
+
+        // Kiểm tra quyền hạn của người dùng
+        if ($user->QuyenHan == 1 && $request->is('admin/*')) {
+            // Nếu quyền hạn là 1, không cho phép truy cập vào các trang admin
+            return redirect()->route('login.form')->with('error', 'Bạn không có quyền truy cập vào trang này.');
+        }
+
         return $next($request);
     }
 }
