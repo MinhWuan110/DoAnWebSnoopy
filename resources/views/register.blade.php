@@ -24,10 +24,10 @@
         @endif
         <form action="{{ route('register.submit') }}" method="POST">
             @csrf
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="MaKhachHang">Mã Khách Hàng:</label>
                 <input type="text" name="MaKhachHang" id="MaKhachHang" required>
-            </div>
+            </div> -->
             <div class="form-group">
                 <label for="HoTen">Họ Tên:</label>
                 <input type="text" name="HoTen" id="HoTen" required>
