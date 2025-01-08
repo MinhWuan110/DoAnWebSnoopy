@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/HomePage.css') }}">
     <link rel="stylesheet" href="{{ asset('css/GioHang.css') }}">
     <link rel="stylesheet" href="{{ asset('css/TrangCaNhan.css') }}">
     <title>@yield('title', 'SMARTPHONE')</title>
+
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -22,11 +27,12 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
+
         <div class="search-cart">
             <input type="text" placeholder="SEARCH">
             <div class="icons">
-                <span class="cart-icon">🛒</span>
-                <span class="account-icon">👤</span>
+                <span class="cart-icon"><a href="/giohang">🛒</a></span>
+                <span class="account-icon"><a href="/trangcanhan">👤</a></span>
             </div>
         </div>
         <div>
@@ -41,34 +47,40 @@
         <div class="main-content">
 
             @yield('content')
-            
+
         </div>
     </main>
 
     <footer>
-    <div class="footer-content">
-        <div class="left-section">
-        <div class="hotline-numbers">
-                <p>Gọi Mua: 1900 232 460 (8:00 - 21:30)</p>
-                <p>Khiếu nại: 1800.1062 (8:00 - 21:30)</p>
-                <p>Bảo hành: 1900 232 464 (8:00 - 21:00)</p>
+        <div class="footer-content">
+            <div class="left-section">
+                <div class="hotline-numbers">
+                    <p>Gọi Mua: 1900 232 460 (8:00 - 21:30)</p>
+                    <p>Khiếu nại: 1800.1062 (8:00 - 21:30)</p>
+                    <p>Bảo hành: 1900 232 464 (8:00 - 21:00)</p>
+                </div>
+                <div class="social-media">
+                    <a href="https://facebook.com" target="_blank">Facebook</a>
+                    <a href="https://twitter.com" target="_blank">Twitter</a>
+                    <a href="https://instagram.com" target="_blank">Instagram</a>
+                </div>
             </div>
-            <div class="social-media">
-                <a href="https://facebook.com" target="_blank">Facebook</a>
-                <a href="https://twitter.com" target="_blank">Twitter</a>
-                <a href="https://instagram.com" target="_blank">Instagram</a>
+            <div class="right-section">
+                <div class="contact-info">
+                    <p>Phone: +65 112233365</p>
+                    <p>Email: hello@gmail.com</p>
+                    <p>Address: 65 Huỳnh Thúc Kháng, P.BN, Q1</p>
+                </div>
+
+                <p>Bản quyền © {{ date('Y') }}. Tất cả quyền được bảo lưu.</p>
             </div>
         </div>
-        <div class="right-section">
-        <div class="contact-info">
-                <p>Phone: +65 112233365</p>
-                <p>Email: hello@gmail.com</p>
-                <p>Address: 65 Huỳnh Thúc Kháng, P.BN, Q1</p>
-            </div>
-            
-            <p>Bản quyền © {{ date('Y') }}. Tất cả quyền được bảo lưu.</p>
-        </div>
-    </div>
-</footer>
+
+    </footer>
 </body>
+<!-- jQuery and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 </html>

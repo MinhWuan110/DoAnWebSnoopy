@@ -79,7 +79,7 @@ class AuthController extends Controller
             return redirect()->intended($user->QuyenHan == 2 ? '/admin/quanlidashboard' : '/trangchu')
                 ->with('success', 'Đăng nhập thành công.');
         }
-
+        
         return redirect()->back()->with('error', 'Tên đăng nhập hoặc mật khẩu không chính xác.');
     }
 

@@ -20,7 +20,7 @@ use App\Http\Controllers\ThongTinCongTyController;
 |
 */
 // Route cho đăng ký
-
+Route::delete('/donhang/{id}', [ProfileController::class, 'destroy'])->name('order.destroy');
 
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register.form');
 Route::post('/register', [AuthController::class, 'register'])->name('register.submit');
@@ -45,9 +45,10 @@ Route::group(['middleware' => ['checkAuth']], function () {
     });
     // Route để cập nhật thông tin cá nhân
     Route::put('/trangcanhan/update/{id}', [ProfileController::class, 'update'])->name('updateProfile');
-    Route::get('/trangcanhan/{MaTaiKhoan}', [ProfileController::class, 'show'])->name('profile.show');
-
-
+    Route::get('/trangcanhan', [ProfileController::class, 'show'])->name('profile.show');
+    // Route::post('/update-password', [ProfileController::class, 'updatePassword'])->name('updatePassword');
+    // Route::get('/trangcanhan/{MaTaiKhoan}', [ProfileController::class, 'show'])->name('profile.show');
+    Route::delete('/donhang/{id}', [ProfileController::class, 'destroy'])->name('order.destroy');
 
     Route::get('/info', function () {
         return view('ThongTinCongTy');
@@ -72,7 +73,7 @@ Route::group(['middleware' => ['checkAuth']], function () {
 // Các route admin cần kiểm tra quyền
 Route::group(['prefix' => 'admin', 'middleware' => ['checkAuth']], function () {
 
-    Route::get('/quanlidashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/quanlisanpham', [SanPhamController::class, 'index'])->name('quanlisanpham');
     Route::post('/quanlisanpham', [SanPhamController::class, 'store'])->name('store.sanpham');
     Route::get('/quanlisanpham/edit/{id}', [SanPhamController::class, 'edit'])->name('edit.sanpham');
