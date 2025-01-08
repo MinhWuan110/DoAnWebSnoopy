@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 class ProfileController extends Controller
 {
     public function index(){
@@ -13,6 +14,7 @@ class ProfileController extends Controller
     }
     public function show($maTaiKhoan)
     {
+        
         // Lấy thông tin tài khoản từ bảng taikhoan
         $taikhoan = DB::table('taikhoan')->where('MaTaiKhoan', $maTaiKhoan)->first();
     

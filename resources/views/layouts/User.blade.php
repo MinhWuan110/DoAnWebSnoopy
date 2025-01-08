@@ -25,8 +25,8 @@
         <div class="search-cart">
             <input type="text" placeholder="SEARCH">
             <div class="icons">
-                <span class="cart-icon">🛒</span>
-                <span class="account-icon">👤</span>
+                <span class="cart-icon"><a href="/giohang">🛒</a></span>
+                <span class="account-icon"><a href="/trangcanhan/{MaTaiKhoan}">👤</a></span>
             </div>
         </div>
         <div>
