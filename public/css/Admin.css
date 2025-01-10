@@ -92,7 +92,7 @@ body {
 
 /* Sidebar styles */
 .sidebar {
-    position: fixed;
+    position: absolute;
     left: -300px; /* Ẩn sidebar ra ngoài màn hình */
     width: 300px;
     height: 100%;
@@ -104,7 +104,7 @@ body {
 
 .sidebar.active {
     left: 0; /* Hiện sidebar khi active */
-    
+    height: auto;
 }
 
 .sidebar nav {

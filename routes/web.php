@@ -91,11 +91,17 @@ Route::get('/info', function () {
     return view('ThongTinCongTy');
 })->middleware('check.auth');
 
-Route::get('/thongke', function () {
-    return view('thongkedoanhthu');
-})->middleware('check.auth');
+// Route::get('/thongke', function () {
+//     return view('thongkedoanhthu');
+// })->middleware('check.auth');
 
-Route::get('/blog', [BlogController::class, 'index'])->middleware('check.auth');
+
+use App\Http\Controllers\ThongkeController;
+
+Route::get('/thongke', [ThongkeController::class, 'index']);
+
+
+Route::get('/user/blog', [BlogController::class, 'index'])->middleware('check.auth');
 
 Route::get('/test-connection', [TestController::class, 'index'])->middleware('check.auth');
 // Route::get('/test-connection', [TestController::class, 'index']);
@@ -111,8 +117,11 @@ Route::get('/thongtincongty', [ThongTinCongTyController::class, 'index'])->name(
 
 // use App\Http\Controllers\BlogController;
 
-Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
-Route::get('/blog/{id}', [BlogController::class, 'show'])->name('blog.show');
+Route::get('/user/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/user/blog/{id}', [BlogController::class, 'show'])->name('blog.show');
+
+
+Route::get('/user', [HomeController::class, 'index']);
 
 
 
@@ -163,3 +172,25 @@ Route::get('/admin/blog/create', [BlogController::class, 'create'])->name('blog.
 
 // Route POST để xử lý lưu blog mới vào cơ sở dữ liệu
 Route::post('/admin/blog', [BlogController::class, 'store'])->name('blog.store');
+
+
+
+
+use App\Http\Controllers\SanphamnoibatController;
+
+Route::get('/sanphamnoibat', [SanphamnoibatController::class, 'index'])->name('sanphamnoibat.index');
+Route::get('/sanphamnoibat/create', [SanphamnoibatController::class, 'create'])->name('sanphamnoibat.create');
+use App\Models\Sanphamnoibat;
+
+// web.php
+Route::post('/sanphamnoibat', [SanphamnoibatController::class, 'store'])->name('sanphamnoibat.store');
+Route::post('/them-noi-bat', [SanPhamNoiBatController::class, 'store'])->name('sanphamnoibat.store');
+
+
+use App\Http\Controllers\ThongTinTrangWebController;
+
+// Hiển thị form chỉnh sửa
+Route::get('admin/thongtin/edit', [ThongTinTrangWebController::class, 'edit'])->name('thongtin.edit');
+
+// Xử lý cập nhật dữ liệu
+Route::post('/thongtin/update', [ThongTinTrangWebController::class, 'update'])->name('thongtin.update');

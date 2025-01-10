@@ -42,6 +42,7 @@
             <a href="/admin/quanlibinhluan">Quản Lí Bình Luận </a>
             <a href="/admin/quanlilienhe">Quản Lí Liên Hệ </a>
             <a href="/admin/quanliblog">Quản Lí Blog </a>
+            <a href="/admin/thongtin/edit">Quản Lí Thông Tin Trang Web </a>
             <a href="#">Tìm Kiếm Sản phẩm </a>
         </nav>
     </div>
@@ -51,7 +52,7 @@
             <img alt="Logo of a smartphone with a red background" height="50"
                 src="https://storage.googleapis.com/a1aa/image/HfOxfaOQ1JtpBEapcv8mD3fhoWAjUL4rPtC0zGEcZ6zfWZWPB.jpg"
                 width="50" />
-            <span>SMARTPHONE</span>
+            <span>{{ $thongTin->tentrangweb ?? 'Chưa có dữ liệu' }}</span>
         </div>
         <div class="nav">
         </div>

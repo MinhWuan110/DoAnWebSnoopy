@@ -61,7 +61,7 @@ class BlogController extends Controller
 
         $blog->save();
 
-        return redirect()->route('blog.edit', $id)->with('success', 'Cập nhật blog thành công!');
+        return redirect()->route('blogs.quanliblog', $id)->with('success', 'Cập nhật blog thành công!');
     }
     
        public function quanliblog()
