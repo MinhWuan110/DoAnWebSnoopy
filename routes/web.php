@@ -8,6 +8,7 @@ use App\Http\Controllers\SanPhamController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ThongTinCongTyController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,8 +41,8 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['checkAuth']], function () {
     // Các route cho useruser
-    Route::get('/giohang', function () {
-        return view('giohang');
+    Route::get('/cart', function () {
+        return view('cart');
     });
     // Route để cập nhật thông tin cá nhân
     Route::put('/trangcanhan/update/{id}', [ProfileController::class, 'update'])->name('updateProfile');
@@ -63,6 +64,8 @@ Route::group(['middleware' => ['checkAuth']], function () {
     // Route::get('/trangchu', [SanPhamController::class, 'topSanPham'])->name('trangchu')->middleware('check.auth');;
     Route::get('/trangchu', [SanPhamController::class, 'TrangChu'])->name('trangchu');
     Route::get('/thongtincongty', [ThongTinCongTyController::class, 'index'])->name('thongtincongty.index');
+
+    Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
 
 
     Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');

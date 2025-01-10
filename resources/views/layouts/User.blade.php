@@ -31,7 +31,7 @@
         <div class="search-cart">
             <input type="text" placeholder="SEARCH">
             <div class="icons">
-                <span class="cart-icon"><a href="/giohang">🛒</a></span>
+                <span class="cart-icon"><a href="/cart">🛒</a></span>
                 <span class="account-icon"><a href="/trangcanhan">👤</a></span>
             </div>
         </div>
@@ -82,5 +82,43 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    function changeQuantity(cartItemId, change) {
+    const quantityElement = document.getElementById(`quantity-${cartItemId}`);
+    let currentQuantity = parseInt(quantityElement.innerText) || 0;
 
+    // Cập nhật số lượng
+    currentQuantity += change;
+
+    // Đảm bảo số lượng không dưới 1
+    if (currentQuantity < 1) {
+        alert("Số lượng không thể nhỏ hơn 1.");
+        return;
+    }
+
+    // Cập nhật lại số lượng hiển thị
+    quantityElement.innerText = currentQuantity;
+
+    // Gửi yêu cầu cập nhật về server
+    fetch(`/cart/update/${cartItemId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-TOKEN': '{{ csrf_token() }}' // Đảm bảo CSRF token được truyền
+        },
+        body: JSON.stringify({ quantity: currentQuantity })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            console.log("Cập nhật thành công:", data.success);
+        } else {
+            console.error("Có lỗi xảy ra:", data.error);
+        }
+    })
+    .catch(error => {
+        console.error("Có lỗi xảy ra:", error);
+    });
+}
+</script>
 </html>
