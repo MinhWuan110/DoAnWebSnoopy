@@ -8,49 +8,45 @@ use Illuminate\Support\Facades\DB;
 class DanhMucSanPhamController extends Controller
 {
     public function index()
-    {
-        $danhMucSanPhams = DB::table('danhmucsanpham')->get(); 
-        return view('quanlidanhmucsanpham',compact('danhMucSanPhams'));
-    }
+{
+    $danhMucSanPhams = DB::table('danhmucsanpham')->get(); 
+    return view('quanlidanhmucsanpham', compact('danhMucSanPhams'));
+}
+
     public function store(Request $request)
-    {
-        $request->validate([
-            'MaDanhMuc' => 'required|string|max:10|unique:DanhMucSanPham,MaDanhMuc',
-            'TenDanhMuc' => 'required|string|max:50',
-            // Thêm các quy tắc xác thực khác nếu cần
-        ]);
+     { $request->validate([ 'MaDanhMuc' => 'required|string|max:10|unique:danhmucsanpham,MaDanhMuc', 
+        'TenDanhMuc' => 'required|string|max:50', ]); 
+        DB::table('danhmucsanpham')->insert([ 
+            'MaDanhMuc' => $request->input('MaDanhMuc'),
+             'TenDanhMuc' => $request->input('TenDanhMuc'), 
+            ]); 
+            return redirect()->route('quanlidanhmucsanpham')->with('success', 'Danh mục đã được thêm thành công.');
 
-        DB::table('danhmucsanpham')->insert([
-            'MaDanhMuc' => $request->MaDanhMuc,
-            'TenDanhMuc' => $request->TenDanhMuc,
-        ]);
-
-        return redirect()->route('quanlidanhmucsanpham')->with('success', 'Danh mục đã được thêm thành công.');
-    }
-
+        }
     public function edit($id)
     {
-        $danhMuc = DB::table('DanhMucSanPham')->where('MaDanhMuc', $id)->first();
+        $danhMuc = DB::table('danhmucsanpham')->where('MaDanhMuc', $id)->first();
         return view('quanlidanhmucsanpham.edit', compact('danhMuc'));
     }
 
-    public function update(Request $request, $maDanhMuc)
-    {
-        $request->validate([
-            'TenDanhMuc' => 'required|string|max:50',
-            // Thêm các quy tắc xác thực khác nếu cần
-        ]);
+    public function update(Request $request, $id)
+{
+    $request->validate([
+        'MaDanhMuc' => 'required|string|max:10|unique:danhmucsanpham,MaDanhMuc,' . $id . ',MaDanhMuc',
+        'TenDanhMuc' => 'required|string|max:50',
+    ]);
 
-        DB::table('DanhMucSanPham')->where('MaDanhMuc', $maDanhMuc)->update([
-            'TenDanhMuc' => $request->input('TenDanhMuc'),
-        ]);
+    DB::table('danhmucsanpham')->where('MaDanhMuc', $id)->update([
+        'MaDanhMuc' => $request->input('MaDanhMuc'),
+        'TenDanhMuc' => $request->input('TenDanhMuc'),
+    ]);
 
-        return redirect()->route('quanlidanhmucsanpham')->with('success', 'Danh mục đã được cập nhật thành công.');
-    }
+    return redirect()->route('quanlidanhmucsanpham')->with('success', 'Danh mục đã được cập nhật thành công.');
+}
 
     public function destroy($id)
     {
-        $deleted = DB::table('DanhMucSanPham')->where('MaDanhMuc', $id)->delete();
+        $deleted = DB::table('quanlidanhmucsanpham')->where('MaDanhMuc', $id)->delete();
 
         if ($deleted) {
             return redirect()->back()->with('success', 'Danh mục đã được xóa thành công.');
@@ -60,7 +56,7 @@ class DanhMucSanPhamController extends Controller
     public function search(Request $request)
     {
         $query = $request->input('query'); // Lấy giá trị tìm kiếm từ input
-        $danhMucs = DB::table('danhmucsanpham')->where('TenDanhMuc', 'LIKE', "%{$query}%")->get();
-        return view('quanlidanhmuc', ['danhMucSanPhams' => $danhMucSanPhams]);
+        $danhMucSanPhams = DB::table('danhmucsanpham')->where('TenDanhMuc', 'LIKE', "%{$query}%")->get();
+        return view('quanlidanhmucsanpham',compact('danhMucSanPhams'));
 
 }}

@@ -34,13 +34,14 @@
             <button><i class="fas fa-search"></i></button>
         </div>
         <nav>
-            <a href="/admin/quanlidashboard" class="active">Quản Lí Dashboard </a>
+            <a href="/admin/dashboard">Quản Lí Dash Board </a>
             <a href="#">Quản Lí Nhân Viên </a>
             <a href="#">Quản lí Danh Mục Sản Phẩm </a>
             <a href="/admin/quanlisanpham">Quản lí Sản Phẩm </a>
             <a href="#">Quản Lí Đơn Hàng </a>
             <a href="/admin/quanlibinhluan">Quản Lí Bình Luận </a>
             <a href="/admin/quanlilienhe">Quản Lí Liên Hệ </a>
+            <a href="#">Tìm Kiếm Sản phẩm </a>
         </nav>
     </div>
     <div class="header">

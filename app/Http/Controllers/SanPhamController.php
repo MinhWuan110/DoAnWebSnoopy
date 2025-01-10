@@ -75,7 +75,7 @@ class SanPhamController extends Controller
             'TenSanPham' => $request->input('TenSanPham'),
             'Gia' => $request->input('Gia'),
             'MaLoaiSP' => $request->input('MaLoaiSP'),
-            'SoLuong' => $request->input('SoLuong'),
+'SoLuong' => $request->input('SoLuong'),
             'MaNhaCungCap' => $request->input('MaNhaCungCap'),
             'TrangThai' => $request->input('TrangThai', 1), // Mặc định là 1 nếu không có giá trị
         ]);
@@ -104,4 +104,39 @@ class SanPhamController extends Controller
         // Sửa lại phần compact
         return view('quanlisanpham', compact('sanPhams', 'loaiSanPhams', 'nhaCungCaps')); // Trả về view với danh sách sản phẩm tìm được
     }
+
+
+
+
+
+    //zykhuong
+public function TrangChu()
+{
+    // Lấy 4 sản phẩm có lượt bán cao nhất
+    $topSanPhams = DB::table('sanpham')
+        ->orderByDesc('SPdaban') // Sắp xếp theo lượt bán giảm dần
+        ->limit(4)               // Giới hạn 4 sản phẩm
+        ->get();
+
+    // Truy vấn lấy 4 sản phẩm có ThoiDiemRaMat mới nhất
+   $newsanPhams = DB::table('ChiTietSanPham')
+        ->join('sanpham', 'ChiTietSanPham.MaSanPham', '=', 'sanpham.MaSanPham')  // Kết hợp với bảng sanpham để lấy thêm các trường cần thiết
+        ->select('sanpham.MaSanPham', 'sanpham.TenSanPham', 'sanpham.Gia', 'sanpham.SoLuong', 'ChiTietSanPham.ThoiDiemRaMat')  // Lấy các trường cần thiết
+        ->orderByDesc('ChiTietSanPham.ThoiDiemRaMat') // Sắp xếp theo ThoiDiemRaMat giảm dần
+        ->limit(4) // Giới hạn kết quả 4 sản phẩm
+        ->get(); // Lấy kết quả
+
+
+ $SanPhamKhuyenMais = DB::table('SanPham as sp')
+            ->join('sanphamkhuyenmai as spkm', 'sp.MaSanPham', '=', 'spkm.MaSanPham')
+            ->join('khuyenmai as km', 'spkm.MaKhuyenMai', '=', 'km.MaKhuyenMai')
+            ->select('sp.MaSanPham', 'sp.TenSanPham', 'sp.Gia', 'sp.SoLuong', 
+                     'km.MaKhuyenMai', 'km.TenKhuyenMai', 'km.NgayBatDau', 'km.NgayKetThuc')
+            ->where('km.NgayKetThuc', '>', now())
+            ->limit(4)
+            ->get();
+    // Truyền dữ liệu sang view
+    return view('trangchu', compact('newsanPhams','topSanPhams','SanPhamKhuyenMais')); // Đảm bảo view là nơi bạn muốn hiển thị kết quả
+}
+
 }
