@@ -4,13 +4,13 @@
 <div class="container">
     <div class="product-image">
         <div class="product-title">
-            {{$viewData['sanPham']->TenSanPham}}
+            {{$viewData['sanPham']->TenSanPham}} - {{$viewData['chiTietSanPham']->DungLuongLuuTru}}
         </div>
         <div class="slider-container">
             <div class="slider">
-            @foreach ($viewData['hinhAnhSanPham'] as $hinhAnh)
+                @foreach ($viewData['hinhAnhSanPham'] as $hinhAnh)
                 <div class="slide"><img src="{{asset($hinhAnh->DuongDanHinhAnh)}}" alt="Image 1"></div>
-            @endforeach    
+                @endforeach
             </div>
             <button class="prev">&#10094;</button>
             <button class="next">&#10095;</button>
@@ -35,7 +35,7 @@
                 <div class="button active">Thông số kỹ thuật</div>
                 <!-- <div class="button">Bài viết đánh giá</div> -->
             </div>
-            <img src="https://cdn.tgdd.vn/Products/Images/42/327343/Kit/xiaomi-poco-m6-note.jpg" alt="">
+            <!-- <img src="https://cdn.tgdd.vn/Products/Images/42/327343/Kit/xiaomi-poco-m6-note.jpg" alt=""> -->
         </div>
         <div class="accordion">
             <div class="accordion-item">
@@ -275,7 +275,7 @@
                         <div class="row">
                             <div class="label">Hãng:</div>
                             <div class="value">{{$viewData['chiTietSanPham']->Hang}}</div>
-                        </div>     
+                        </div>
                     </div>
                 </div>
             </div>
@@ -284,17 +284,21 @@
         <div>
             <div class="rating-header">Đánh giá Điện thoại {{$viewData['sanPham']->TenSanPham}}</div>
             <div class="rating-score">
-                2.8
+                {{$viewData['sanPham']->averageRating}}
                 <div class="stars">
-                    @for($i = 1; $i <= 5; $i++)
-                        @if($i <= 4)
-                            <span style="color: gold;">&#9733;</span> {{-- Ngôi sao vàng --}}
-                        @else
-                            <span style="color: gray;">&#9734;</span> {{-- Ngôi sao trống --}}
+                    @for ($i = 1; $i <= floor(5); $i++) <!-- Sao đầy -->
+                        <i class="fas fa-star"></i>
+                        @endfor
+
+                        @if (5 - floor(5) >= 0.5) <!-- Sao nửa -->
+                        <i class="fas fa-star-half-alt"></i>
                         @endif
-                    @endfor
+
+                        @for ($i = ceil(5); $i < 5; $i++) <!-- Sao trống -->
+                            <i class="far fa-star"></i>
+                            @endfor
                 </div>
-                <div class="reviews">13 đánh giá</div>
+                <div class="reviews">{{$viewData['sanPham']->totalReviews}} đánh giá</div>
             </div>
             <div class="rating-bar">
                 <div class="label">5 <i class="fas fa-star"></i></div>
@@ -335,18 +339,18 @@
         {{$index = 0}}
         @foreach($viewData['danhGiaSanPham'] as $danhGia)
         {{$index++}}
-        <div class="review" >
+        <div class="review">
             <div class="review-header">
                 <span class="name">{{$danhGia->HoTen}}</span>
                 <span class="verified"><i class="fas fa-check-circle"></i> Đã mua tại TGDD</span>
                 <div class="stars">
                     @for($i = 1; $i <= 5; $i++)
-                        @if($i <= $danhGia->XepHang)
-                            <span style="color: gold;">&#9733;</span> {{-- Ngôi sao vàng --}}
+                        @if($i <=$danhGia->XepHang)
+                        <span style="color: gold;">&#9733;</span> {{-- Ngôi sao vàng --}}
                         @else
-                            <span style="color: gray;">&#9734;</span> {{-- Ngôi sao trống --}}
+                        <span style="color: gray;">&#9734;</span> {{-- Ngôi sao trống --}}
                         @endif
-                    @endfor
+                        @endfor
                 </div>
             </div>
             <div class="review-body">
@@ -356,7 +360,7 @@
         </div>
         @endforeach
         <div class="buttons">
-            <div class="btn">Xem  đánh giá</div>
+            <div class="btn">Xem đánh giá</div>
             <div class="btn btn-primary">Viết đánh giá</div>
         </div>
     </div>
@@ -471,7 +475,7 @@
 
     echo.channel('product-count')
         .listen('ProductCountUpdated', (e) => {
-            document.getElementById('product-count').textContent = 
+            document.getElementById('product-count').textContent =
                 'Số lượng sản phẩm: ' + e.count;
         });
 </script>

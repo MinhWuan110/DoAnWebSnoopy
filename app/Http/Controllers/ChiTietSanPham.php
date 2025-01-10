@@ -7,6 +7,7 @@ use App\Models\sanpham;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Events\ProductCountUpdated;
+use App\Models\HinhAnhSanPham;
 
 class ChiTietSanPham extends Controller
 {
@@ -22,12 +23,10 @@ class ChiTietSanPham extends Controller
 
 
         $viewData = [];
-        $viewData['sanPham'] = DB::table('sanpham')
-        ->where('MaSanPham', $masp)
+        $viewData['sanPham'] = sanpham::where('MaSanPham', $masp)
         ->select('TenSanPham', 'Gia', 'SoLuong')
         ->first();
-        $viewData['hinhAnhSanPham'] = DB::table('hinhanhsanpham')
-        ->where('MaSanPham', $masp)
+        $viewData['hinhAnhSanPham'] = HinhAnhSanPham::where('MaSanPham', $masp)
         ->select('DuongDanHinhAnh')
         ->get();
         $viewData['chiTietSanPham'] = DB::table('chitietsanpham')
@@ -39,6 +38,12 @@ class ChiTietSanPham extends Controller
         ->where('SanPham.MaSanPham', $masp)
         ->select('KhachHang.HoTen', 'danhgiasanpham.BinhLuan', 'danhgiasanpham.XepHang', 'danhgiasanpham.NgayDanhGia')
         ->get();
+        $viewData['totalReviews'] = DB::table('danhgiasanpham')
+        ->where('MaSanPham', $masp)
+        ->count();
+        $viewData['averageRating'] = DB::table('danhgiasanpham')
+        ->where('MaSanPham', $masp)
+        ->avg('XepHang');
         return view('chitietsanpham')->with("viewData" , $viewData);
     }
 
