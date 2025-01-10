@@ -86,6 +86,7 @@ class SanPhamController extends Controller
 
     public function destroy($id)
     {
+        DB::table('hinhanhsanpham')->where('MaSanPham', $id)->delete();
         $deleted = DB::table('sanpham')->where('MaSanPham', $id)->delete(); // Xóa sản phẩm
 
         if ($deleted) {

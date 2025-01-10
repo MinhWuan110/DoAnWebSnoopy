@@ -8,7 +8,7 @@ use App\Http\Controllers\SanPhamController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ThongTinCongTyController;
-
+use App\Http\Controllers\CommentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -79,11 +79,8 @@ Route::group(['prefix' => 'admin', 'middleware' => ['checkAuth']], function () {
     Route::put('/quanlisanpham/{id}', [SanPhamController::class, 'update'])->name('update.sanpham');
     Route::delete('/quanlisanpham/{id}', [SanPhamController::class, 'destroy'])->name('destroy.sanpham');
     Route::get('/quanlisanpham/search', [SanPhamController::class, 'search'])->name('search.sanpham');
-
-    Route::get('/quanlibinhluan', function () {
-
-        return view('quanlibinhluan');
-    });
+    Route::get('/quanlibinhluan', [CommentController::class, 'index'])->name('quanlibinhluan');
+    Route::delete('/quanlibinhluan/{id}', [CommentController::class, 'destroy'])->name('destroy.comments');
 
     Route::get('/quanlilienhe', function () {
         return view('quanlilienhe');
