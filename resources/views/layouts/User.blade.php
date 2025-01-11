@@ -16,14 +16,16 @@
 <body>
     <header>
         <div class="logo">
-            <img src="https://storage.googleapis.com/a1aa/image/HfOxfaOQ1JtpBEapcv8mD3fhoWAjUL4rPtC0zGEcZ6zfWZWPB.jpg" alt="SMARTPHONE Logo">
-            <span>SMARTPHONE</span>
+            <img src="https://storage.googleapis.com/a1aa/image/HfOxfaOQ1JtpBEapcv8mD3fhoWAjUL4rPtC0zGEcZ6zfWZWPB.jpg"
+                alt="SMARTPHONE Logo">
+            <h2 class="tentrangweb">{{ $thongTin->tentrangweb ?? 'Chưa có dữ liệu' }}</h2>
         </div>
         <nav>
             <ul>
+
                 <li><a href="/trangchu">Home</a></li>
-                <li><a href="shop.html">Shop</a></li>
-                <li><a href="/blog">Blog</a></li>
+                {{-- <li><a href="shop.html">Shop</a></li> --}}
+                <li><a href="/user/blog">Blog</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
@@ -36,7 +38,7 @@
             </div>
         </div>
         <div>
-            <span>+65 1122233365</span>
+            <span>{{ $thongTin->hotline ?? 'Chưa có dữ liệu' }}</span>
         </div>
         <div class="categories-text">
             <span>All Categories</span>
@@ -55,9 +57,22 @@
         <div class="footer-content">
             <div class="left-section">
                 <div class="hotline-numbers">
-                    <p>Gọi Mua: 1900 232 460 (8:00 - 21:30)</p>
-                    <p>Khiếu nại: 1800.1062 (8:00 - 21:30)</p>
-                    <p>Bảo hành: 1900 232 464 (8:00 - 21:00)</p>
+                    <p>
+                        Gọi Mua:
+                        <span>{{ $thongTin->goimua ?? 'Chưa có dữ liệu' }}</span> |
+                        <span>{{ $thongTin->giolamviec ?? 'Chưa có dữ liệu' }}</span>
+                    </p>
+
+                    <p>
+                        Khiếu Nại:
+                        <span>{{ $thongTin->khieunai ?? 'Chưa có dữ liệu' }}</span> |
+                        <span>{{ $thongTin->giolamviec ?? 'Chưa có dữ liệu' }}</span>
+                    </p>
+                    <p>
+                        Bảo Hành:
+                        <span>{{ $thongTin->baohanh ?? 'Chưa có dữ liệu' }}</span> |
+                        <span>{{ $thongTin->giolamviec ?? 'Chưa có dữ liệu' }}</span>
+                    </p>
                 </div>
                 <div class="social-media">
                     <a href="https://facebook.com" target="_blank">Facebook</a>
@@ -67,58 +82,91 @@
             </div>
             <div class="right-section">
                 <div class="contact-info">
-                    <p>Phone: +65 112233365</p>
-                    <p>Email: hello@gmail.com</p>
-                    <p>Address: 65 Huỳnh Thúc Kháng, P.BN, Q1</p>
+                    <p class="inline-items">
+                        <span>Phone: {{ $thongTin->hotline ?? 'Chưa có dữ liệu' }}</span>
+                        <span>Email: {{ $thongTin->email ?? 'Chưa có dữ liệu' }}</span>
+                        <span>Address: {{ $thongTin->diachi ?? 'Chưa có dữ liệu' }}</span>
+                    </p>
+
+
+
+
+
+
+
                 </div>
 
                 <p>Bản quyền © {{ date('Y') }}. Tất cả quyền được bảo lưu.</p>
             </div>
         </div>
-
     </footer>
 </body>
-<!-- jQuery and Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script>
-    function changeQuantity(cartItemId, change) {
-    const quantityElement = document.getElementById(`quantity-${cartItemId}`);
-    let currentQuantity = parseInt(quantityElement.innerText) || 0;
 
-    // Cập nhật số lượng
-    currentQuantity += change;
-
-    // Đảm bảo số lượng không dưới 1
-    if (currentQuantity < 1) {
-        alert("Số lượng không thể nhỏ hơn 1.");
-        return;
-    }
-
-    // Cập nhật lại số lượng hiển thị
-    quantityElement.innerText = currentQuantity;
-
-    // Gửi yêu cầu cập nhật về server
-    fetch(`/cart/update/${cartItemId}`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': '{{ csrf_token() }}' // Đảm bảo CSRF token được truyền
-        },
-        body: JSON.stringify({ quantity: currentQuantity })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            console.log("Cập nhật thành công:", data.success);
-        } else {
-            console.error("Có lỗi xảy ra:", data.error);
-        }
-    })
-    .catch(error => {
-        console.error("Có lỗi xảy ra:", error);
-    });
-}
-</script>
 </html>
+
+
+
+
+
+
+
+{{-- 
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layout User</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <!-- Thông tin trang web từ bảng thongtintrangweb -->
+    <div class="container mt-5">
+        <h1>Thông Tin Trang Web</h1>
+        <table class="table table-bordered">
+            <tr>
+                <th>Tên Trang Web</th>
+                <td>{{ $thongTin->tentrangweb ?? 'Chưa có dữ liệu' }}</td>
+            </tr>
+            <tr>
+                <th>Hotline</th>
+                <td>{{ $thongTin->hotline ?? 'Chưa có dữ liệu' }}</td>
+            </tr>
+            <tr>
+                <th>Gọi Mua</th>
+                <td>{{ $thongTin->goimua ?? 'Chưa có dữ liệu' }}</td>
+            </tr>
+            <tr>
+                <th>Khiếu Nại</th>
+                <td>{{ $thongTin->khieunai ?? 'Chưa có dữ liệu' }}</td>
+            </tr>
+            <tr>
+                <th>Bảo Hành</th>
+                <td>{{ $thongTin->baohanh ?? 'Chưa có dữ liệu' }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ $thongTin->email ?? 'Chưa có dữ liệu' }}</td>
+            </tr>
+            <tr>
+                <th>Địa Chỉ</th>
+                <td>{{ $thongTin->diachi ?? 'Chưa có dữ liệu' }}</td>
+            </tr>
+            <tr>
+                <th>Giờ Làm Viêc </th>
+                <td> {{ $thongTin->giolamviec ?? 'Chưa có dữ liệu' }}</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- Nội dung chính của trang -->
+    <div class="container">
+        @yield('content')
+    </div>
+
+</body>
+
+</html> --}}

@@ -5,7 +5,8 @@ body {
 
 
 .header {
-    display: flex;
+     display: flex; 
+    position: fixed;
     align-items: center;
     justify-content: space-between;
     background-color: #f8f8f8;
@@ -92,19 +93,19 @@ body {
 
 /* Sidebar styles */
 .sidebar {
-    position: fixed;
+    position: absolute;
     left: -300px; /* Ẩn sidebar ra ngoài màn hình */
     width: 300px;
     height: 100%;
     background-color: #fff;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
     transition: left 0.3s ease;
-    z-index: 1001; /* Đảm bảo sidebar nằm trên các phần tử khác */
+    z-index: 10; /* Đảm bảo sidebar nằm trên các phần tử khác */
 }
 
 .sidebar.active {
     left: 0; /* Hiện sidebar khi active */
-    
+    height: auto;
 }
 
 .sidebar nav {
