@@ -3,6 +3,7 @@
 @section('title', 'Quản Lý Bình Luận')
 
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/QLBinhLuan.css') }}"> 
 <div class="container">
     <div class="search-section">
         <h2>Tìm Kiếm Bình Luận</h2>
@@ -32,14 +33,14 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>KH001</td>
+                    <td>KH01</td>
                     <td>khachhang1@example.com</td>
                     <td>Sản phẩm rất tốt!</td>
                     <td>Jun 10, 2024</td>
                     <td><button class="delete-button">Xóa</button></td>
                 </tr>
                 <tr>
-                    <td>KH002</td>
+                    <td>KH02</td>
                     <td>khachhang2@example.com</td>
                     <td>Giao hàng nhanh chóng.</td>
                     <td>Jun 09, 2024</td>

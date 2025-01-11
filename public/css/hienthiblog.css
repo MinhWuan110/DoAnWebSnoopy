@@ -1,0 +1,64 @@
+/* resources/css/app.css */
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+strong {
+    color: #333;
+}
+
+a.btn-primary {
+    display: inline-block;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+a.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Hiệu ứng hover cho nút */
+a.btn-primary:active {
+    background-color: #004085;
+}
+
+/* Tạo khoảng cách giữa nội dung bài viết */
+div {
+    margin-top: 30px;
+}
+
+/* Ngày đăng */
+p strong {
+    font-weight: 600;
+}
+
+/* Nâng cấp giao diện cho thông tin tác giả và ngày đăng */
+p:first-child {
+    margin-bottom: 10px;
+}
+
+p:last-child {
+    margin-top: 20px;
+}

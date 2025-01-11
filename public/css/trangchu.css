@@ -1,0 +1,232 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+.section-title {
+    PADDING-TOP: 20PX;
+}
+/* .container {
+    width: 90%;
+    margin: 0px;
+} */
+
+
+
+.banner {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.banner img {
+    width: 100%;
+    height: auto;
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.products {
+    display: flex;
+    justify-content: space-between;
+}
+
+.product {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 23%;
+    text-align: center;
+    padding: 10px;
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.product .title {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.product .price {
+    font-size: 14px;
+    color: #ff0000;
+    margin-bottom: 5px;
+}
+
+.product .promotion {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 5px;
+}
+
+.product .quantity {
+    font-size: 14px;
+    color: #888;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* .container {
+    width: 80%;
+    margin: 0 auto;
+} */
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.product-item {
+    width: 22%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+.product-item img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.product-item .price {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.product-item .promotion {
+    color: #888;
+    margin-bottom: 10px;
+}
+
+.product-item .quantity {
+    color: #888;
+}
+
+@media (max-width: 768px) {
+    .product-item {
+        width: 48%;
+    }
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.header > p {
+    text-decoration: none;
+    font-size: 20px;
+    color: #333;
+        /* Màu chữ */
+    font-weight: bold;
+    border-bottom: 0px;
+   
+   
+}
+
+
+
+
+
+/* Container chính */
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+        margin-bottom: 30px;
+}
+
+/* Tiêu đề sản phẩm */
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Container cho các sản phẩm */
+.product-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: calc(25% - 20px);
+    /* Mỗi sản phẩm chiếm 25% chiều rộng */
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.product-item img {
+    width: 100%;
+    /* Giảm kích thước ảnh cho phù hợp */
+    height: 200px;
+    object-fit: cover;
+}
+
+.description p {
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.price {
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: green;
+}
+
+.promotion {
+    margin-top: 10px;
+    font-size: 1rem;
+    color: red;
+}
+
+.quantity p {
+    margin-top: 10px;
+    font-size: 1rem;
+}
+
+/* Dùng Flexbox cho việc căn chỉnh các sản phẩm */
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    /* Cho phép các sản phẩm xuống dòng nếu không đủ không gian */
+    gap: 20px;
+    /* Khoảng cách giữa các sản phẩm */
+    justify-content: space-between;
+
+}
+
+
+.container {
+justify-content: center;
+max-width: 80%;
+}
+  

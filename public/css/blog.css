@@ -1,0 +1,279 @@
+.container {
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+form input[type="text"] {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+form button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+
+div h2 a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+div h2 a:hover {
+    text-decoration: underline;
+}
+
+div p {
+    color: #555;
+    line-height: 1.6;
+}
+
+div strong {
+    color: #333;
+}
+
+div {
+    margin-bottom: 20px;
+    padding: 10px 15px;
+    background-color: white;
+    /* border: 1px solid #ffffff; */
+    border-radius: 8px;
+}
+
+p:last-child {
+    margin-bottom: 0;
+}
+
+.empty-message {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    margin-top: 20px;
+}
+
+
+
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    /* Canh giữa các nút */
+    align-items: center;
+    list-style: none;
+    padding: 10px 0;
+    margin: 0;
+}
+
+.pagination a,
+.pagination span {
+    padding: 8px 16px;
+    /* Kích thước của các nút */
+    margin: 0 5px;
+    /* Khoảng cách giữa các nút */
+    text-decoration: none;
+    /* Bỏ gạch chân */
+    color: #007bff;
+    /* Màu sắc của các nút */
+    /* border: 1px solid #ddd; */
+    /* Viền cho nút */
+    border-radius: 4px;
+    /* Bo góc cho nút */
+    font-size: 14px;
+    /* Kích thước font chữ */
+    display: inline-flex;
+    /* Đảm bảo các nút hiển thị cùng hàng */
+    align-items: center;
+    /* Canh giữa nội dung của các nút */
+}
+
+.pagination a:hover,
+.pagination span:hover {
+    background-color: #f0f0f0;
+    /* Màu nền khi hover */
+    border-color: #007bff;
+    /* Màu viền khi hover */
+}
+
+.pagination .active {
+    background-color: #007bff;
+    /* Màu nền của trang đang được chọn */
+    color: #fff;
+    /* Màu chữ của trang đang chọn */
+    border-color: #007bff;
+    /* Màu viền của trang đang chọn */
+}
+
+.pagination .disabled {
+    color: #ccc;
+    /* Màu chữ của các nút disabled */
+    border-color: #ccc;
+    /* Màu viền của các nút disabled */
+}
+
+.pagination li {
+    display: inline-block;
+    /* Đảm bảo các nút hiển thị ngang hàng */
+}
+
+.pagination .prev,
+.pagination .next {
+    display: inline-flex;
+    /* Đảm bảo các nút Previous và Next cùng hàng */
+    justify-content: center;
+    /* Căn giữa các nút Previous và Next */
+}
+
+.pagination .prev a,
+.pagination .next a {
+    font-size: 14px;
+}
+
+
+.relative.inline-flex.items-center.px-2.py-2.-ml-px.text-sm.font-medium.text-gray-500.bg-white.border.border-gray-300.rounded-r-md.leading-5.hover\:text-gray-400.focus\:z-10.focus\:outline-none.focus\:ring.ring-gray-300.focus\:border-blue-300.active\:bg-gray-100.active\:text-gray-500.transition.ease-in-out.duration-150 {
+    background-color: red;
+    /* Đặt nền màu đỏ */
+    color: white;
+    /* Thay đổi màu chữ thành trắng để dễ đọc trên nền đỏ */
+}
+
+.relative.inline-flex.items-center.px-2.py-2.-ml-px.text-sm.font-medium.text-gray-500.bg-white.border.border-gray-300.rounded-r-md.leading-5.hover\:text-gray-400.focus\:z-10.focus\:outline-none.focus\:ring.ring-gray-300.focus\:border-blue-300.active\:bg-gray-100.active\:text-gray-500.transition.ease-in-out.duration-150 {
+    background-color: #f72b2b;
+    /* Đặt nền màu xanh đậm khi hover */
+    color: white;
+    /* Đặt màu chữ thành trắng khi hover */
+}
+
+
+
+
+.relative.inline-flex.items-center.px-2.py-2.text-sm.font-medium.text-gray-500.bg-white.border.border-gray-300.rounded-l-md.leading-5 {
+    background-color: #3490dc;
+    /* Đặt nền màu xanh */
+    color: white;
+    /* Đặt màu chữ thành trắng để dễ đọc trên nền xanh */
+}
+
+.relative.inline-flex.items-center.px-2.py-2.text-sm.font-medium.text-gray-500.bg-white.border.border-gray-300.rounded-l-md.leading-5:hover {
+    background-color: #2779bd;
+    /* Đặt nền màu xanh đậm khi hover */
+    color: white;
+    /* Đặt màu chữ thành trắng khi hover */
+}
+
+.hidden sm:flex-1 sm:flex sm:items-center sm:justify-between {
+    margin: 0px;
+}
+
+.flex justify-between flex-1 sm:hidden {
+    text-align: center;
+    display: flex;
+    /* Kích hoạt Flexbox */
+    justify-content: space-between;
+    /* Giãn đều các thẻ con */
+    align-items: center;
+    /* Căn giữa theo chiều dọc */
+    padding: 10px;
+    /* Thêm khoảng cách xung quanh */
+    background-color: #f4f4f4;
+    /* Màu nền */
+    border: 1px solid #ddd;
+    /* Đường viền */
+    border-radius: 8px;
+    /* Bo góc */
+
+}
+
+
+.link {
+    color: #007bff;
+    /* Màu chữ xanh */
+    text-decoration: none;
+    /* Bỏ gạch chân mặc định */
+    padding: 8px 16px;
+    /* Tạo khoảng cách bên trong */
+    border-radius: 4px;
+    /* Bo góc cho liên kết */
+    transition: background-color 0.3s, color 0.3s;
+    /* Hiệu ứng hover */
+}
+
+.link:hover {
+    background-color: #007bff;
+    /* Nền xanh khi hover */
+    color: #fff;
+    /* Chữ trắng khi hover */
+}
+
+
+.flex {
+    display: flex;
+    /* Kích hoạt Flexbox */
+}
+
+.justify-between {
+    justify-content: space-between;
+    /* Giãn đều các phần tử con */
+}
+
+.flex-1 {
+    flex: 1;
+    /* Cho phép div chiếm toàn bộ không gian khả dụng */
+}
+
+.sm\:hidden {
+    display: none;
+    /* Ẩn trên màn hình nhỏ (cấu hình này áp dụng với Tailwind CSS) */
+}
+
+.link {
+    color: #007bff;
+    /* Màu chữ xanh */
+    text-decoration: none;
+    /* Bỏ gạch chân mặc định */
+    padding: 8px 12px;
+    /* Tạo khoảng cách bên trong */
+    border-radius: 4px;
+    /* Bo góc cho liên kết */
+    transition: background-color 0.3s, color 0.3s;
+    /* Hiệu ứng hover */
+}
+
+.link:hover {
+    background-color: #007bff;
+    /* Nền xanh khi hover */
+    color: #fff;
+    /* Chữ trắng khi hover */
+}
+.text-sm {
+    display: none;
+}

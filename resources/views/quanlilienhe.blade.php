@@ -3,6 +3,7 @@
 @section('title', 'Quản Lý Liên Hệ')
 
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/QLLienHe.css') }}"> 
 <div class="container">
     <div class="search-section">
         <h2>Tìm Kiếm Liên Hệ</h2>
