@@ -4,10 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/HomePage.css') }}">
     <link rel="stylesheet" href="{{ asset('css/GioHang.css') }}">
     <link rel="stylesheet" href="{{ asset('css/TrangCaNhan.css') }}">
     <title>@yield('title', 'SMARTPHONE')</title>
+
 </head>
 
 <body>
@@ -26,11 +29,12 @@
                 <li><a href="contact.html">Contact</a></li>
             </ul>
         </nav>
+
         <div class="search-cart">
             <input type="text" placeholder="SEARCH">
             <div class="icons">
-                <span class="cart-icon">🛒</span>
-                <span class="account-icon">👤</span>
+                <span class="cart-icon"><a href="/cart">🛒</a></span>
+                <span class="account-icon"><a href="/trangcanhan">👤</a></span>
             </div>
         </div>
         <div>
