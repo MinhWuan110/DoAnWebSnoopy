@@ -14,7 +14,6 @@ class BlogController extends Controller
 
         // Lọc bài viết theo từ khóa nếu có
         $query = BlogPost::query();
-
         if ($keyword) {
             $query->where('tieu_de', 'like', '%' . $keyword . '%')
                   ->orWhere('noi_dung', 'like', '%' . $keyword . '%');

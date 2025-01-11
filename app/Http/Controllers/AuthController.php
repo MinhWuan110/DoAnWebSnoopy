@@ -53,7 +53,8 @@ class AuthController extends Controller
             'MaKhachHang' => $makhachhang,
             'LoaiTaiKhoan' => 1, // Loại tài khoản mặc định
             'TrangThai' => 1, // Mặc định là 1
-            'QuyenHan' => 1 // Quyền hạn mặc định
+            'QuyenHan' => 2
+             // Quyền hạn mặc định
         ]);
 
         return redirect()->route('login.form')->with('success', 'Đăng ký thành công. Bạn có thể đăng nhập ngay bây giờ.');

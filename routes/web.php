@@ -36,6 +36,9 @@ Route::get('/', function () {
 });
 
 
+
+
+
 // Route::get('/test-connection', [TestController::class, 'index']);
 
 Route::group(['middleware' => ['checkAuth']], function () {
@@ -47,6 +50,7 @@ Route::group(['middleware' => ['checkAuth']], function () {
     Route::put('/trangcanhan/update/{id}', [ProfileController::class, 'update'])->name('updateProfile');
     Route::get('/trangcanhan/{MaTaiKhoan}', [ProfileController::class, 'show'])->name('profile.show');
 
+     Route::get('/user/blog', [BlogController::class, 'index'])->name('blog.index');
 
 
     Route::get('/info', function () {
@@ -65,16 +69,14 @@ Route::group(['middleware' => ['checkAuth']], function () {
 
 Route::get('/thongke', [ThongkeController::class, 'index']);
 
-
-    Route::get('/blog', [BlogController::class, 'index']);
-Route::get('/user/blog', [BlogController::class, 'index'])->middleware('check.auth');
+    
 
     // Route::get('/trangchu', [SanPhamController::class, 'topSanPham'])->name('trangchu')->middleware('check.auth');;
     Route::get('/trangchu', [SanPhamController::class, 'TrangChu'])->name('trangchu');
     Route::get('/thongtincongty', [ThongTinCongTyController::class, 'index'])->name('thongtincongty.index');
 
+   
 
-    Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
     Route::get('/blog/{id}', [BlogController::class, 'show'])->name('blog.show');
     // Route::get('/bai-viet/{id}', [BlogController::class, 'show'])->name('blog.show');
 });
@@ -98,9 +100,10 @@ Route::group(['prefix' => 'admin', 'middleware' => ['checkAuth']], function () {
     Route::get('/quanlilienhe', function () {
         return view('quanlilienhe');
     });
+
+
 });
-Route::get('/user/blog', [BlogController::class, 'index'])->name('blog.index');
-Route::get('/user/blog/{id}', [BlogController::class, 'show'])->name('blog.show');
+
 
 
 Route::get('/user', [HomeController::class, 'index']);
@@ -116,44 +119,18 @@ Route::put('/suablog/{id}/update', [BlogController::class, 'update'])->name('sua
 
 
 
-// Định nghĩa route để chỉnh sửa blog
-Route::get('/blog/{id}/edit', [BlogController::class, 'edit'])->name('blog.edit');
-
-// Định nghĩa route để cập nhật blog
-Route::put('/blog/{id}', [BlogController::class, 'update'])->name('blog.update');
 
 
-// Route::get('/admin/quanliblog', [BlogController::class, 'quanliblog'])->name('blog.quanliblog');
-// Route::get('/blog/create', [BlogController::class, 'create'])->name('blog.create');
-// // routes/web.php
+Route::get('/admin/quanliblog', [BlogController::class, 'quanliblog'])->name('blog.quanliblog');
+Route::get('/blog/create', [BlogController::class, 'create'])->name('blog.create');
+// routes/web.php
 
-// // Route xóa blog với URL chứa '/destroy'
-// Route::delete('/blog/{id}/destroy', [BlogController::class, 'destroy'])->name('blog.destroy');
-
-
-// // routes/web.php
-
-// Route để hiển thị danh sách blog
-Route::get('/admin/quanliblog', [BlogController::class, 'quanliblog'])->name('blogs.quanliblog');
-
-// Route để tạo blog mới
-Route::get('/admin/blog/create', [BlogController::class, 'create'])->name('blog.create');
-// Route::post('/blog/create', [BlogController::class, 'create'])->name('blog.create');
-
-// Route để chỉnh sửa blog
-Route::get('/blog/{id}/edit', [BlogController::class, 'edit'])->name('blog.edit');
-
-// Route để lưu thay đổi khi chỉnh sửa blog
-Route::put('/blog/{id}', [BlogController::class, 'update'])->name('blog.update');
-
-// Route để xóa blog
+// Route xóa blog với URL chứa '/destroy'
 Route::delete('/blog/{id}/destroy', [BlogController::class, 'destroy'])->name('blog.destroy');
 
-// Route GET để hiển thị form tạo blog
-Route::get('/admin/blog/create', [BlogController::class, 'create'])->name('blog.create');
 
-// Route POST để xử lý lưu blog mới vào cơ sở dữ liệu
-Route::post('/admin/blog', [BlogController::class, 'store'])->name('blog.store');
+// // routes/web.php
+
 
 
 
@@ -176,3 +153,32 @@ Route::get('admin/thongtin/edit', [ThongTinTrangWebController::class, 'edit'])->
 
 // Xử lý cập nhật dữ liệu
 Route::post('/thongtin/update', [ThongTinTrangWebController::class, 'update'])->name('thongtin.update');
+
+   
+    // Route để hiển thị danh sách blog
+Route::get('/quanliblog', [BlogController::class, 'quanliblog'])->name('blogs.quanliblog');
+
+// Route để tạo blog mới
+Route::get('/admin/blog/create', [BlogController::class, 'create'])->name('blog.create');
+// Route::post('/blog/create', [BlogController::class, 'create'])->name('blog.create');
+
+// Route để chỉnh sửa blog
+Route::get('/blog/{id}/edit', [BlogController::class, 'edit'])->name('blog.edit');
+// Route để lưu thay đổi khi chỉnh sửa blog
+Route::put('/blog/{id}', [BlogController::class, 'update'])->name('blog.update');
+// Route để xóa blog
+Route::delete('/blog/{id}/destroy', [BlogController::class, 'destroy'])->name('blog.destroy');
+// Route GET để hiển thị form tạo blog
+Route::get('/admin/blog/create', [BlogController::class, 'create'])->name('blog.create');
+// Route POST để xử lý lưu blog mới vào cơ sở dữ liệu
+Route::post('/admin/blog', [BlogController::class, 'store'])->name('blog.store');
+
+// Route::get('/blog', [BlogController::class, 'index']);
+// Route::get('/user/blog', [BlogController::class, 'index'])->middleware('check.auth');
+
+Route::get('/user/blog/{id}', [BlogController::class, 'show'])->name('blog.show');
+// Định nghĩa route để chỉnh sửa blog
+Route::get('/blog/{id}/edit', [BlogController::class, 'edit'])->name('blog.edit');
+
+// Định nghĩa route để cập nhật blog
+Route::put('/blog/{id}', [BlogController::class, 'update'])->name('blog.update');
