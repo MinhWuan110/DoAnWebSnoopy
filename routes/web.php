@@ -35,7 +35,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/trangchu', [SanPhamController::class, 'TrangChu'])->name('trangchu');
 
 // Route::get('/test-connection', [TestController::class, 'index']);
 
@@ -62,7 +62,7 @@ Route::group(['middleware' => ['checkAuth']], function () {
     Route::get('/blog', [BlogController::class, 'index']);
 
     // Route::get('/trangchu', [SanPhamController::class, 'topSanPham'])->name('trangchu')->middleware('check.auth');;
-    Route::get('/trangchu', [SanPhamController::class, 'TrangChu'])->name('trangchu');
+    
     Route::get('/thongtincongty', [ThongTinCongTyController::class, 'index'])->name('thongtincongty.index');
 
     Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');

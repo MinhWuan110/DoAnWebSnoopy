@@ -22,9 +22,9 @@
             <div class="cart-item d-flex justify-content-between align-items-center">
                 <div class="item-info">
                     <img src="{{ $hinhAnh->DuongDanHinhAnh }}" alt="{{ $sanPham->TenSanPham }}" class="img-thumbnail" style="width: 100px;">
-                    <span>{{ $sanPham->TenSanPham }}</span>
-                    <span> Loại: {{ $sanPham->MaLoaiSP }}</span>
-                    <span> Giá: {{ number_format($sanPham->Gia, 0, ',', '.') }}</span>
+                    <span>{{ $sanPham->TenSanPham }}, </span>
+                    <span>Loại: {{ $sanPham->MaLoaiSP }},</span>
+                    <span>Giá: {{ number_format($sanPham->Gia, 0, ',', '.') }} VNĐ</span>
                 </div>
                 <div class="item-controls">
                     <button class="btn btn-danger btn-sm">Xóa</button>
