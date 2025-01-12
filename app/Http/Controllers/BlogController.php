@@ -12,24 +12,24 @@ class BlogController extends Controller
     {
         $keyword = $request->input('keyword', '');
 
-        // Lọc bài viết theo từ khóa nếu có
+        
         $query = BlogPost::query();
         if ($keyword) {
             $query->where('tieu_de', 'like', '%' . $keyword . '%')
                   ->orWhere('noi_dung', 'like', '%' . $keyword . '%');
         }
 
-        // Phân trang dữ liệu
-        $perPage = 5; // Số bài viết trên mỗi trang
+        
+        $perPage = 5; 
         $blogPosts = $query->paginate($perPage);
 
-        // Trả về view với bài viết và từ khóa tìm kiếm
+       
         return view('blog', ['blogPosts' => $blogPosts, 'keyword' => $keyword]);
     }
 
     public function show($id)
     {
-        // Lấy bài viết theo ID từ cơ sở dữ liệu
+        
         $blogPost = BlogPost::find($id);
 
         if (!$blogPost) {
