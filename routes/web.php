@@ -80,7 +80,7 @@ Route::group(['middleware' => ['checkAuth']], function () {
 
     Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
 
-
+    Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
     Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 
 

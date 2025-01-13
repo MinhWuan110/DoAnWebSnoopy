@@ -64,19 +64,21 @@
         </div>
     </div>
 </div>
-
 <script>
+    const salesTrendLabels = @json($salesTrendLabels);
+    const salesTrendData = @json($salesTrendData);
+
     const ctx = document.getElementById('salesTrendChart').getContext('2d');
     const salesTrendChart = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            labels: salesTrendLabels,
             datasets: [{
                 label: 'Sales',
-                data: [12000, 19000, 30000, 25000, 22000, 30000],
+                data: salesTrendData,
                 borderColor: 'rgba(75, 192, 192, 1)',
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
-                borderWidth: 1
+                borderWidth: 4
             }]
         },
         options: {
