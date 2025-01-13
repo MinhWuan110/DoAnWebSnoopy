@@ -48,10 +48,10 @@ Route::group(['middleware' => ['checkAuth']], function () {
     // Route để cập nhật thông tin cá nhân
     Route::put('/trangcanhan/update/{id}', [ProfileController::class, 'update'])->name('updateProfile');
     Route::get('/trangcanhan/{MaTaiKhoan}', [ProfileController::class, 'show'])->name('profile.show');
-
-     Route::get('/user/blog', [BlogController::class, 'index'])->name('blog.index');
-
     Route::get('/trangcanhan', [ProfileController::class, 'show'])->name('profile.show');
+    Route::get('/user/blog', [BlogController::class, 'index'])->name('blog.index');
+
+    
     // Route::post('/update-password', [ProfileController::class, 'updatePassword'])->name('updatePassword');
     // Route::get('/trangcanhan/{MaTaiKhoan}', [ProfileController::class, 'show'])->name('profile.show');
     Route::delete('/donhang/{id}', [ProfileController::class, 'destroy'])->name('order.destroy');
@@ -63,26 +63,26 @@ Route::group(['middleware' => ['checkAuth']], function () {
     Route::get('/thongke', function () {
         return view('thongkedoanhthu');
     });
-// Route::get('/thongke', function () {
-//     return view('thongkedoanhthu');
-// })->middleware('check.auth');
+    // Route::get('/thongke', function () {
+    //     return view('thongkedoanhthu');
+    // })->middleware('check.auth');
 
 
 
 
-Route::get('/thongke', [ThongkeController::class, 'index']);
+    Route::get('/thongke', [ThongkeController::class, 'index']);
 
-    
+
 
     // Route::get('/trangchu', [SanPhamController::class, 'topSanPham'])->name('trangchu')->middleware('check.auth');;
-    
+
     Route::get('/thongtincongty', [ThongTinCongTyController::class, 'index'])->name('thongtincongty.index');
 
     Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
 
 
     Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
-   
+
 
     Route::get('/blog/{id}', [BlogController::class, 'show'])->name('blog.show');
     // Route::get('/bai-viet/{id}', [BlogController::class, 'show'])->name('blog.show');
@@ -107,8 +107,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['checkAuth']], function () {
     Route::get('/quanlilienhe', function () {
         return view('quanlilienhe');
     });
-
-
 });
 
 
@@ -144,6 +142,7 @@ use App\Http\Controllers\SanphamnoibatController;
 
 Route::get('/sanphamnoibat', [SanphamnoibatController::class, 'index'])->name('sanphamnoibat.index');
 Route::get('/sanphamnoibat/create', [SanphamnoibatController::class, 'create'])->name('sanphamnoibat.create');
+
 use App\Models\Sanphamnoibat;
 
 // web.php
@@ -159,8 +158,8 @@ Route::get('admin/thongtin/edit', [ThongTinTrangWebController::class, 'edit'])->
 // Xử lý cập nhật dữ liệu
 Route::post('/thongtin/update', [ThongTinTrangWebController::class, 'update'])->name('thongtin.update');
 
-   
-    // Route để hiển thị danh sách blog
+
+// Route để hiển thị danh sách blog
 Route::get('/quanliblog', [BlogController::class, 'quanliblog'])->name('blogs.quanliblog');
 
 // Route để tạo blog mới

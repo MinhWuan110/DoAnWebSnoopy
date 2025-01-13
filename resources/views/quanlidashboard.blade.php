@@ -4,10 +4,12 @@
 
 @section('content')
 <link rel="stylesheet" href="{{ asset('css/DashBoard.css') }}">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-            <h1 class="text-center mb-4">DashBoard</h1>
+            <h1 class="text-center mb-4">Dashboard</h1>
         </div>
     </div>
 
@@ -15,37 +17,37 @@
         <div class="col-12">
             <h3>Stats</h3>
             <div class="dashboard-container">
-                <div class="card">
+                <div class="card text-white bg-primary">
                     <div class="card-header">Total Sales</div>
                     <div class="card-body">
                         <p>{{ number_format($totalSales, 0, ',', '.') }} VNĐ</p>
                     </div>
                 </div>
-                <div class="card">
+                <div class="card text-white bg-success">
                     <div class="card-header">Total Payments</div>
                     <div class="card-body">
                         <p>{{ $totalPayments }}</p>
                     </div>
                 </div>
-                <div class="card">
+                <div class="card text-white bg-danger">
                     <div class="card-header">Total Returns</div>
                     <div class="card-body">
                         <p>{{ $totalReturns }}</p>
                     </div>
                 </div>
-                <div class="card">
+                <div class="card text-white bg-warning">
                     <div class="card-header">Total Users</div>
                     <div class="card-body">
                         <p>{{ $totalUsers }}</p>
                     </div>
                 </div>
-                <div class="card">
+                <div class="card text-white bg-info">
                     <div class="card-header">Total Products</div>
                     <div class="card-body">
                         <p>{{ $totalProducts }}</p>
                     </div>
                 </div>
-                <div class="card">
+                <div class="card text-white bg-secondary">
                     <div class="card-header">Total Orders</div>
                     <div class="card-body">
                         <p>{{ $totalOrders }}</p>
@@ -57,45 +59,34 @@
 
     <div class="row mt-4">
         <div class="col-12">
-            <h3>Website Information</h3>
-            <div class="card">
-                <div class="card-header">Website Details</div>
-                <div class="card-body">
-                    <form action="" method="POST">
-                        @csrf
-                        <div class="mb-3">
-                            <label for="websiteName" class="form-label">Name</label>
-                            <input type="text" class="form-control" id="websiteName" name="website_name" value="Your Website Name" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="websiteUrl" class="form-label">URL</label>
-                            <input type="url" class="form-control" id="websiteUrl" name="website_url" value="http://yourwebsite.com" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="contactEmail" class="form-label">Contact Email</label>
-                            <input type="email" class="form-control" id="contactEmail" name="contact_email" value="contact@yourwebsite.com" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="phone" class="form-label">Phone</label>
-                            <input type="tel" class="form-control" id="phone" name="phone" value="+1234567890" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="salesPhone" class="form-label">Phone for Sales</label>
-                            <input type="tel" class="form-control" id="salesPhone" name="sales_phone" value="+1234567891" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="warrantyPhone" class="form-label">Phone for Warranty</label>
-                            <input type="tel" class="form-control" id="warrantyPhone" name="warranty_phone" value="+1234567892" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="complaintPhone" class="form-label">Phone for Complaints</label>
-                            <input type="tel" class="form-control" id="complaintPhone" name="complaint_phone" value="+1234567893" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary">Update</button>
-                    </form>
-                </div>
-            </div>
+            <h3>Sales Trend</h3>
+            <canvas id="salesTrendChart"></canvas>
         </div>
     </div>
 </div>
+
+<script>
+    const ctx = document.getElementById('salesTrendChart').getContext('2d');
+    const salesTrendChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [{
+                label: 'Sales',
+                data: [12000, 19000, 30000, 25000, 22000, 30000],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
 @endsection

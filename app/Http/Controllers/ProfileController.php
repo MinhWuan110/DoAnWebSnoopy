@@ -120,6 +120,15 @@ class ProfileController extends Controller
             return redirect()->back()->with('error', 'Không tìm thấy đơn hàng.');
         }
 
+        // Kiểm tra thời gian đặt hàng
+        $ngayDatHang = \Carbon\Carbon::parse($donhang->NgayDatHang);
+        $now = \Carbon\Carbon::now();
+
+        // Kiểm tra xem đơn hàng có được đặt trong vòng 24 giờ không
+        if ($now->diffInHours($ngayDatHang) >= 24) {
+            return redirect()->back()->with('error', 'Bạn chỉ có thể hủy đơn hàng trong vòng 24 giờ từ lúc đặt.');
+        }
+
         // Xóa các chi tiết đơn hàng liên quan
         DB::table('chitietdonhang')->where('MaDonHang', $id)->delete();
 
