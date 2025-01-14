@@ -1,0 +1,52 @@
+ .layout  {
+    display: flex;
+    /* Sử dụng Flexbox */
+justify-content: space-between;
+    /* Các thẻ con sẽ cách nhau đều */
+    width: 100%;
+    /* Full chiều rộng */
+    gap: 20px;
+    margin-top: 100px;
+    /* Khoảng cách giữa các card */
+
+  
+}
+.container{
+    margin: 0px;
+   
+    max-width: 40%;
+}
+
+.sanphamnoibat,
+.sanpham {
+    max-width: 45%;
+    flex: 1;
+    /* Chia đều không gian giữa các thẻ */
+    border: 1px solid #ccc;
+    /* Đường viền để dễ thấy */
+    border: 50px;
+    /* Khoảng cách bên trong */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* Hiệu ứng bóng mờ */
+    background-color: #f9f9f9;
+    /* Màu nền */
+    flex: 1;
+        /* Mỗi card chiếm 50% chiều rộng */
+        max-width: auto;
+        /* Đảm bảo card không chiếm quá nhiều không gian */
+        padding: 20px;
+        background-color: #f1f1f1;
+        border: 2px solid #ccc;
+        /* Viền cho card */
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        /* Hiệu ứng bóng mờ */
+        box-sizing: border-box;
+        /* Bao gồm cả viền và padding vào chiều rộng của card */
+       margin-left: 10px;
+        margin-right: 10px;
+}
+
+.table{
+    max-width: 20%;
+}

@@ -41,7 +41,7 @@
                             <td>{{ $danhMuc->MaDanhMuc }}</td>
                             <td>{{ $danhMuc->TenDanhMuc }}</td>
                             <td>
-                                <form action="{{ route('destroy.danhmuc', $danhMuc->MaDanhMuc) }}" method="POST" style="display:inline;">
+                                <form action="{{ route('categories.destroy', $danhMuc->MaDanhMuc) }}" method="POST" style="display:inline;">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa danh mục này?');">Xóa</button>

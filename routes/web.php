@@ -7,6 +7,8 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\SanPhamController;
 use App\Http\Controllers\DanhMucSanPhamController;
 use App\Http\Controllers\DonHangController;
+use App\Http\Controllers\AuthController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +55,9 @@ Route::get('/admin/quanlidanhmucsanpham/edit/{id}', [DanhMucSanPhamController::c
 Route::put('/admin/quanlidanhmucsanpham/{id}', [DanhMucSanPhamController::class, 'update'])->name('update.danhmuc');
 Route::delete('/admin/quanlidanhmucsanpham/{id}', [DanhMucSanPhamController::class, 'destroy'])->name('destroy.danhmuc');
 Route::get('/admin/quanlidanhmucsanpham/search', [DanhMucSanPhamController::class, 'search'])->name('search.danhmuc');
+
+Route::delete('/quanlidanhmucsanpham/{id}', [DanhMucSanPhamController::class, 'destroy'])->name('categories.destroy');
+
 
 //admin quản lí đơn hàng
 Route::get('/admin/quanlidonhang', [DonHangController::class, 'index'])->name('quanlidonhang');

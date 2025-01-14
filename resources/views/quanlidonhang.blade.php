@@ -10,90 +10,74 @@
             <form action="{{ route('search.donhang') }}" method="GET">
                 <input type="text" name="query" placeholder="Nhập mã đơn hàng" />
                 <button type="submit"><i class="fas fa-search"></i></button>
-                <button id="showAllButton">Hiển Thị Tất Cả</button>
+                <button type="button" id="showAllButton">Hiển Thị Tất Cả</button>
             </form>
         </div>
+        
         @if($donHangs->isEmpty())
-            <p>Không tìm thấy đơn hàng nào.</p>
+        <p>Không tìm thấy đơn hàng nào.</p>
         @endif
+        
         <table class="table">
-    <thead>
-        <tr>
-            <th>Mã Đơn Hàng</th>
-            <th>Mã Khách Hàng</th>
-            <th>Ngày Đặt Hàng</th>
-            <th>Ngày Giao Hàng Dự Kiến</th>
-            <th>Ngày Giao Hàng Thực Tế</th>
-            <th>Trạng Thái Đơn Hàng</th>
-            <th>Tổng Tiền</th>
-            <th>Mã PTVanChuyen</th>
-            <th>Ghi Chú</th>
-            <th>Hành Động</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach($donHangs as $donHang)
-            <tr>
-                <td>{{ $donHang->MaDonHang }}</td>
-                <td>{{ $donHang->MaKhachHang }}</td>
-                <td>{{ $donHang->NgayDatHang }}</td>
-                <td>{{ $donHang->NgayGiaoHangDuKien }}</td>
-                <td>{{ $donHang->NgayGiaoHangThucTe }}</td>
-                <td>{{ $donHang->TrangThaiDonHang }}</td>
-                <td>{{ $donHang->TongTien }}</td>
-                <td>{{ $donHang->Ma_PTVanChuyen }}</td>
-                <td>{{ $donHang->GhiChu }}</td>
-                <td>
-                    <button class="btn btn-warning action-button updateButton" data-id="{{ $donHang->MaDonHang }}" 
-                    data-makh="{{ $donHang->MaKhachHang }}" 
-                    data-ngaydat="{{ $donHang->NgayDatHang }}" 
-                    data-ngaydukien="{{ $donHang->NgayGiaoHangDuKien }}" 
-                    data-ngaythucte="{{ $donHang->NgayGiaoHangThucTe }}" 
-                    data-trangthai="{{ $donHang->TrangThaiDonHang }}" 
-                    data-tongtien="{{ $donHang->TongTien }}" 
-                    data-ptvanchuyen="{{ $donHang->Ma_PTVanChuyen }}" 
-                    data-ghichu="{{ $donHang->GhiChu }}">Cập Nhật</button>
-                    <form action="{{ route('destroy.donhang', $donHang->MaDonHang) }}" method="POST" style="display:inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger action-button" onclick="return confirm('Bạn có chắc chắn muốn xóa đơn hàng này?');">Xóa</button>
-                    </form>
-                </td>
-            </tr>
-        @endforeach
-    </tbody>
-</table>
+            <thead>
+                <tr>
+                    <th>Mã Đơn Hàng</th>
+                    <th>Mã Khách Hàng</th>
+                    <th>Ngày Đặt Hàng</th>
+                    <th>Ngày Giao Hàng Dự Kiến</th>
+                    <th>Ngày Giao Hàng Thực Tế</th>
+                    <th>Trạng Thái Đơn Hàng</th>
+                    <th>Tổng Tiền</th>
+                    <th>Mã PTVanChuyen</th>
+                    <th>Ghi Chú</th>
+                    <th>Hành Động</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($donHangs as $donHang)
+                <tr>
+                    <td>{{ $donHang->MaDonHang }}</td>
+                    <td>{{ $donHang->MaKhachHang }}</td>
+                    <td>{{ $donHang->NgayDatHang }}</td>
+                    <td>{{ $donHang->NgayGiaoHangDuKien }}</td>
+                    <td>{{ $donHang->NgayGiaoHangThucTe }}</td>
+                    <td>{{ $donHang->TrangThaiDonHang }}</td>
+                    <td>{{ $donHang->TongTien }}</td>
+                    <td>{{ $donHang->Ma_PTVanChuyen }}</td>
+                    <td>{{ $donHang->GhiChu }}</td>
+                    <td>
+                        <button class="btn btn-warning action-button updateButton" data-id="{{ $donHang->MaDonHang }}"
+                            data-makh="{{ $donHang->MaKhachHang }}"
+                            data-ngaydat="{{ $donHang->NgayDatHang }}"
+                            data-ngaydukien="{{ $donHang->NgayGiaoHangDuKien }}"
+                            data-ngaythucte="{{ $donHang->NgayGiaoHangThucTe }}"
+                            data-trangthai="{{ $donHang->TrangThaiDonHang }}"
+                            data-tongtien="{{ $donHang->TongTien }}"
+                            data-ptvanchuyen="{{ $donHang->Ma_PTVanChuyen }}"
+                            data-ghichu="{{ $donHang->GhiChu }}">Cập Nhật</button>
+                        <form action="{{ route('destroy.donhang', $donHang->MaDonHang) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger action-button" onclick="return confirm('Bạn có chắc chắn muốn xóa đơn hàng này?');">Xóa</button>
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
 
-        <button id="backButton" onclick="window.location.href='{{ route('quanlidonhang') }}'">Quay Lại</button>
+        <button<a href="{{ route('quanlidonhang') }}" class="btn btn-secondary">Quay Lại</a>
     </div>
 </div>
 
-<script>
-    document.getElementById('showAllButton').onclick = function() {
-        window.location.href = "{{ route('quanlidonhang') }}";
-    };<!-- Modal Cập Nhật -->
+<!-- Modal Cập Nhật -->
 <div class="modal" id="updateModal">
     <div class="modal-dialog">
         <div class="modal-content">
-
-            <!-- Modal Header -->
             <div class="modal-header">
                 <h4 class="modal-title">Cập Nhật Đơn Hàng</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
-
-            <!-- Modal Cập Nhật -->
-<div class="modal" id="updateModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">Cập Nhật Đơn Hàng</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-
-            <!-- Modal Body -->
             <div class="modal-body">
                 <form id="updateForm" action="" method="POST">
                     @csrf
@@ -137,21 +121,18 @@
                     <button type="submit" class="btn btn-primary">Lưu Thay Đổi</button>
                 </form>
             </div>
-
-            <!-- Modal Footer -->
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-dismiss="modal">Đóng</button>
             </div>
-
         </div>
     </div>
 </div>
 
-
-        </div>
-    </div>
-</div>
 <script>
+    document.getElementById('showAllButton').onclick = function() {
+        window.location.href = "{{ route('quanlidonhang') }}";
+    };
+
     document.querySelectorAll('.updateButton').forEach(button => {
         button.onclick = function() {
             document.getElementById('updateMaDonHang').value = this.dataset.id;
@@ -167,8 +148,6 @@
             $('#updateModal').modal('show');
         };
     });
-</script>
-
 </script>
 
 @endsection
