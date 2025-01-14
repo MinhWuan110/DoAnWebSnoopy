@@ -1,9 +1,11 @@
 @extends('layouts.User') <!-- Kết nối với layout chính -->
 @section('title', 'Giỏ Hàng')
+
 @section('content')
 <div class="container">
+    
     <h2>Giỏ hàng</h2>
-
+    
     <div class="center">
         <div class="mb-3">
             <input type="radio" id="delivery" name="delivery" value="delivery" checked>
@@ -41,7 +43,9 @@
     <div class="mb-3">
         <button class="btn btn-warning">Xóa hết</button>
     </div>
-
+    <div class="pagination">
+        {{ $gioHang->links() }} <!-- Hiển thị các liên kết phân trang -->
+    </div>
     <div class="shipping-info">
         <h4>Thông tin nhận hàng</h4>
         <form>
@@ -65,6 +69,8 @@
     </div>
 
     <button class="btn btn-primary">Đặt hàng</button>
-</div>
 
+    <!-- Thêm phân trang -->
+    
+</div>
 @endsection
