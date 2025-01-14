@@ -90,7 +90,7 @@
         </tbody>
     </table>
     <br>
-    <h2>Danh sách sản phẩm yêu thích, đánh giá</h2>
+    <h2>Danh sách sản phẩm đánh giá</h2>
     <table class="table">
         <thead>
             <tr>
@@ -115,6 +115,38 @@
             @endforeach
         </tbody>
     </table>
+
+    <h2>Danh sách sản phẩm yêu thích</h2>
+@if($favorites->isEmpty())
+    <p>Chưa có sản phẩm nào trong danh sách yêu thích.</p>
+@else
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tên sản phẩm</th>
+                <th>Giá</th>
+                <th>Trạng thái</th>
+                <th>Xóa yêu thích</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($favorites as $favorite)
+            <tr>
+                <td>{{ $favorite->TenSanPham }}</td>
+                <td>{{ number_format($favorite->Gia, 0, ',', '.') }} VNĐ</td>
+                <td>{{ $favorite->TrangThai == 1 ? 'Còn hàng' : 'Hết hàng' }}</td>
+                <td>
+                    <form action="{{ route('favorites.destroy', $favorite->MaYeuThich) }}" method="POST" onsubmit="return confirm('Bạn có chắc chắn muốn xóa sản phẩm khỏi danh sách yêu thích?');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Xóa</button>
+                    </form>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+@endif
 
     @elseif(isset($nhanvien))
     <h2 class="d">Thông tin cá nhân nhân viên</h2>

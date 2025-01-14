@@ -16,7 +16,6 @@ class ProfileController extends Controller
     }
     public function show()
     {
-        // Lấy thông tin tài khoản từ session
         $currentUser = session('user');
 
         // Kiểm tra xem người dùng có đăng nhập không
@@ -24,7 +23,6 @@ class ProfileController extends Controller
             return redirect()->route('login')->with('error', 'Bạn cần đăng nhập để truy cập trang này.');
         }
 
-        // Lấy thông tin tài khoản từ bảng taikhoan
         $taikhoan = DB::table('taikhoan')->where('MaTaiKhoan', $currentUser->MaTaiKhoan)->first();
 
         // Kiểm tra xem tài khoản có tồn tại không
@@ -32,12 +30,13 @@ class ProfileController extends Controller
             return redirect()->back()->with('error', 'Không tìm thấy tài khoản nào.');
         }
 
-        // Kiểm tra xem MaKhachHang có tồn tại không
+        // Lấy danh sách yêu thích
+        $favorites = collect();
+
         if (!is_null($taikhoan->MaKhachHang)) {
-            // Nếu có, lấy thông tin khách hàng
+            // Nếu là khách hàng
             $khachhang = DB::table('khachhang')->where('MaKhachHang', $taikhoan->MaKhachHang)->first();
 
-            // Kiểm tra xem khách hàng có tồn tại không
             if (is_null($khachhang)) {
                 return redirect()->back()->with('error', 'Không tìm thấy khách hàng nào.');
             }
@@ -56,18 +55,22 @@ class ProfileController extends Controller
                 ->select('donhang.MaDonHang', 'donhang.NgayDatHang', 'donhang.NgayGiaoHangDuKien', 'donhang.NgayGiaoHangThucTe', 'donhang.TrangThaiDonHang', 'donhang.TongTien', 'donhang.GhiChu', 'phuongthucvanchuyen.TenPhuongThuc')
                 ->get();
 
-            // Trả về view với thông tin khách hàng, danh sách đánh giá sản phẩm và danh sách đơn hàng
-            return view('trangcanhan', compact('khachhang', 'danhgiasanpham', 'donhangs'));
+            // Lấy danh sách yêu thích
+            $favorites = DB::table('sanphamyeuthich')
+                ->where('MaKhachHang', $khachhang->MaKhachHang)
+                ->join('sanpham', 'sanphamyeuthich.MaSanPham', '=', 'sanpham.MaSanPham')
+                ->select('sanpham.*', 'sanphamyeuthich.MaYeuThich')
+                ->get();
+
+            return view('trangcanhan', compact('khachhang', 'danhgiasanpham', 'donhangs', 'favorites'));
         } else {
             // Nếu không có MaKhachHang, lấy thông tin nhân viên
             $nhanvien = DB::table('nhanvien')->where('MaNV', $taikhoan->MaNV)->first();
 
-            // Kiểm tra xem nhân viên có tồn tại không
             if (is_null($nhanvien)) {
                 return redirect()->back()->with('error', 'Không tìm thấy nhân viên nào.');
             }
 
-            // Trả về view với thông tin nhân viên
             return view('trangcanhan', compact('nhanvien'));
         }
     }
@@ -136,5 +139,30 @@ class ProfileController extends Controller
         DB::table('donhang')->where('MaDonHang', $id)->delete();
 
         return redirect()->route('profile.show')->with('success', 'Đơn hàng đã được hủy.');
+    }
+    public function addFavorite(Request $request)
+    {
+        $request->validate([
+            'MaSanPham' => 'required|string|max:10',
+        ]);
+
+        $currentUser = session('user');
+        if (!$currentUser || !$currentUser->MaKhachHang) {
+            return redirect()->back()->with('error', 'Bạn cần đăng nhập để thêm sản phẩm vào danh sách yêu thích.');
+        }
+
+        DB::table('sanphamyeuthich')->insert([
+            'MaSanPham' => $request->MaSanPham,
+            'MaKhachHang' => $currentUser->MaKhachHang,
+        ]);
+
+        return redirect()->back()->with('success', 'Đã thêm sản phẩm vào danh sách yêu thích.');
+    }
+
+    
+    public function destroyFavorite($id)
+    {
+        DB::table('sanphamyeuthich')->where('MaYeuThich', $id)->delete();
+        return redirect()->back()->with('success', 'Sản phẩm đã được xóa khỏi danh sách yêu thích.');
     }
 }

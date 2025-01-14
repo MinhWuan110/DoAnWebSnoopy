@@ -50,7 +50,9 @@ Route::group(['middleware' => ['checkAuth']], function () {
     Route::get('/trangcanhan/{MaTaiKhoan}', [ProfileController::class, 'show'])->name('profile.show');
     Route::get('/trangcanhan', [ProfileController::class, 'show'])->name('profile.show');
     Route::get('/user/blog', [BlogController::class, 'index'])->name('blog.index');
-
+    Route::post('/favorites/add', [ProfileController::class, 'addFavorite'])->name('favorites.add');
+    Route::get('/favorites', [ProfileController::class, 'showFavorites'])->name('favorites.show');
+    Route::delete('/favorites/{id}', [ProfileController::class, 'destroyFavorite'])->name('favorites.destroy');
     
     // Route::post('/update-password', [ProfileController::class, 'updatePassword'])->name('updatePassword');
     // Route::get('/trangcanhan/{MaTaiKhoan}', [ProfileController::class, 'show'])->name('profile.show');
