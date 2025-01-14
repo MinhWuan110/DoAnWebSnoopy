@@ -6,6 +6,19 @@
 <div class="container">
     <div class="form-section">
         <h2>Quản Lý Danh Mục</h2>
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+                <!-- <button id="backButton" onclick="window.location.href='{{ route('quanlidanhmucsanpham') }}'">Quay Lại</button> -->
+            </div>
+        @endif
+
         <form action="{{ route('store.danhmuc') }}" method="POST">
             @csrf
             <label for="MaDanhMuc">Mã Danh Mục</label>
@@ -14,6 +27,17 @@
             <input type="text" id="TenDanhMuc" name="TenDanhMuc" placeholder="Nhập tên danh mục" required />
             <button type="submit">Thêm Danh Mục</button>
         </form>
+
+        @if ($errors->any())
+            <div class="alert alert-danger mt-3">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+                <button onclick="window.history.back();" class="btn btn-secondary">Quay Lại</button>
+            </div>
+        @endif
     </div>
 
     <div class="search-section">
@@ -92,8 +116,6 @@
 
         </div>
     </div>
-</div>
-
 </div>
 
 </script>
