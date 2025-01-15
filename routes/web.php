@@ -45,6 +45,11 @@ Route::group(['middleware' => ['checkAuth']], function () {
     Route::get('/cart', function () {
         return view('cart');
     });
+    // Route để hiển thị giỏ hàng
+  
+    Route::post('/cart/update/{productId}', [CartController::class, 'updateQuantity']);
+    // Route để tính tổng tiền trong giỏ hàng
+    Route::get('/cart/total', [CartController::class, 'calculateTotalPrice'])->name('cart.total');
     // Route để cập nhật thông tin cá nhân
     Route::put('/trangcanhan/update/{id}', [ProfileController::class, 'update'])->name('updateProfile');
     Route::get('/trangcanhan/{MaTaiKhoan}', [ProfileController::class, 'show'])->name('profile.show');
@@ -53,7 +58,7 @@ Route::group(['middleware' => ['checkAuth']], function () {
     Route::post('/favorites/add', [ProfileController::class, 'addFavorite'])->name('favorites.add');
     Route::get('/favorites', [ProfileController::class, 'showFavorites'])->name('favorites.show');
     Route::delete('/favorites/{id}', [ProfileController::class, 'destroyFavorite'])->name('favorites.destroy');
-    
+
     // Route::post('/update-password', [ProfileController::class, 'updatePassword'])->name('updatePassword');
     // Route::get('/trangcanhan/{MaTaiKhoan}', [ProfileController::class, 'show'])->name('profile.show');
     Route::delete('/donhang/{id}', [ProfileController::class, 'destroy'])->name('order.destroy');
