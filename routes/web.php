@@ -51,6 +51,9 @@ Route::group(['middleware' => ['checkAuth']], function () {
     // Route để tính tổng tiền trong giỏ hàng
     Route::get('/cart/total', [CartController::class, 'calculateTotalPrice'])->name('cart.total');
     // Route để cập nhật thông tin cá nhân
+    Route::delete('/cart/remove/{productId}', [CartController::class, 'removeFromCart'])->name('cart.remove');
+    Route::post('/cart/clear', [CartController::class, 'clearCart'])->name('cart.clear');
+
     Route::put('/trangcanhan/update/{id}', [ProfileController::class, 'update'])->name('updateProfile');
     Route::get('/trangcanhan/{MaTaiKhoan}', [ProfileController::class, 'show'])->name('profile.show');
     Route::get('/trangcanhan', [ProfileController::class, 'show'])->name('profile.show');
