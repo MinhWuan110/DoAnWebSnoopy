@@ -9,6 +9,8 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ThongTinCongTyController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\LienHeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -82,7 +84,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['checkAuth']], function () {
     Route::get('/quanlibinhluan', [CommentController::class, 'index'])->name('quanlibinhluan');
     Route::delete('/quanlibinhluan/{id}', [CommentController::class, 'destroy'])->name('destroy.comments');
 
-    Route::get('/quanlilienhe', function () {
-        return view('quanlilienhe');
-    });
+    Route::get('/quanlilienhe',[LienHeController::class, 'index'])->name('quanlilienhe');
+    Route::put('/quanlilienhe/{id}', [LienHeController::class, 'update'])->name('update.LienHe');
+    Route::delete('/quanlisanpham/{id}', [LienHeController::class, 'destroy'])->name('destroy.LienHe');
 });
