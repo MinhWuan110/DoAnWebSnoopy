@@ -30,7 +30,11 @@
 
             <button type="submit">Xem Thống Kê</button>
             <!-- Nút xuất Excel -->
-            <a href="{{ route('thongke.export', ['month' => request('month'), 'year' => request('year')]) }}"
+            {{-- <a href="{{ route('thongke.doanhthu', ['month' => request('month'), 'year' => request('year')]) }}"
+                class="btn btn-success">
+                Xuất Excel
+            </a> --}}
+            <a href="{{ route('thongke.doanhthu.export', ['month' => request('month'), 'year' => request('year')]) }}"
                 class="btn btn-success">
                 Xuất Excel
             </a>

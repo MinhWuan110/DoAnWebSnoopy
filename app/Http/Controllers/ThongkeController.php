@@ -40,8 +40,7 @@ class ThongKeController extends Controller
 
         return view('thongke.doanhthu', compact('thongKe', 'month', 'year'));
     }
-
-    public function exportDoanhThu(Request $request)
+public function export(Request $request)
 {
     $month = $request->get('month');
     $year = $request->get('year');
@@ -69,6 +68,7 @@ class ThongKeController extends Controller
 
     return Excel::download(new ThongKeDoanhThuExport($thongKe), 'thongkedoanhthu.xlsx');
 }
+
 
 }
 

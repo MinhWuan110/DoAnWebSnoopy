@@ -211,9 +211,13 @@ Route::get('/thongke/doanhthu', [ThongKeController::class, 'thongKeDoanhThu'])->
 // Route::get('/doanhthu/export', [DoanhThuController::class, 'export'])->name('doanhthu.export');
 
 
-// Route::get('/thongke/export', [ThongKeController::class, 'export'])->name('thongke.export');
 
 Route::get('/thongke-doanhthu', [ThongKeController::class, 'thongKeDoanhThu'])->name('thongke.doanhthu');
+
+Route::get('/thongke-doanhthu/export', [ThongKeController::class, 'export'])->name('thongke.doanhthu.export');
+
+
+
 
 
 Route::get('/thongke/export', [ThongKeLuotMuaController::class, 'export'])->name('thongke.export');

@@ -2,20 +2,33 @@
 
 namespace App\Exports;
 
-use Illuminate\Contracts\View\View;
-use Maatwebsite\Excel\Concerns\FromView;
+use Maatwebsite\Excel\Concerns\FromCollection;
+use Maatwebsite\Excel\Concerns\WithHeadings;
 
-class ThongKeDoanhThuExport implements FromView
+class ThongKeDoanhThuExport implements FromCollection, WithHeadings
 {
-    protected $thongKe;
+    protected $data;
 
-    public function __construct($thongKe)
+    public function __construct($data)
     {
-        $this->thongKe = $thongKe;
+        $this->data = $data;
     }
 
-    public function view(): View
+    // Trả về dữ liệu
+    public function collection()
     {
-        return view('thongke.doanhthuexcel', ['thongKe' => $this->thongKe]);
+        return collect($this->data);
+    }
+
+    // Trả về header
+    public function headings(): array
+    {
+        return [
+            'Mã Sản Phẩm',  // Cột 1
+            'Tên Sản Phẩm', // Cột 2
+            'Tổng Doanh Thu', // Cột 3
+            'Tháng',        // Cột 4
+            'Năm',          // Cột 5
+        ];
     }
 }
