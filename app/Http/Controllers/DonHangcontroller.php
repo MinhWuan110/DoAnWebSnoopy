@@ -9,16 +9,15 @@ class DonHangController extends Controller
 {
     public function index()
     {
-        $donHangs = DB::table('donhang')->get();
-        return view('quanlidonhang', compact('donHangs'));
+        $orders = DB::table('donhang')->get();
+        return view('quanlidonhang', compact('orders'));
     }
-
 
     public function search(Request $request)
     {
         $query = $request->input('query');
-        $donHangs = DB::table('donhang')->where('MaDonHang', 'LIKE', "%{$query}%")->get();
-        return view('quanlidonhang', compact('donHangs'));
+        $orders = DB::table('donhang')->where('MaDonHang', 'LIKE', "%{$query}%")->get();
+        return view('quanlidonhang', compact('orders'));
     }
 
     public function update(Request $request, $id)
@@ -35,26 +34,28 @@ class DonHangController extends Controller
         'GhiChu' => 'nullable|string',
     ]);
 
-    DB::table('donhang')->where('MaDonHang', $id)->update([
-        'MaDonHang' => $request->input('MaDonHang'),
-        'MaKhachHang' => $request->input('MaKhachHang'),
-        'NgayDatHang' => $request->input('NgayDatHang'),
-        'NgayGiaoHangDuKien' => $request->input('NgayGiaoHangDuKien'),
-        'NgayGiaoHangThucTe' => $request->input('NgayGiaoHangThucTe'),
-        'TrangThaiDonHang' => $request->input('TrangThaiDonHang'),
-        'TongTien' => $request->input('TongTien'),
-        'Ma_PTVanChuyen' => $request->input('Ma_PTVanChuyen'),
-        'GhiChu' => $request->input('GhiChu'),
+    $data = $request->only([
+        'MaDonHang',
+        'MaKhachHang',
+        'NgayDatHang',
+        'NgayGiaoHangDuKien',
+        'NgayGiaoHangThucTe',
+        'TrangThaiDonHang',
+        'TongTien',
+        'Ma_PTVanChuyen',
+        'GhiChu',
     ]);
+
+    DB::table('donhang')->where('MaDonHang', $id)->update($data);
 
     return redirect()->route('quanlidonhang')->with('success', 'Đơn hàng đã được cập nhật thành công.');
 }
 
-public function destroy($id)
-{
-    DB::table('donhang')->where('MaDonHang', $id)->delete();
 
-    return redirect()->route('quanlidonhang')->with('success', 'Đơn hàng đã được xóa thành công.');
-}
+    public function destroy($id)
+    {
+        DB::table('donhang')->where('MaDonHang', $id)->delete();
 
+        return redirect()->route('quanlidonhang')->with('success', 'Đơn hàng đã được xóa thành công.');
+    }
 }

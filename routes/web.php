@@ -56,10 +56,13 @@ Route::put('/admin/quanlidanhmucsanpham/update/{id}', [DanhMucSanPhamController:
 Route::get('/admin/quanlidanhmucsanpham/search', [DanhMucSanPhamController::class, 'search'])->name('search.danhmuc');
 Route::delete('/quanlidanhmucsanpham/{id}', [DanhMucSanPhamController::class, 'destroy'])->name('categories.destroy');
 //admin quản lí đơn hàng
+
+
 Route::get('/admin/quanlidonhang', [DonHangController::class, 'index'])->name('quanlidonhang');
-Route::get('/admin/quanlidonhang/search', [DonHangController::class, 'search'])->name('search.donhang');
-Route::delete('/admin/quanlidonhang/{id}', [DonHangController::class, 'destroy'])->name('destroy.donhang');
-Route::put('/admin/quanlidonhang/{id}', [DonHangController::class, 'update'])->name('update.donhang');
+Route::get('/admin/quanlidonhang/search', [DonHangController::class, 'search'])->name('quanlidonhang.search');
+Route::delete('/admin/quanlidonhang/{id}', [DonHangController::class, 'destroy'])->name('quanlidonhang.destroy');
+Route::get('/admin/quanlidonhang/{id}/edit', [DonHangController::class, 'edit'])->name('quanlidonhang.edit');
+Route::put('/admin/quanlidonhang/{id}', [DonHangController::class, 'update'])->name('quanlidonhang.update');
 
 // user tìm kiếm sản phẩm
 Route::get('/timkiemsanpham', [SanPhamController::class, 'searchSanPham'])->name('search.sanpham');
