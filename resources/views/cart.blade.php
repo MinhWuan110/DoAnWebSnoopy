@@ -80,10 +80,14 @@
             const productId = this.getAttribute('data-id');
             const quantitySpan = this.parentElement.querySelector('span');
             let currentQuantity = parseInt(quantitySpan.innerText);
+            if (currentQuantity < 5) {
             currentQuantity++;
             quantitySpan.innerText = currentQuantity;
             updateTotalPrice();
             updateDatabaseQuantity(productId, currentQuantity);
+        } else {
+            alert('Số lượng tối đa là 5.');
+        }
         });
     });
 
