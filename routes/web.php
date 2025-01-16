@@ -9,6 +9,8 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ThongTinCongTyController;
 use App\Http\Controllers\ThongkeController;
+use App\Http\Controllers\ThongKeLuotMuaController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -182,3 +184,37 @@ Route::get('/blog/{id}/edit', [BlogController::class, 'edit'])->name('blog.edit'
 
 // Định nghĩa route để cập nhật blog
 Route::put('/blog/{id}', [BlogController::class, 'update'])->name('blog.update');
+
+// Route::get('/thongkeluotmua ', [ThongKeLuotMuaController::class, 'thongKeLuotMua'])->name('thongke.luotmua');
+
+
+
+// Route::get('/thongkeluotmua', [ThongKeLuotMuaController::class, 'thongKeLuotMua'] )->name('thongkeluotmua');
+// Route::get('/thongkeluotmua/theothoigian', [ThongKeLuotMuaController::class, 'xemTheoThoiGian']);
+
+
+
+// // Route cho xem thống kê lượt mua theo thời gian
+// Route::get('/thongkeluotmua/theo-thoi-gian', [ThongKeLuotMuaController::class, 'xemTheoThoiGian'])->name('thongkeluotmua.theo-thoi-gian');
+
+
+
+
+Route::get('/thong-ke-luot-mua', [ThongKeLuotMuaController::class, 'xemTheoThoiGian'])->name('thongkeluotmua.theo-thoi-gian');
+
+// use App\Http\Controllers\LuotMuaExportController;
+
+// Route::get('/thongke-luot-mua', [LuotMuaExportController::class, 'export'])->name('luotmua.export');
+// use App\Http\Controllers\ThongKeController;
+
+Route::get('/thongke/doanhthu', [ThongKeController::class, 'thongKeDoanhThu'])->name('thongke.doanhthu');
+// Route::get('/doanhthu/export', [DoanhThuController::class, 'export'])->name('doanhthu.export');
+
+
+// Route::get('/thongke/export', [ThongKeController::class, 'export'])->name('thongke.export');
+
+Route::get('/thongke-doanhthu', [ThongKeController::class, 'thongKeDoanhThu'])->name('thongke.doanhthu');
+
+
+Route::get('/thongke/export', [ThongKeLuotMuaController::class, 'export'])->name('thongke.export');
+

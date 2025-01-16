@@ -20,7 +20,7 @@ class SanphamnoibatController extends Controller
 
 public function index()
 {
-   // Lấy tất cả MaSanPham từ bảng sanphamnoibat
+  
     $mangMasanpham = Sanphamnoibat::pluck('masanpham')->toArray();
     // Lấy danh sách sản phẩm từ bảng sanpham mà có MaSanPham trong sanphamnoibat
     $sanPhamNoiBat = DB::table('sanpham')

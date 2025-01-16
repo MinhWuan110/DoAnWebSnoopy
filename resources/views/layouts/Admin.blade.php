@@ -43,6 +43,8 @@
             <a href="/admin/quanlilienhe">Quản Lí Liên Hệ </a>
             <a href="/admin/quanliblog">Quản Lí Blog </a>
             <a href="/admin/thongtin/edit">Quản Lí Thông Tin Trang Web </a>
+            <a href="/thong-ke-luot-mua">Thống Kê Lượt Mua </a>
+            <a href="/thongke-doanhthu">Thống Kê Doanh Thu  </a>
             <a href="#">Tìm Kiếm Sản phẩm </a>
         </nav>
     </div>
