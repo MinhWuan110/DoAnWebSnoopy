@@ -24,9 +24,9 @@
             <ul>
 
                 <li><a href="/trangchu">Home</a></li>
-                {{-- <li><a href="shop.html">Shop</a></li> --}}
+
                 <li><a href="/user/blog">Blog</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="/thongtincongty">Thông tin công ty </a></li>
             </ul>
         </nav>
 
@@ -86,6 +86,7 @@
                         <span>Phone: {{ $thongTin->hotline ?? 'Chưa có dữ liệu' }}</span>
                         <span>Email: {{ $thongTin->email ?? 'Chưa có dữ liệu' }}</span>
                         <span>Address: {{ $thongTin->diachi ?? 'Chưa có dữ liệu' }}</span>
+                        <span><a href="/thongtincongty">Thông tin công ty </a></span>
                     </p>
 
 

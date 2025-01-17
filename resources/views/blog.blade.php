@@ -69,7 +69,7 @@
         <!-- Hiển thị danh sách các bài viết -->
         <div class="blog-posts">
             @forelse ($blogPosts as $post)
-                <div>
+                <div class="blogs">
                     <h2><a href="{{ route('blog.show', ['id' => $post['id']]) }}">{{ $post['tieu_de'] }}</a></h2>
                     <p>{{ \Illuminate\Support\Str::limit($post['noi_dung'], 100) }}</p>
                     <p><strong>Tác giả:</strong> {{ $post['tac_gia'] }}</p>

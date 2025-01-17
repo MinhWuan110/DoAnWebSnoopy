@@ -16,4 +16,5 @@ class Blog extends Model
     protected $fillable = [
         'tieu_de', 'noi_dung', 'tac_gia', 'ngay_dang',
     ];
+
 }
