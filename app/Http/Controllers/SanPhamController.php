@@ -140,22 +140,5 @@ public function TrangChu()
 }
 // tìm kiếm sản phẩm theo các tiêu chí của user
 
-public function searchSanPham(Request $request) {
-    $query = $request->input('query'); 
-     if ($request->filled('maSanPham')) {
-         $query->where('MaSanPham', 'LIKE', '%' . $request->maSanPham . '%');
-         }
-          if ($request->filled('tenSanPham'))  { 
-            $query->where('TenSanPham', 'LIKE', '%' . $request->tenSanPham . '%');
-         }
-          if ($request->filled('danhMuc')) {
-             $query->where('DanhMuc', 'LIKE', '%' . $request->danhMuc . '%'); 
-        } 
-        if ($request->filled('giaTu')) { 
-            $query->where('Gia', '>=', $request->giaTu); 
-        } 
-        if ($request->filled('giaDen')) {
-             $query->where('Gia', '<=', $request->giaDen); 
-        }
-         $sanPhams = $query->get(); return view('sanpham.timkiem', compact('sanPhams')); }
+
 }

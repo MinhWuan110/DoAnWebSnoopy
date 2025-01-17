@@ -69,6 +69,7 @@ Route::get('/search', [TimKiemSanPhamController::class, 'searchSanPham'])->name(
 Route::get('/product/{id}', [TimKiemSanPhamController::class, 'productDetail'])->name('product.detail');
 
 
+
 Route::get('/admin/quanlibinhluan', function () {
     return view('quanlibinhluan');
 })->middleware('check.auth');

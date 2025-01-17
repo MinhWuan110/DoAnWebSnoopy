@@ -9,19 +9,25 @@ class TimKiemSanPhamController extends Controller
 {
     public function searchSanPham(Request $request)
     {
+        // Lấy danh sách danh mục sản phẩm từ cơ sở dữ liệu
+        $categories = DB::table('danhmucsanpham')->get();
+
+        // Nếu không có điều kiện tìm kiếm nào, trả về trang tìm kiếm kèm danh mục sản phẩm
+        if (!$request->hasAny(['name', 'category', 'min_price', 'max_price'])) {
+            return view('search', compact('categories'));
+        }
+
         $query = DB::table('sanpham')
-            ->leftJoin('hinhanhsanpham', 'sanpham.MaSanPham', '=', 'hinhanhsanpham.MaSanPham');
+            ->leftJoin('hinhanhsanpham', 'sanpham.MaSanPham', '=', 'hinhanhsanpham.MaSanPham')
+            ->leftJoin('loaisanpham', 'sanpham.MaLoaiSP', '=', 'loaisanpham.MaLoaiSP')
+            ->leftJoin('danhmucsanpham', 'loaisanpham.MaDanhMuc', '=', 'danhmucsanpham.MaDanhMuc');
 
         if ($request->filled('name')) {
             $query->where('TenSanPham', 'LIKE', '%' . $request->input('name') . '%');
         }
 
-        if ($request->filled('description')) {
-            $query->where('MoTa', 'LIKE', '%' . $request->input('description') . '%');
-        }
-
         if ($request->filled('category')) {
-            $query->where('MaLoaiSP', 'LIKE', '%' . $request->input('category') . '%');
+            $query->where('danhmucsanpham.MaDanhMuc', $request->input('category'));
         }
 
         if ($request->filled('min_price')) {
@@ -32,9 +38,9 @@ class TimKiemSanPhamController extends Controller
             $query->where('Gia', '<=', $request->input('max_price'));
         }
 
-        $products = $query->select('sanpham.*', 'hinhanhsanpham.DuongDanHinhAnh')->get();
+        $products = $query->select('sanpham.*', 'hinhanhsanpham.DuongDanHinhAnh', 'loaisanpham.MaDanhMuc')->paginate(10);
 
-        return view('search_results', compact('products'));
+        return view('search_results', compact('products', 'categories'));
     }
 
     public function productDetail($id)

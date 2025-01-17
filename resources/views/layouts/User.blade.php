@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{{ asset('css/HomePage.css') }}">
     <link rel="stylesheet" href="{{ asset('css/GioHang.css') }}">
     <link rel="stylesheet" href="{{ asset('css/TrangCaNhan.css') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('css/search.css') }}"> Bao gồm CSS mới -->
     <title>@yield('title', 'SMARTPHONE')</title>
 </head>
 <body>
@@ -39,36 +40,33 @@
 
     <main>
         <div class="main-content">
-
             @yield('content')
-            
         </div>
     </main>
 
     <footer>
-    <div class="footer-content">
-        <div class="left-section">
-        <div class="hotline-numbers">
-                <p>Gọi Mua: 1900 232 460 (8:00 - 21:30)</p>
-                <p>Khiếu nại: 1800.1062 (8:00 - 21:30)</p>
-                <p>Bảo hành: 1900 232 464 (8:00 - 21:00)</p>
+        <div class="footer-content">
+            <div class="left-section">
+                <div class="hotline-numbers">
+                    <p>Gọi Mua: 1900 232 460 (8:00 - 21:30)</p>
+                    <p>Khiếu nại: 1800.1062 (8:00 - 21:30)</p>
+                    <p>Bảo hành: 1900 232 464 (8:00 - 21:00)</p>
+                </div>
+                <div class="social-media">
+                    <a href="https://facebook.com" target="_blank">Facebook</a>
+                    <a href="https://twitter.com" target="_blank">Twitter</a>
+                    <a href="https://instagram.com" target="_blank">Instagram</a>
+                </div>
             </div>
-            <div class="social-media">
-                <a href="https://facebook.com" target="_blank">Facebook</a>
-                <a href="https://twitter.com" target="_blank">Twitter</a>
-                <a href="https://instagram.com" target="_blank">Instagram</a>
+            <div class="right-section">
+                <div class="contact-info">
+                    <p>Phone: +65 112233365</p>
+                    <p>Email: hello@gmail.com</p>
+                    <p>Address: 65 Huỳnh Thúc Kháng, P.BN, Q1</p>
+                </div>
+                <p>Bản quyền © {{ date('Y') }}. Tất cả quyền được bảo lưu.</p>
             </div>
         </div>
-        <div class="right-section">
-        <div class="contact-info">
-                <p>Phone: +65 112233365</p>
-                <p>Email: hello@gmail.com</p>
-                <p>Address: 65 Huỳnh Thúc Kháng, P.BN, Q1</p>
-            </div>
-            
-            <p>Bản quyền © {{ date('Y') }}. Tất cả quyền được bảo lưu.</p>
-        </div>
-    </div>
-</footer>
+    </footer>
 </body>
 </html>
