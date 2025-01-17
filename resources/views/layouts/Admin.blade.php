@@ -41,14 +41,20 @@
             <a href="#">Quản Lí Đơn Hàng </a>
             <a href="/admin/quanlibinhluan">Quản Lí Bình Luận </a>
             <a href="/admin/quanlilienhe">Quản Lí Liên Hệ </a>
+            <a href="/admin/quanliblog">Quản Lí Blog </a>
+            <a href="/admin/thongtin/edit">Quản Lí Thông Tin Trang Web </a>
+            <a href="/thong-ke-luot-mua">Thống Kê Lượt Mua </a>
+            <a href="/thongke-doanhthu">Thống Kê Doanh Thu  </a>
             <a href="#">Tìm Kiếm Sản phẩm </a>
         </nav>
     </div>
     <div class="header">
         <button class="menu-btn" onclick="toggleSidebar()">☰</button>
         <div class="logo">
-            <img alt="Logo of a smartphone with a red background" height="50" src="https://storage.googleapis.com/a1aa/image/HfOxfaOQ1JtpBEapcv8mD3fhoWAjUL4rPtC0zGEcZ6zfWZWPB.jpg" width="50" />
-            <span>SMARTPHONE</span>
+            <img alt="Logo of a smartphone with a red background" height="50"
+                src="https://storage.googleapis.com/a1aa/image/HfOxfaOQ1JtpBEapcv8mD3fhoWAjUL4rPtC0zGEcZ6zfWZWPB.jpg"
+                width="50" />
+            <span>{{ $thongTin->tentrangweb ?? 'Chưa có dữ liệu' }}</span>
         </div>
         <div class="nav">
         </div>
@@ -86,6 +92,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
 </body>
 
 </html>

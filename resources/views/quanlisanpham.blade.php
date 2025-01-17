@@ -107,8 +107,12 @@
             </table>
         </div>
         @endif
+<<<<<<< HEAD
     </div>
 </div>
+=======
+    </div> 
+>>>>>>> 484ecc1a577fb33c6ae13c2458656b643dae0b36
 
 <!-- Modal -->
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">

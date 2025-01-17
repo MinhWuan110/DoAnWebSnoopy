@@ -53,7 +53,8 @@ class AuthController extends Controller
             'MaKhachHang' => $makhachhang,
             'LoaiTaiKhoan' => 1, // Loại tài khoản mặc định
             'TrangThai' => 1, // Mặc định là 1
-            'QuyenHan' => 1 // Quyền hạn mặc định
+            'QuyenHan' => 2
+             // Quyền hạn mặc định
         ]);
 
         return redirect()->route('login.form')->with('success', 'Đăng ký thành công. Bạn có thể đăng nhập ngay bây giờ.');
@@ -76,10 +77,10 @@ class AuthController extends Controller
         $user = DB::table('TaiKhoan')->where('TenDangNhap', $request->TenDangNhap)->first();
         if ($user && Hash::check($request->MatKhau, $user->MatKhau)) {
             session(['user' => $user]);
-            return redirect()->intended($user->QuyenHan == 2 ? '/admin/quanlidashboard' : '/trangchu')
+            return redirect()->intended($user->QuyenHan == 2 ? '/admin/dashboard' : '/trangchu')
                 ->with('success', 'Đăng nhập thành công.');
         }
-
+        
         return redirect()->back()->with('error', 'Tên đăng nhập hoặc mật khẩu không chính xác.');
     }
 

@@ -7,10 +7,10 @@ body {
 .section-title {
     PADDING-TOP: 20PX;
 }
-.container {
-    width: 80%;
-    margin: 0 auto;
-}
+/* .container {
+    width: 90%;
+    margin: 0px;
+} */
 
 
 
@@ -76,10 +76,10 @@ body {
     font-family: Arial, sans-serif;
 }
 
-.container {
+/* .container {
     width: 80%;
     margin: 0 auto;
-}
+} */
 
 .title {
     font-size: 24px;
@@ -223,3 +223,10 @@ body {
     justify-content: space-between;
 
 }
+
+
+.container {
+justify-content: center;
+max-width: 80%;
+}
+  

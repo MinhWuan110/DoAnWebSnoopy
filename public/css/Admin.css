@@ -1,14 +1,19 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
 }
 
+.container {
+    margin-top: 80px; /* Tạo khoảng cách với header cố định */
+}
 
 .header {
-    display: flex;
+     display: flex; 
+    position: fixed;
     align-items: center;
     justify-content: space-between;
-    background-color: #f8f8f8;
+    background-color: #343a40;
     padding: 10px 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     position: fixed; /* Đặt vị trí cố định */
@@ -20,7 +25,6 @@ body {
 .logo {
     display: flex;
     align-items: center;
-    
 }
 
 .logo img {
@@ -29,25 +33,24 @@ body {
 
 .logo span {
     font-size: 24px;
-    color: red;
+    color: #ffc107;
     font-weight: bold;
 }
 
 .nav {
     display: flex;
     align-items: center;
-    
 }
 
 .nav a {
     text-decoration: none;
-    color: black;
+    color: white;
     font-weight: bold;
     margin: 0 15px;
 }
 
-.nav a.shop {
-    color: red; /* Màu cho link SHOP */
+.nav a:hover {
+    color: #ffc107;
 }
 
 .search-bar {
@@ -64,7 +67,7 @@ body {
 
 .search-bar button {
     padding: 5px 10px;
-    background-color: red;
+    background-color: #ffc107;
     color: white;
     border: none;
     border-radius: 5px;
@@ -72,111 +75,97 @@ body {
 }
 
 .search-bar button:hover {
-    background-color: darkred;
+    background-color: #e0a800;
 }
 
-.contact-info {
-    display: flex;
-    align-items: center;
-    font-size: 14px;
+.alert {
+    margin-top: 20px;
 }
 
-.contact-info i {
-    margin-right: 5px;
-    color: gray; /* Màu cho biểu tượng */
+.table {
+    margin-top: 20px;
 }
 
-.contact-info span {
-    margin-right: 20px;
-}
-
+.table thead {
+    background-color: #343a40;
+    color: white;
 /* Sidebar styles */
 .sidebar {
-    position: fixed;
+    position: absolute;
     left: -300px; /* Ẩn sidebar ra ngoài màn hình */
     width: 300px;
     height: 100%;
     background-color: #fff;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
     transition: left 0.3s ease;
-    z-index: 1001; /* Đảm bảo sidebar nằm trên các phần tử khác */
+    z-index: 10; /* Đảm bảo sidebar nằm trên các phần tử khác */
 }
 
 .sidebar.active {
     left: 0; /* Hiện sidebar khi active */
-    
+    height: auto;
 }
 
 .sidebar nav {
     display: flex;
     flex-direction: column;
     padding: 20px;
+.table tbody tr:hover {
+    background-color: #f1f1f1;
 }
 
-.sidebar nav a {
-    text-decoration: none;
-    color: black;
-    padding: 30px 0;
-    border-bottom: 1px solid #ccc;
-    text-align: center;
-}
-.sidebar nav a.active {
-    font-weight: bold; /* Làm cho thẻ a in đậm khi được chọn */
-    background-color: #007BFF; /* Màu nền cho thẻ đang hoạt động */
-    color: white; /* Màu chữ cho thẻ đang hoạt động */
-}
-
-.close-btn {
-    background: none;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    margin-bottom: 20px;
-
-}
-
-.menu-btn {
-    background: none;
-    border: none;
-    font-size: 24px;
-    cursor: pointer;
-    margin-right: 20px;
-}
-
-.user-info {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.user-info i {
-    font-size: 40px;
-    margin-right: 10px;
-    color: gray; /* Màu cho biểu tượng người dùng */
-}
-
-.user-info span {
-    display: block;
-}
-
-.search-bar {
-    display: flex;
-    margin-bottom: 20px;
-}
-
-.search-bar input {
-    flex: 1;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+.table .btn {
     margin-right: 5px;
 }
 
-.search-bar button {
-    background-color: red;
-    color: white;
+.table .btn-warning {
+    background-color: #ffc107;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    padding: 5px 10px;
+    color: white;
+}
+
+.table .btn-warning:hover {
+    background-color: #e0a800;
+}
+
+.table .btn-danger {
+    background-color: #dc3545;
+    border: none;
+    color: white;
+}
+
+.table .btn-danger:hover {
+    background-color: #c82333;
+.user-info {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;;
+    margin-bottom: 20px;
+}
+
+.modal-content {
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+}
+
+.modal-header {
+    background-color: #343a40;
+    color: white;
+}
+
+.modal-footer .btn-secondary {
+    background-color: #6c757d;
+    border: none;
+}
+
+.modal-footer .btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+.modal-footer .btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.modal-footer .btn-primary:hover {
+    background-color: #0056b3;
 }

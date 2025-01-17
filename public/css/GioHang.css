@@ -98,3 +98,43 @@ h2 {
     background-color: #6c757d;
     color: white;
 }
+a{
+    text-decoration: none;
+}
+.pagination {
+    display: flex;
+    justify-content: center; /* Căn giữa các nút phân trang */
+    margin: 20px 0; /* Khoảng cách trên và dưới */
+}
+
+.pagination .page-link {
+    
+    padding: 10px 15px !important; /* Kích thước nút */
+    margin: 0 10px; /* Khoảng cách giữa các nút */
+    border: 1px solid #007bff; /* Đường viền */
+    border-radius: 5px; /* Bo góc */
+    color: #007bff; /* Màu chữ */
+    text-decoration: none; /* Bỏ gạch chân */
+    background-color: white; /* Màu nền */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển màu nền */
+}
+
+.pagination .page-link:hover {
+    background-color: #007bff; /* Màu nền khi hover */
+    color: white; /* Màu chữ khi hover */
+}
+
+.pagination .active .page-link {
+    background-color: #007bff; /* Màu nền cho nút đang được chọn */
+    color: white; /* Màu chữ cho nút đang được chọn */
+    border: 1px solid #007bff; /* Đường viền cho nút đang được chọn */
+}
+.pagination .inline-flex {
+    padding: 0.25rem 0.5rem; /* Giảm padding */
+    font-size: 0.875rem; /* Giảm kích thước chữ */
+}
+
+.pagination svg {
+    width: 1.25rem; /* Giảm kích thước SVG */
+    height: 1.25rem; /* Giảm kích thước SVG */
+}

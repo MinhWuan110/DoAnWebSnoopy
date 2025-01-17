@@ -1,54 +1,148 @@
+{{-- @extends('layouts.admin')
+
+@section('content')
+    <!-- resources/views/thongke/index.blade.php -->
+
+    <!DOCTYPE html>
+    <html lang="vi">
+
+    <head>
+        <!-- Thêm Chart.js từ CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Thêm Chart.js từ CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <link rel="stylesheet" href="{{ asset('css/thongke.css') }}">
+    </head>
+
+    <body class="content ">
+
+        <div style="width: 80%; margin: 0 auto; padding-top: 50px;">
+            <canvas id="doanhThuChart"></canvas>
+        </div>
+
+        <script>
+            var ctx = document.getElementById('doanhThuChart').getContext('2d');
+
+            // Lấy dữ liệu từ controller
+            var labels = @json($thongkeData->pluck('Ngay'));
+            var data = @json($thongkeData->pluck('TongDoanhThu'));
+
+            // Cấu hình và hiển thị biểu đồ
+            var doanhThuChart = new Chart(ctx, {
+                type: 'line', // Loại biểu đồ: line chart
+                data: {
+                    labels: labels, // Các ngày
+                    datasets: [{
+                        label: 'Biểu Đồ Doanh Thu',
+                        data: data, // Doanh thu tương ứng
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        fill: false, // Không tô màu dưới đường
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Ngày'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Tổng Doanh Thu'
+                            },
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        </script>
+
+    </body>
+
+    </html>
+@endsection --}}
+
+
+
+{{-- 
 @extends('layouts.admin')
 
 @section('content')
+    <!DOCTYPE html>
+    <html lang="vi">
 
-<html>
-<head>
-    <title>Thống kê doanh thu theo biểu đồ cột</title>
-    
-</head>
-<body>
-    <div class="chart-container">
-        <div class="chart-title">Thống kê doanh thu theo biểu đồ cột</div>
-        <div class="chart">
-            <div class="y-axis">
-                <div>100</div>
-                <div>75</div>
-                <div>50</div>
-                <div>25</div>
-                <div>0</div>
-            </div>
-            <div class="bar bar-1"></div>
-            <div class="bar bar-2"></div>
-            <div class="bar bar-3"></div>
-            <div class="bar bar-4"></div>
-            <div class="bar bar-5"></div>
-            <div class="bar bar-6"></div>
-            <div class="bar bar-7"></div>
-            <div class="bar bar-8"></div>
-            <div class="bar bar-9"></div>
-            <div class="bar bar-10"></div>
-            <div class="bar bar-11"></div>
-            <div class="bar bar-12"></div>
+    <head>
+        <!-- Thêm Chart.js từ CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ asset('css/thongke.css') }}">
+    </head>
+
+    <body class="content">
+        <div style="width: 80%; margin: 0 auto; padding-top: 50px;">
+            <!-- Biểu đồ doanh thu -->
+            <canvas id="doanhThuChart"></canvas>
+
+            <!-- Nút xuất Excel -->
+            <form method="GET" action="{{ route('thongke.export') }}" style="margin-top: 20px;">
+                @csrf
+                <button type="submit"
+                    style="padding: 10px 20px; font-size: 16px; background-color: #4CAF50; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                    Xuất Excel
+                </button>
+            </form>
         </div>
-        <div class="x-axis">
-            <div>1</div>
-            <div>2</div>
-            <div>3</div>
-            <div>4</div>
-            <div>5</div>
-            <div>6</div>
-            <div>7</div>
-            <div>8</div>
-            <div>9</div>
-            <div>10</div>
-            <div>11</div>
-            <div>12</div>
-        </div>
-        <div class="x-axis-label">tháng</div>
-    </div>
-</body>
-</html>
 
+        <script>
+            var ctx = document.getElementById('doanhThuChart').getContext('2d');
 
-@endsection
+            // Lấy dữ liệu từ controller
+            var labels = @json($thongkeData->pluck('Ngay'));
+            var data = @json($thongkeData->pluck('TongDoanhThu'));
+
+            // Cấu hình và hiển thị biểu đồ
+            var doanhThuChart = new Chart(ctx, {
+                type: 'line', // Loại biểu đồ: line chart
+                data: {
+                    labels: labels, // Các ngày
+                    datasets: [{
+                        label: 'Biểu Đồ Doanh Thu',
+                        data: data, // Doanh thu tương ứng
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        fill: false, // Không tô màu dưới đường
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Ngày'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Tổng Doanh Thu'
+                            },
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        </script>
+
+    </body>
+
+    </html>
+@endsection --}}
