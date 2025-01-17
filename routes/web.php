@@ -48,13 +48,24 @@ Route::group(['middleware' => ['checkAuth']], function () {
     Route::get('/cart', function () {
         return view('cart');
     });
+    // Route để hiển thị giỏ hàng
+  
+    Route::post('/cart/update/{productId}', [CartController::class, 'updateQuantity']);
+    // Route để tính tổng tiền trong giỏ hàng
+    Route::get('/cart/total', [CartController::class, 'calculateTotalPrice'])->name('cart.total');
     // Route để cập nhật thông tin cá nhân
+    Route::delete('/cart/remove/{productId}', [CartController::class, 'removeFromCart'])->name('cart.remove');
+    Route::post('/cart/clear', [CartController::class, 'clearCart'])->name('cart.clear');
+
     Route::put('/trangcanhan/update/{id}', [ProfileController::class, 'update'])->name('updateProfile');
     Route::get('/trangcanhan/{MaTaiKhoan}', [ProfileController::class, 'show'])->name('profile.show');
-
-     Route::get('/user/blog', [BlogController::class, 'index'])->name('blog.index');
-
     Route::get('/trangcanhan', [ProfileController::class, 'show'])->name('profile.show');
+    
+    Route::get('/user/blog', [BlogController::class, 'index'])->name('blog.index');
+    Route::post('/favorites/add', [ProfileController::class, 'addFavorite'])->name('favorites.add');
+    Route::get('/favorites', [ProfileController::class, 'showFavorites'])->name('favorites.show');
+    Route::delete('/favorites/{id}', [ProfileController::class, 'destroyFavorite'])->name('favorites.destroy');
+
     // Route::post('/update-password', [ProfileController::class, 'updatePassword'])->name('updatePassword');
     // Route::get('/trangcanhan/{MaTaiKhoan}', [ProfileController::class, 'show'])->name('profile.show');
     Route::delete('/donhang/{id}', [ProfileController::class, 'destroy'])->name('order.destroy');
@@ -66,26 +77,26 @@ Route::group(['middleware' => ['checkAuth']], function () {
     Route::get('/thongke', function () {
         return view('thongkedoanhthu');
     });
-// Route::get('/thongke', function () {
-//     return view('thongkedoanhthu');
-// })->middleware('check.auth');
+    // Route::get('/thongke', function () {
+    //     return view('thongkedoanhthu');
+    // })->middleware('check.auth');
 
 
 
 
-Route::get('/thongke', [ThongkeController::class, 'index']);
+    Route::get('/thongke', [ThongkeController::class, 'index']);
 
-    
+
 
     // Route::get('/trangchu', [SanPhamController::class, 'topSanPham'])->name('trangchu')->middleware('check.auth');;
-    
+
     Route::get('/thongtincongty', [ThongTinCongTyController::class, 'index'])->name('thongtincongty.index');
 
     Route::get('/cart', [CartController::class, 'showCart'])->name('cart.show');
 
-
+    Route::post('/cart/add', [CartController::class, 'addToCart'])->name('cart.add');
     Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
-   
+
 
     Route::get('/blog/{id}', [BlogController::class, 'show'])->name('blog.show');
     // Route::get('/bai-viet/{id}', [BlogController::class, 'show'])->name('blog.show');
@@ -110,8 +121,6 @@ Route::group(['prefix' => 'admin', 'middleware' => ['checkAuth']], function () {
     Route::get('/quanlilienhe', function () {
         return view('quanlilienhe');
     });
-
-
 });
 
 
@@ -128,6 +137,7 @@ Route::delete('/blog/{id}/destroy', [BlogController::class, 'destroy'])->name('b
 use App\Http\Controllers\SanphamnoibatController;
 Route::get('/sanphamnoibat', [SanphamnoibatController::class, 'index'])->name('sanphamnoibat.index');
 Route::get('/sanphamnoibat/create', [SanphamnoibatController::class, 'create'])->name('sanphamnoibat.create');
+
 use App\Models\Sanphamnoibat;
 // web.php
 Route::post('/sanphamnoibat', [SanphamnoibatController::class, 'store'])->name('sanphamnoibat.store');
