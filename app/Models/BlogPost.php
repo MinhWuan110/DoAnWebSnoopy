@@ -16,4 +16,8 @@ class BlogPost extends Model
     protected $fillable = [
         'tieu_de', 'noi_dung', 'tac_gia', 'ngay_dang',
     ];
+        public function sanpham()
+    {
+        return $this->belongsTo(SanPham::class, 'MaSanPham', 'MaSanPham');
+    }
 }

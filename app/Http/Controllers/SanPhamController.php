@@ -123,8 +123,8 @@ public function TrangChu()
         ->join('sanpham', 'ChiTietSanPham.MaSanPham', '=', 'sanpham.MaSanPham')  // Kết hợp với bảng sanpham để lấy thêm các trường cần thiết
         ->select('sanpham.MaSanPham', 'sanpham.TenSanPham', 'sanpham.Gia', 'sanpham.SoLuong', 'ChiTietSanPham.ThoiDiemRaMat')  // Lấy các trường cần thiết
         ->orderByDesc('ChiTietSanPham.ThoiDiemRaMat') // Sắp xếp theo ThoiDiemRaMat giảm dần
-        ->limit(4) // Giới hạn kết quả 4 sản phẩm
-        ->get(); // Lấy kết quả
+        ->limit(4) 
+        ->get(); 
 
 
  $SanPhamKhuyenMais = DB::table('SanPham as sp')

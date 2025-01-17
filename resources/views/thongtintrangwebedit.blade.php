@@ -44,6 +44,30 @@
                 <label for="giolamviec">Giờ làm việc</label>
                 <input type="text" name="giolamviec" id="giolamviec" value="{{ $thongTin->giolamviec }}">
             </div>
+            <div>
+                <label for="diachi">Địa chỉ</label>
+                <textarea name="diachi" id="diachi">{{ $companyInfo->DiaChi }}</textarea>
+            </div>
+            <div>
+                <label for="thongtinvecongty">Thông tin về công ty</label>
+                <textarea name="thongtinvecongty" id="thongtinvecongty">{{ $companyInfo->GioiThieu }}</textarea>
+            </div>
+            <div>
+                <label for="chinhsachcongty">Các chính sách của công ty</label>
+                <textarea name="chinhsachcongty" id="chinhsachcongty">{{ $companyInfo->ChinhSachCongTy }}</textarea>
+            </div>
+            <div>
+                <label for="linhvucchinh">Lĩnh vực chính</label>
+                <textarea name="linhvucchinh" id="linhvucchinh">{{ $companyInfo->LinhVuc }}</textarea>
+            </div>
+            <div>
+                <label for="chamsockhachhang">Chăm sóc khách hàng</label>
+                <textarea name="chamsockhachhang" id="chamsockhachhang">{{ $companyInfo->ChamSocKhachHang }}</textarea>
+            </div>
+
+
+
+
 
             <button type="submit">Cập nhật</button>
         </form>

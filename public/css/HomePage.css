@@ -131,3 +131,18 @@ footer {
 footer p {
     color: #666;
 }
+
+.inline-items {
+    text-align: left;
+}
+
+.inline-items span {
+    display: inline;
+    display: block;
+    /* Đảm bảo rằng các span hiển thị trên cùng một dòng */
+    margin-right: 10px;
+    /* Khoảng cách giữa các span */
+}
+.tentrangweb{
+    color: red;
+}
