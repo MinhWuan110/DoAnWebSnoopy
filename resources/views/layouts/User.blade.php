@@ -9,8 +9,67 @@
     <link rel="stylesheet" href="{{ asset('css/HomePage.css') }}">
     <link rel="stylesheet" href="{{ asset('css/GioHang.css') }}">
     <link rel="stylesheet" href="{{ asset('css/TrangCaNhan.css') }}">
+    <!-- Bao gồm CSS mới -->
+    <link rel="stylesheet" href="{{ asset('css/search.css') }}">
     <title>@yield('title', 'SMARTPHONE')</title>
+    <style>
+        .product-detail {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
 
+        .product-detail:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-detail h2 {
+            margin: 0 0 10px;
+            font-size: 2em;
+        }
+
+        .product-detail p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        .product-detail img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0 0;
+        }
+
+        .pagination li {
+            margin: 0 5px;
+        }
+
+        .pagination li a {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #555;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .pagination li a:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
 </head>
 
 <body>
@@ -47,127 +106,36 @@
 
     <main>
         <div class="main-content">
-
             @yield('content')
-
+            
         </div>
     </main>
 
     <footer>
-        <div class="footer-content">
-            <div class="left-section">
-                <div class="hotline-numbers">
-                    <p>
-                        Gọi Mua:
-                        <span>{{ $thongTin->goimua ?? 'Chưa có dữ liệu' }}</span> |
-                        <span>{{ $thongTin->giolamviec ?? 'Chưa có dữ liệu' }}</span>
-                    </p>
-
-                    <p>
-                        Khiếu Nại:
-                        <span>{{ $thongTin->khieunai ?? 'Chưa có dữ liệu' }}</span> |
-                        <span>{{ $thongTin->giolamviec ?? 'Chưa có dữ liệu' }}</span>
-                    </p>
-                    <p>
-                        Bảo Hành:
-                        <span>{{ $thongTin->baohanh ?? 'Chưa có dữ liệu' }}</span> |
-                        <span>{{ $thongTin->giolamviec ?? 'Chưa có dữ liệu' }}</span>
-                    </p>
-                </div>
-                <div class="social-media">
-                    <a href="https://facebook.com" target="_blank">Facebook</a>
-                    <a href="https://twitter.com" target="_blank">Twitter</a>
-                    <a href="https://instagram.com" target="_blank">Instagram</a>
-                </div>
+    <div class="footer-content">
+        <div class="left-section">
+        <div class="hotline-numbers">
+                <p>Gọi Mua: 1900 232 460 (8:00 - 21:30)</p>
+                <p>Khiếu nại: 1800.1062 (8:00 - 21:30)</p>
+                <p>Bảo hành: 1900 232 464 (8:00 - 21:00)</p>
             </div>
-            <div class="right-section">
-                <div class="contact-info">
-                    <p class="inline-items">
-                        <span>Phone: {{ $thongTin->hotline ?? 'Chưa có dữ liệu' }}</span>
-                        <span>Email: {{ $thongTin->email ?? 'Chưa có dữ liệu' }}</span>
-                        <span>Address: {{ $thongTin->diachi ?? 'Chưa có dữ liệu' }}</span>
-                        <span><a href="/thongtincongty">Thông tin công ty </a></span>
-                    </p>
-
-
-
-
-
-
-
-                </div>
-
-                <p>Bản quyền © {{ date('Y') }}. Tất cả quyền được bảo lưu.</p>
+            <div class="social-media">
+                <a href="https://facebook.com" target="_blank">Facebook</a>
+                <a href="https://twitter.com" target="_blank">Twitter</a>
+                <a href="https://instagram.com" target="_blank">Instagram</a>
             </div>
         </div>
-    </footer>
+        <div class="right-section">
+        <div class="contact-info">
+                <p>Phone: +65 112233365</p>
+                <p>Email: hello@gmail.com</p>
+                <p>Address: 65 Huỳnh Thúc Kháng, P.BN, Q1</p>
+            </div>
+            
+            <p>Bản quyền © {{ date('Y') }}. Tất cả quyền được bảo lưu.</p>
+        </div>
+    </div>
+</footer>
 </body>
 
 </html>
-
-
-
-
-
-
-
-{{-- 
-<!DOCTYPE html>
-<html lang="vi">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Layout User</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-</head>
-
-<body>
-
-    <!-- Thông tin trang web từ bảng thongtintrangweb -->
-    <div class="container mt-5">
-        <h1>Thông Tin Trang Web</h1>
-        <table class="table table-bordered">
-            <tr>
-                <th>Tên Trang Web</th>
-                <td>{{ $thongTin->tentrangweb ?? 'Chưa có dữ liệu' }}</td>
-            </tr>
-            <tr>
-                <th>Hotline</th>
-                <td>{{ $thongTin->hotline ?? 'Chưa có dữ liệu' }}</td>
-            </tr>
-            <tr>
-                <th>Gọi Mua</th>
-                <td>{{ $thongTin->goimua ?? 'Chưa có dữ liệu' }}</td>
-            </tr>
-            <tr>
-                <th>Khiếu Nại</th>
-                <td>{{ $thongTin->khieunai ?? 'Chưa có dữ liệu' }}</td>
-            </tr>
-            <tr>
-                <th>Bảo Hành</th>
-                <td>{{ $thongTin->baohanh ?? 'Chưa có dữ liệu' }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ $thongTin->email ?? 'Chưa có dữ liệu' }}</td>
-            </tr>
-            <tr>
-                <th>Địa Chỉ</th>
-                <td>{{ $thongTin->diachi ?? 'Chưa có dữ liệu' }}</td>
-            </tr>
-            <tr>
-                <th>Giờ Làm Viêc </th>
-                <td> {{ $thongTin->giolamviec ?? 'Chưa có dữ liệu' }}</td>
-            </tr>
-        </table>
-    </div>
-
-    <!-- Nội dung chính của trang -->
-    <div class="container">
-        @yield('content')
-    </div>
-
-</body>
-
-</html> --}}

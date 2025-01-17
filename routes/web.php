@@ -5,14 +5,16 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\SanPhamController;
-use App\Http\Controllers\BlogController;
+use App\Http\Controllers\DanhMucSanPhamController;
+use App\Http\Controllers\DonHangController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ThongTinCongTyController;
 use App\Http\Controllers\ThongkeController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ThongTinTrangWebController;
-
+use App\Http\Controllers\TimKiemSanPhamController;
 use App\Http\Controllers\ThongKeLuotMuaController;
+use App\Http\Controllers\BlogController;
 
 /*
 |--------------------------------------------------------------------------
@@ -121,6 +123,28 @@ Route::group(['prefix' => 'admin', 'middleware' => ['checkAuth']], function () {
     Route::get('/quanlilienhe', function () {
         return view('quanlilienhe');
     });
+    // admin quản lí danh mục sản phẩm
+
+Route::get('/admin/quanlidanhmucsanpham', [DanhMucSanPhamController::class, 'index'])->name('quanlidanhmucsanpham');
+Route::post('/admin/quanlidanhmucsanpham/store', [DanhMucSanPhamController::class, 'store'])->name('store.danhmuc');
+Route::get('/admin/quanlidanhmucsanpham/edit/{id}', [DanhMucSanPhamController::class, 'edit'])->name('edit.danhmuc');
+Route::put('/admin/quanlidanhmucsanpham/update/{id}', [DanhMucSanPhamController::class, 'update'])->name('update.danhmuc');
+Route::get('/admin/quanlidanhmucsanpham/search', [DanhMucSanPhamController::class, 'search'])->name('search.danhmuc');
+Route::delete('/quanlidanhmucsanpham/{id}', [DanhMucSanPhamController::class, 'destroy'])->name('categories.destroy');
+//admin quản lí đơn hàng
+
+
+Route::get('/admin/quanlidonhang', [DonHangController::class, 'index'])->name('quanlidonhang');
+Route::get('/admin/quanlidonhang/search', [DonHangController::class, 'search'])->name('quanlidonhang.search');
+Route::delete('/admin/quanlidonhang/{id}', [DonHangController::class, 'destroy'])->name('quanlidonhang.destroy');
+Route::get('/admin/quanlidonhang/{id}/edit', [DonHangController::class, 'edit'])->name('quanlidonhang.edit');
+Route::put('/admin/quanlidonhang/{id}', [DonHangController::class, 'update'])->name('quanlidonhang.update');
+
+// user tìm kiếm sản phẩm
+Route::get('/search', [TimKiemSanPhamController::class, 'searchSanPham'])->name('search');
+Route::get('/product/{id}', [TimKiemSanPhamController::class, 'productDetail'])->name('product.detail');
+
+
 });
 
 

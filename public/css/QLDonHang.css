@@ -9,8 +9,7 @@ body {
 }
 
 .header {
-     display: flex; 
-    position: fixed;
+    display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: #343a40;
@@ -89,27 +88,8 @@ body {
 .table thead {
     background-color: #343a40;
     color: white;
-/* Sidebar styles */
-.sidebar {
-    position: absolute;
-    left: -300px; /* Ẩn sidebar ra ngoài màn hình */
-    width: 300px;
-    height: 100%;
-    background-color: #fff;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
-    transition: left 0.3s ease;
-    z-index: 10; /* Đảm bảo sidebar nằm trên các phần tử khác */
 }
 
-.sidebar.active {
-    left: 0; /* Hiện sidebar khi active */
-    height: auto;
-}
-
-.sidebar nav {
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
 .table tbody tr:hover {
     background-color: #f1f1f1;
 }
@@ -136,11 +116,6 @@ body {
 
 .table .btn-danger:hover {
     background-color: #c82333;
-.user-info {
-    display: flex;
-    align-items: center;
-    margin-top: 30px;;
-    margin-bottom: 20px;
 }
 
 .modal-content {

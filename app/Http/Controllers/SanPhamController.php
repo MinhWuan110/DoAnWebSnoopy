@@ -138,5 +138,7 @@ public function TrangChu()
     // Truyền dữ liệu sang view
     return view('trangchu', compact('newsanPhams','topSanPhams','SanPhamKhuyenMais')); // Đảm bảo view là nơi bạn muốn hiển thị kết quả
 }
+// tìm kiếm sản phẩm theo các tiêu chí của user
+
 
 }
