@@ -1,6 +1,6 @@
 @extends('layouts.User')
 
-@section('title', 'Kết quả tìm kiếm')
+@section('title', 'Chi tiết sản phẩm')
 
 @section('content')
 <style>
@@ -15,57 +15,35 @@
         padding: 20px;
     }
 
-    .product-list {
-        list-style-type: none;
-        padding: 0;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
-    }
-
-    .product-item {
+    .product-detail {
         border: 1px solid #ddd;
         padding: 15px;
         border-radius: 8px;
         background-color: white;
-        width: calc(33.333% - 20px);
+        width: 100%;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         transition: transform 0.2s ease-in-out;
     }
 
-    .product-item:hover {
+    .product-detail:hover {
         transform: translateY(-5px);
     }
 
-    .product-item h2 {
+    .product-detail h2 {
         margin: 0 0 10px;
-        font-size: 1.5em;
+        font-size: 2em;
     }
 
-    .product-item p {
+    .product-detail p {
         margin: 5px 0;
         color: #555;
     }
 
-    .product-item img {
+    .product-detail img {
         max-width: 100%;
         height: auto;
         border-radius: 4px;
         margin-bottom: 15px;
-    }
-
-    .product-item .actions a {
-        display: inline-block;
-        padding: 10px 15px;
-        background-color: #007BFF;
-        color: white;
-        text-decoration: none;
-        border-radius: 4px;
-        transition: background-color 0.2s ease-in-out;
-    }
-
-    .product-item .actions a:hover {
-        background-color: #0056b3;
     }
 
     .pagination {
@@ -97,11 +75,9 @@
 </style>
 
 <div class="container">
-    <h1>Kết quả tìm kiếm</h1>
-
-    <ul class="product-list">
+    @if ($products->count())
         @foreach ($products as $product)
-            <li class="product-item">
+            <div class="product-detail">
                 <h2>{{ $product->TenSanPham }}</h2>
                 <p>Mã sản phẩm: {{ $product->MaSanPham }}</p>
                 <p>Giá: {{ $product->Gia }} VND</p>
@@ -115,15 +91,14 @@
                 @else
                     <p>Không có hình ảnh</p>
                 @endif
-                <div class="actions">
-                    <a href="{{ route('product.detail', ['id' => $product->MaSanPham]) }}">Xem chi tiết</a>
-                </div>
-            </li>
+            </div>
         @endforeach
-    </ul>
 
-    <div class="pagination">
-        {{ $products->links('pagination::bootstrap-4') }}
-    </div>
+        <div class="pagination">
+    {{ $products->appends(request()->input())->links('pagination::bootstrap-4') }}</div>
+
+    @else
+        <p>Không tìm thấy sản phẩm nào.</p>
+    @endif
 </div>
 @endsection

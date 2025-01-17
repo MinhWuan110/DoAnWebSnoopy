@@ -6,8 +6,67 @@
     <link rel="stylesheet" href="{{ asset('css/HomePage.css') }}">
     <link rel="stylesheet" href="{{ asset('css/GioHang.css') }}">
     <link rel="stylesheet" href="{{ asset('css/TrangCaNhan.css') }}">
-    <!-- <link rel="stylesheet" href="{{ asset('css/search.css') }}"> Bao gồm CSS mới -->
+    <!-- Bao gồm CSS mới -->
+    <link rel="stylesheet" href="{{ asset('css/search.css') }}">
     <title>@yield('title', 'SMARTPHONE')</title>
+    <style>
+        .product-detail {
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .product-detail:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-detail h2 {
+            margin: 0 0 10px;
+            font-size: 2em;
+        }
+
+        .product-detail p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        .product-detail img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px;
+            margin-bottom: 15px;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0 0;
+        }
+
+        .pagination li {
+            margin: 0 5px;
+        }
+
+        .pagination li a {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #555;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .pagination li a:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
 </head>
 <body>
     <header>

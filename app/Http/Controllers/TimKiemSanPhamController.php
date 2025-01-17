@@ -38,8 +38,8 @@ class TimKiemSanPhamController extends Controller
             $query->where('Gia', '<=', $request->input('max_price'));
         }
 
-        $products = $query->select('sanpham.*', 'hinhanhsanpham.DuongDanHinhAnh', 'loaisanpham.MaDanhMuc')->paginate(10);
-
+        $products = $query->select('sanpham.*', 'hinhanhsanpham.DuongDanHinhAnh', 'loaisanpham.MaDanhMuc')->paginate(1);
+        
         return view('search_results', compact('products', 'categories'));
     }
 
