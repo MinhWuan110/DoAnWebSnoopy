@@ -8,7 +8,7 @@ use App\Http\Controllers\SanPhamController;
 use App\Http\Controllers\DanhMucSanPhamController;
 use App\Http\Controllers\DonHangController;
 use App\Http\Controllers\AuthController;
-
+use App\Http\Controllers\TimKiemSanPhamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,8 +65,8 @@ Route::get('/admin/quanlidonhang/{id}/edit', [DonHangController::class, 'edit'])
 Route::put('/admin/quanlidonhang/{id}', [DonHangController::class, 'update'])->name('quanlidonhang.update');
 
 // user tìm kiếm sản phẩm
-Route::get('/timkiemsanpham', [SanPhamController::class, 'searchSanPham'])->name('search.sanpham');
-
+Route::get('/search', [TimKiemSanPhamController::class, 'searchSanPham'])->name('search');
+Route::get('/product/{id}', [TimKiemSanPhamController::class, 'productDetail'])->name('product.detail');
 
 
 Route::get('/admin/quanlibinhluan', function () {
