@@ -277,3 +277,36 @@ p:last-child {
 .text-sm {
     display: none;
 }
+
+
+
+
+.blog-posts {
+    display: flex;
+    flex-wrap: wrap;
+    /* Cho phép các phần tử xuống dòng khi không đủ chỗ */
+    gap: 20px;
+    /* Khoảng cách giữa các thẻ */
+}
+
+.blog-posts>div {
+    flex: 1 1 calc(25% - 20px);
+    /* Mỗi phần tử chiếm 25% chiều rộng của container, trừ khoảng cách */
+    box-sizing: border-box;
+    /* Đảm bảo các phần tử không vượt ra ngoài */
+}
+
+.blog-posts>div h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.blog-posts>div p {
+    font-size: 14px;
+    margin: 5px 0;
+   
+}
+.blogs{
+    max-width: 25%;
+
+}
