@@ -27,6 +27,7 @@ class ThongKeDoanhThuExport implements FromCollection, WithHeadings
             'Mã Sản Phẩm',  // Cột 1
             'Tên Sản Phẩm', // Cột 2
             'Tổng Doanh Thu', // Cột 3
+            'Ngày',
             'Tháng',        // Cột 4
             'Năm',          // Cột 5
         ];

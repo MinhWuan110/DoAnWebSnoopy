@@ -49,7 +49,7 @@
                     <tr>
                         <th>Mã Sản Phẩm</th>
                         <th>Tên Sản Phẩm</th>
-                        <th>Tổng Doanh Thu</th>
+                        <th>Tổng Doanh Thu</th> 
                         <th>Tháng</th>
                         <th>Năm</th>
                     </tr>

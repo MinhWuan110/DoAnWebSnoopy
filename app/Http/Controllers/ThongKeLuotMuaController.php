@@ -8,41 +8,36 @@ use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\ThongKeLuotMuaExport;
 class ThongKeLuotMuaController extends Controller
 {
-    // Phương thức để hiển thị thống kê lượt mua theo tháng và năm
+    // Hiển thị thống kê lượt mua theo tháng, năm và ngày
     public function xemTheoThoiGian(Request $request)
     {
-        // Lấy tháng và năm từ yêu cầu (nếu có)
-        $month = $request->input('month');
-        $year = $request->input('year');
+        $month = $request->input('month'); // Lấy tháng từ request
+        $year = $request->input('year');  // Lấy năm từ request
 
-        // Truy vấn cơ sở dữ liệu để lấy thống kê lượt mua
+        // Truy vấn dữ liệu từ bảng `luotmua`
         $query = DB::table('luotmua')
             ->join('sanpham', 'luotmua.MaSanPham', '=', 'sanpham.MaSanPham')
             ->select(
                 'sanpham.MaSanPham',
                 'sanpham.TenSanPham',
-                DB::raw('SUM(luotmua.SoLuongMua) as TongSoLuongMua'),
-                DB::raw('MONTH(luotmua.NgayMua) as Thang'),
-                DB::raw('YEAR(luotmua.NgayMua) as Nam')
+                'luotmua.NgayMua', // Lấy thêm ngày mua
+                'luotmua.SoLuongMua'
             );
 
-        // Nếu có tháng, lọc theo tháng
+        // Lọc theo tháng nếu được chọn
         if ($month) {
             $query->whereMonth('luotmua.NgayMua', $month);
         }
 
-        // Nếu có năm, lọc theo năm
+        // Lọc theo năm nếu được chọn
         if ($year) {
             $query->whereYear('luotmua.NgayMua', $year);
         }
-            
-        $query->orderBy('Nam')->orderBy('Thang');
-        // Nhóm theo sản phẩm, tháng, năm và tính tổng số lượng mua
-        $luotMua = $query->groupBy('sanpham.MaSanPham', 'sanpham.TenSanPham', 'Thang', 'Nam')
-            ->orderBy('TongSoLuongMua', 'DESC')
-            ->get();
 
-        // Trả về view với dữ liệu thống kê
+        // Sắp xếp dữ liệu theo ngày, tháng và năm
+        $luotMua = $query->orderBy('luotmua.NgayMua', 'ASC')->get();
+
+        // Trả về view với dữ liệu
         return view('thongkeluotmua', [
             'luotMua' => $luotMua,
             'month' => $month,
@@ -51,7 +46,11 @@ class ThongKeLuotMuaController extends Controller
     }
 
 
- public function export(Request $request)
+
+
+
+
+    public function export(Request $request)
 {
     $month = $request->input('month');
     $year = $request->input('year');
@@ -61,9 +60,8 @@ class ThongKeLuotMuaController extends Controller
         ->select(
             'sanpham.MaSanPham',
             'sanpham.TenSanPham',
-            DB::raw('SUM(luotmua.SoLuongMua) as TongSoLuongMua'),
-            DB::raw('MONTH(luotmua.NgayMua) as Thang'),
-            DB::raw('YEAR(luotmua.NgayMua) as Nam')
+            'luotmua.NgayMua',
+            'luotmua.SoLuongMua'
         );
 
     if ($month) {
@@ -74,13 +72,8 @@ class ThongKeLuotMuaController extends Controller
         $query->whereYear('luotmua.NgayMua', $year);
     }
 
-    $luotMua = $query->groupBy('sanpham.MaSanPham', 'sanpham.TenSanPham', 'Thang', 'Nam')
-        ->orderBy('TongSoLuongMua', 'DESC')
-        ->get();
+    $luotMua = $query->orderBy('luotmua.NgayMua', 'ASC')->get();
 
-    return Excel::download(new ThongKeLuotMuaExport($luotMua), 'thongkeluotmua.xlsx');
+    return Excel::download(new ThongKeLuotMuaExport($luotMua), 'luotmua.xlsx');
 }
-
 }
-
-

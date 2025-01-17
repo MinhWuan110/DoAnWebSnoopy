@@ -31,9 +31,11 @@ class ThongKeLuotMuaExport implements FromCollection, WithHeadings
         return [
             'Mã Sản Phẩm',
             'Tên Sản Phẩm',
+             'Ngày',
             'Tổng Số Lượng Mua',
-            'Tháng',
-            'Năm',
+           
+            // 'Tháng',
+            // 'Năm',
         ];
     }
 }

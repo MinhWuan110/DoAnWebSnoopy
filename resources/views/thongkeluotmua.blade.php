@@ -48,9 +48,10 @@
                     <tr>
                         <th>Mã Sản Phẩm</th>
                         <th>Tên Sản Phẩm</th>
-                        <th>Số Lượng Đã Bán</th>
-                        <th>Tháng</th>
-                        <th>Năm</th>
+                        <th>Lượt Mua </th>
+                        <th>ngày</th>
+                        {{-- <th>Tháng</th>
+                        <th>Năm</th> --}}
                     </tr>
                 </thead>
                 <tbody>
@@ -58,9 +59,10 @@
                         <tr>
                             <td>{{ $item->MaSanPham }}</td>
                             <td>{{ $item->TenSanPham }}</td>
-                            <td>{{ $item->TongSoLuongMua }}</td>
-                            <td>{{ $item->Thang }}</td>
-                            <td>{{ $item->Nam }}</td>
+                            <td>{{ $item->SoLuongMua }}</td>
+                            <td>{{ $item->NgayMua }}</td>
+                            {{-- <td>{{ $item->Thang }}</td> --}}
+                            {{-- <td>{{ $item->Nam }}</td> --}}
                         </tr>
                     @endforeach
                 </tbody>
