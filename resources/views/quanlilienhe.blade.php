@@ -56,7 +56,13 @@
                         </button>
                         <br>
                         <br>
-                        <button class="btn btn-danger">Xóa</button>
+                        <form action="{{ route('destroy.LienHe', $lienhe->id) }}" method="POST" style="display:inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa không?')">
+                                Xóa
+                            </button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach

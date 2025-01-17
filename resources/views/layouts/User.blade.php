@@ -19,7 +19,7 @@
                 <li><a href="/trangchu">Home</a></li>
                 <li><a href="shop.html">Shop</a></li>
                 <li><a href="/blog">Blog</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="/lienhe">Contact</a></li>
             </ul>
         </nav>
         <div class="search-cart">

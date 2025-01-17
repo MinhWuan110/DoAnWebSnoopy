@@ -10,7 +10,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ThongTinCongTyController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LienHeController;
-
+use App\Http\Controllers\QuanLiLienHeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -69,6 +69,10 @@ Route::group(['middleware' => ['checkAuth']], function () {
     Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
     Route::get('/blog/{id}', [BlogController::class, 'show'])->name('blog.show');
     // Route::get('/bai-viet/{id}', [BlogController::class, 'show'])->name('blog.show');
+
+
+    Route::get('/lienhe',[LienHeController::class,'index'])->name('lienhe.index');
+    Route::post('/lienhe', [LienHeController::class, 'store'])->name('lienhe.store');
 });
 
 // Các route admin cần kiểm tra quyền
@@ -83,8 +87,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['checkAuth']], function () {
     Route::get('/quanlisanpham/search', [SanPhamController::class, 'search'])->name('search.sanpham');
     Route::get('/quanlibinhluan', [CommentController::class, 'index'])->name('quanlibinhluan');
     Route::delete('/quanlibinhluan/{id}', [CommentController::class, 'destroy'])->name('destroy.comments');
-
-    Route::get('/quanlilienhe',[LienHeController::class, 'index'])->name('quanlilienhe');
-    Route::put('/quanlilienhe/{id}', [LienHeController::class, 'update'])->name('update.LienHe');
-    Route::delete('/quanlisanpham/{id}', [LienHeController::class, 'destroy'])->name('destroy.LienHe');
+    Route::get('/quanlilienhe',[QuanLiLienHeController::class, 'index'])->name('quanlilienhe');
+    Route::put('/quanlilienhe/{id}', [QuanLiLienHeController::class, 'update'])->name('update.LienHe');
+    Route::delete('/quanlisanpham/{id}', [QuanLiLienHeController::class, 'destroy'])->name('destroy.LienHe');
 });
