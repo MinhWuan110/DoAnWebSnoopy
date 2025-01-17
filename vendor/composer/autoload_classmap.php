@@ -8,6 +8,18 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+<<<<<<< HEAD
+    'App\\Http\\Controllers\\AuthController' => $baseDir . '/app/Http/Controllers/AuthController.php',
+    'App\\Http\\Controllers\\BlogController' => $baseDir . '/app/Http/Controllers/BlogController.php',
+    'App\\Http\\Controllers\\CommentController' => $baseDir . '/app/Http/Controllers/CommentController.php',
+    'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
+    'App\\Http\\Controllers\\DashboardController' => $baseDir . '/app/Http/Controllers/DashboardController.php',
+    'App\\Http\\Controllers\\LienHeController' => $baseDir . '/app/Http/Controllers/LienHeController.php',
+    'App\\Http\\Controllers\\ProfileController' => $baseDir . '/app/Http/Controllers/ProfileController.php',
+    'App\\Http\\Controllers\\SanPhamController' => $baseDir . '/app/Http/Controllers/SanPhamController.php',
+    'App\\Http\\Controllers\\TestController' => $baseDir . '/app/Http/Controllers/TestController.php',
+    'App\\Http\\Controllers\\ThongTinCongTyController' => $baseDir . '/app/Http/Controllers/ThongTinCongTyController.php',
+=======
     'App\\Exports\\LuotMuaExport' => $baseDir . '/app/Exports/LuotMuaExport.php',
     'App\\Exports\\ThongKeDoanhThuExport' => $baseDir . '/app/Exports/ThongKeDoanhThuExport.php',
     'App\\Http\\Controllers\\AuthController' => $baseDir . '/app/Http/Controllers/AuthController.php',
@@ -22,6 +34,7 @@ return array(
     'App\\Http\\Controllers\\ThongKeLuotMuaController' => $baseDir . '/app/Http/Controllers/ThongKeLuotMuaController.php',
     'App\\Http\\Controllers\\ThongTinCongTyController' => $baseDir . '/app/Http/Controllers/ThongTinCongTyController.php',
     'App\\Http\\Controllers\\ThongTinTrangWebController' => $baseDir . '/app/Http/Controllers/ThongTinTrangWebController.php',
+>>>>>>> 484ecc1a577fb33c6ae13c2458656b643dae0b36
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\Authenticate' => $baseDir . '/app/Http/Middleware/Authenticate.php',
     'App\\Http\\Middleware\\CheckAuth' => $baseDir . '/app/Http/Middleware/CheckAuth.php',
@@ -33,11 +46,15 @@ return array(
     'App\\Http\\Middleware\\TrustHosts' => $baseDir . '/app/Http/Middleware/TrustHosts.php',
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
+<<<<<<< HEAD
+    'App\\Models\\BlogPost' => $baseDir . '/app/Models/BlogPost.php',
+=======
     'App\\Models\\Blog' => $baseDir . '/app/Models/Blog.php',
     'App\\Models\\BlogPost' => $baseDir . '/app/Models/BlogPost.php',
     'App\\Models\\SanPham' => $baseDir . '/app/Models/SanPham.php',
     'App\\Models\\Sanphamnoibat' => $baseDir . '/app/Models/Sanphamnoibat.php',
     'App\\Models\\ThongKeDoanhThu' => $baseDir . '/app/Models/ThongKeDoanhThu.php',
+>>>>>>> 484ecc1a577fb33c6ae13c2458656b643dae0b36
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',
     'App\\Providers\\BroadcastServiceProvider' => $baseDir . '/app/Providers/BroadcastServiceProvider.php',

@@ -617,6 +617,18 @@ class ComposerStaticInit65e85f9f959c0b087110331754d451cf
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+<<<<<<< HEAD
+        'App\\Http\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/AuthController.php',
+        'App\\Http\\Controllers\\BlogController' => __DIR__ . '/../..' . '/app/Http/Controllers/BlogController.php',
+        'App\\Http\\Controllers\\CommentController' => __DIR__ . '/../..' . '/app/Http/Controllers/CommentController.php',
+        'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardController.php',
+        'App\\Http\\Controllers\\LienHeController' => __DIR__ . '/../..' . '/app/Http/Controllers/LienHeController.php',
+        'App\\Http\\Controllers\\ProfileController' => __DIR__ . '/../..' . '/app/Http/Controllers/ProfileController.php',
+        'App\\Http\\Controllers\\SanPhamController' => __DIR__ . '/../..' . '/app/Http/Controllers/SanPhamController.php',
+        'App\\Http\\Controllers\\TestController' => __DIR__ . '/../..' . '/app/Http/Controllers/TestController.php',
+        'App\\Http\\Controllers\\ThongTinCongTyController' => __DIR__ . '/../..' . '/app/Http/Controllers/ThongTinCongTyController.php',
+=======
         'App\\Exports\\LuotMuaExport' => __DIR__ . '/../..' . '/app/Exports/LuotMuaExport.php',
         'App\\Exports\\ThongKeDoanhThuExport' => __DIR__ . '/../..' . '/app/Exports/ThongKeDoanhThuExport.php',
         'App\\Http\\Controllers\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/AuthController.php',
@@ -631,6 +643,7 @@ class ComposerStaticInit65e85f9f959c0b087110331754d451cf
         'App\\Http\\Controllers\\ThongKeLuotMuaController' => __DIR__ . '/../..' . '/app/Http/Controllers/ThongKeLuotMuaController.php',
         'App\\Http\\Controllers\\ThongTinCongTyController' => __DIR__ . '/../..' . '/app/Http/Controllers/ThongTinCongTyController.php',
         'App\\Http\\Controllers\\ThongTinTrangWebController' => __DIR__ . '/../..' . '/app/Http/Controllers/ThongTinTrangWebController.php',
+>>>>>>> 484ecc1a577fb33c6ae13c2458656b643dae0b36
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
         'App\\Http\\Middleware\\CheckAuth' => __DIR__ . '/../..' . '/app/Http/Middleware/CheckAuth.php',
@@ -642,11 +655,15 @@ class ComposerStaticInit65e85f9f959c0b087110331754d451cf
         'App\\Http\\Middleware\\TrustHosts' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustHosts.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
+<<<<<<< HEAD
+        'App\\Models\\BlogPost' => __DIR__ . '/../..' . '/app/Models/BlogPost.php',
+=======
         'App\\Models\\Blog' => __DIR__ . '/../..' . '/app/Models/Blog.php',
         'App\\Models\\BlogPost' => __DIR__ . '/../..' . '/app/Models/BlogPost.php',
         'App\\Models\\SanPham' => __DIR__ . '/../..' . '/app/Models/SanPham.php',
         'App\\Models\\Sanphamnoibat' => __DIR__ . '/../..' . '/app/Models/Sanphamnoibat.php',
         'App\\Models\\ThongKeDoanhThu' => __DIR__ . '/../..' . '/app/Models/ThongKeDoanhThu.php',
+>>>>>>> 484ecc1a577fb33c6ae13c2458656b643dae0b36
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',

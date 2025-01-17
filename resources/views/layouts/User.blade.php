@@ -83,9 +83,15 @@
             <ul>
 
                 <li><a href="/trangchu">Home</a></li>
+<<<<<<< HEAD
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="/blog">Blog</a></li>
+                <li><a href="/lienhe">Contact</a></li>
+=======
 
                 <li><a href="/user/blog">Blog</a></li>
                 <li><a href="/thongtincongty">Thông tin công ty </a></li>
+>>>>>>> 484ecc1a577fb33c6ae13c2458656b643dae0b36
             </ul>
         </nav>
 
