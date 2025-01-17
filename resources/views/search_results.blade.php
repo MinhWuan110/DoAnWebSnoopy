@@ -94,7 +94,7 @@
             </div>
         @endforeach
 
-        <div class="pagination">
+       <div class="pagination">
     {{ $products->appends(request()->input())->links('pagination::bootstrap-4') }}</div>
 
     @else
