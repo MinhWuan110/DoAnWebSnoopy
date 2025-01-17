@@ -67,3 +67,6 @@ select {
 .short-input {
     width: 60%; /* Rút ngắn ô nhập liệu */
 }
+a{
+    text-decoration: none;
+}
